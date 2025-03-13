@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+**/node_modules
+**/bower_components
+**/tmp
+**/temp
+**/dist
+**/build
+**/coverage
+**/logs
+**/npm-debug.log
+**/yarn-error.log

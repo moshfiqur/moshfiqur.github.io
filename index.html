@@ -7,8 +7,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Favicons
-    ================================================== -->
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
@@ -24,6 +22,25 @@
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
+<style>
+  .tech-stack-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tech-stack-container .col-md-4 {
+    padding: 10px;
+  }
+  .tech-stack-container ul {
+    height: 150px; /* Adjust height as needed */
+    overflow: hidden; /* Hide overflow content */
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #f8f9fa; /* Light background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+  }
+</style>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,8 +58,8 @@
       <div class="row">
         <div class="intro-text">
           <h1>Hello, I'm <span class="name">Moshfiqur</span></h1>
-          <p>Fullstack Software Engineer</p>
-          <a href="#about" class="btn btn-default btn-lg page-scroll">Learn More</a> </div>
+          <p>Software Engineer | Crafting AI, Apps, and Scalable Solutions with Precision</p>
+          <!-- <a href="#about" class="btn btn-default btn-lg page-scroll">Learn More</a> </div> -->
       </div>
     </div>
   </div>
@@ -52,8 +69,10 @@
   <nav class="navbar navbar-custom">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-        <a class="navbar-brand page-scroll" href="#page-top">Moshfiqur Rahman</a> </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top" style="font-size: 3.5rem;">Moshfiqur Rahman</a> </div>
       
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -64,7 +83,6 @@
           <li> <a class="page-scroll" href="#technology-stacks">Stacks</a> </li>
           <li> <a class="page-scroll" href="#resume">Resume</a> </li>
           <li> <a class="page-scroll" href="#contact">Contact</a> </li>
-          <li> <a href="https://blog.intelicue.com">Blog</a> </li>
         </ul>
       </div>
     </div>
@@ -79,21 +97,18 @@
     </div>
     <div class="row">
       <div class="col-md-12 text-center"><img src="img/about_me.jpg" class="img-responsive"></div>
-      <div class="col-md-8 col-md-offset-2">
-        <div class="about-text">
-          <p>Over the last 12+ years I’ve lived and breathed computer science. After completing my undergraduate studies in 
-            Bachelor of Science in Computer Science and Engineering, I went on to complete a master degree in Master in 
-            Computer Science at the Technical University of Kaiserslautern. </p>
-          <p>Whilst studying, I worked for Fraunhofer Institute for Experimental Software Engineering. To complete my Master thesis, 
-            I paired up with the German Research Centre for Artificial Intelligence (DFKI), to explore the area of Semantic 
-            Desktop research.</p>
-          <p>Toward the end of my studies, I began working for Yalwa GmbH, a global e-commerce platform. After completing my master 
-            degree I accepted a position as a Software Development Specialist with the same company.</p>
-          <p>To see a system is being built from requirement engineering to deployment is my passion. Though I have successfully 
-            worked in different desktop and web application development projects, web is my favorite work place. I am interested in 
-            Social and Professional Networks, Big Data, Data Analytics, Machine Learning, IoT and creating services that make peoples 
-            lives more easier and connected.</p>
-          <p class="text-center"><a class="btn btn-primary" href="resume/MoshfiqurRahman.CV.pdf"><i class="fa fa-download"></i> Download Resume</a></p>
+      <div class="col-md-12" style="height: 20px;">
+        &nbsp;
+      </div>
+      <div class="col-md-12">
+        <div class="about-text" style="font-size: 1.8rem; text-align: justify;">
+          <p>Experienced software engineer with a strong track record in designing, developing, and deploying scalable, high-traffic web and server applications. Holds a Bachelor’s degree and a Master’s degree in Computer Science, with a solid academic foundation and hands-on experience in both research and industry settings.</p>
+
+          <p>Throughout my career, I have contributed to diverse projects, from AI-driven solutions to mobile applications, with a focus on creating innovative, user-centric services that simplify and connect lives. My expertise spans the full software development lifecycle, from requirement engineering to deployment, and I am passionate about solving complex problems through scalable and efficient solutions.</p>
+
+          <p>I thrive in collaborative environments, leveraging my analytical thinking and problem-solving skills to deliver high-quality results. My work has consistently emphasized interdisciplinary collaboration, knowledge sharing, and a commitment to continuous learning.</p>
+
+          <p class="text-center" style="margin-top: 50px;"><a class="btn btn-primary" href="resume/MoshfiqurRahman.CV.pdf"><i class="fa fa-download"></i> Download Resume</a></p>
         </div>
       </div>
     </div>
@@ -107,69 +122,100 @@
       <hr>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span> </span>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span></span>
         <h4>Software Engneering</h4>
       </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="85"> <span class="percent">85</span> </span>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="85"> <span class="percent">85</span></span>
         <h4>Project Management</h4>
       </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span> </span>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span></span>
         <h4>Software Architecture & Design</h4>
       </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="85"> <span class="percent">85</span> </span>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="85"> <span class="percent">85</span></span>
         <h4>Machine Learning</h4>
       </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="80"> <span class="percent">80</span> </span>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="80"> <span class="percent">80</span></span>
         <h4>Data Analysis</h4>
       </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span> </span>
-        <h4>Prototyping/Proof-of-Concept</h4>
+      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span></span>
+        <h4>Prototyping & Proof-of-Concept</h4>
       </div>
     </div>
   </div>
 </div>
-<div id="technology-stacks">
+<div id="technology-stacks" style="margin-top: 50px;">
   <div class="container">
     <div class="section-title center text-center">
       <h2>Technology Stacks</h2>
       <hr>
     </div>
-    <div class="row">
+    <div class="row tech-stack-container">
       <div class="col-md-4">
-        <ul class="circle">
-          <li>Java</li>
-          <li>Python</li>
-          <li>PHP</li>
-          <li>Javascript</li>
-          <li>Dart</li>
-          <li>MySQL/MariaDB</li>
-          <li>MongoDB</li>
-          <li>ElasticSearch</li>
+        <h4>Web App (Python)</h4>
+        <ul>
+          <li>Django, Flask, FastAPI</li>
+          <li>Celery (Task Queues), SQLAlchemy</li>
+          <li>Scalable web apps & APIs</li>
+        </ul>
+    
+        <h4>Web App (PHP)</h4>
+        <ul>
+          <li>Laravel, Symfony, CodeIgniter</li>
+          <li>WordPress, Drupal</li>
+          <li>High-traffic web portals</li>
+        </ul>
+    
+        <h4>Backend (Java)</h4>
+        <ul>
+          <li>Spring Boot, Hibernate</li>
+          <li>Scalable server applications</li>
         </ul>
       </div>
+    
       <div class="col-md-4">
-        <ul class="circle">
-          <li>Django</li>
-          <li>Flask</li>
-          <li>Flutter</li>
-          <li>React Native</li>
-          <li>Play Framework</li>
-          <li>Spring Boot</li>
-          <li>Codeigniter</li>
-          <li>Symfony</li>
-          <li>Wordpress</li>
+        <h4>Full Stack (JavaScript & TypeScript)</h4>
+        <ul>
+          <li>React, Angular, Vue.js, Next.js</li>
+          <li>Node.js, Express.js</li>
+          <li>Vercel (CI/CD, Deployment)</li>
+        </ul>
+    
+        <h4>Mobile App (Flutter + React Native)</h4>
+        <ul>
+          <li>Dart, Flutter, React Native</li>
+          <li>State Management: Redux, Provider</li>
+        </ul>
+    
+        <h4>Version Control & CI/CD</h4>
+        <ul>
+          <li>Git, GitHub, GitLab</li>
+          <li>Pipeline Integration</li>
         </ul>
       </div>
+    
       <div class="col-md-4">
-        <ul class="circle">
-          <li>Tensorflow</li>
-          <li>Scikit-learn</li>
-          <li>Keras</li>
-          <li>Pandas</li>
-          <li>NumPy</li>
+        <h4>AI/ML</h4>
+        <ul>
+          <li>LLMs: GPT, Mistral, Llama, BERT, LLaVA, DeepSeek</li>
+          <li>NLP, Predictive Analytics, Computer Vision</li>
+          <li>TensorFlow, PyTorch, Scikit-learn, OpenCV</li>
+          <li>RAG, AI Agents, Content Moderation (OpenAI, HiveAI)</li>
+        </ul>
+    
+        <h4>Cloud & Deployment</h4>
+        <ul>
+          <li>AWS (EC2, S3, Lambda), GCP (Cloud Functions, BigQuery)</li>
+          <li>Docker, Scalable Infrastructure</li>
+        </ul>
+    
+        <h4>Database & APIs</h4>
+        <ul>
+          <li>SQL: MySQL, MariaDB, PostgreSQL</li>
+          <li>NoSQL: MongoDB, CouchDB, Couchbase</li>
+          <li>REST, GraphQL, Apollo GraphQL</li>
         </ul>
       </div>
-    </div>
+    </div>    
   </div>
 </div>
 <!-- Achievements Section -->
@@ -196,7 +242,7 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="800ms">
-        <div class="achievement-box"> <span class="count">13</span>
+        <div class="achievement-box"> <span class="count">19</span>
           <h4>Years of Experience</h4>
         </div>
       </div>
@@ -217,7 +263,7 @@
             <div class="timeline-image">
               <h4>May 2013 <br>
                 - <br>
-                Present </h4>
+                April 2025 </h4>
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
@@ -225,8 +271,7 @@
                 <h4 class="subheading">Software Development Specialist</h4>
               </div>
               <div class="timeline-body">
-                <p>I have designed and developed a scalable omni software platform to consume data through web services (SOAP/RESTful) and proprietary APIs. 
-                   I have also developed different machine learning models to scrutinize the content and make sure they adhere to the content policy.</p>
+                <p>Designed and implemented a high-performance data processing and analysis system for a large-scale e-commerce platform handling billions of page views per month, ensuring scalability and reliability.</p>
               </div>
             </div>
           </li>
@@ -242,8 +287,7 @@
                 <h4 class="subheading">Thesis Student</h4>
               </div>
               <div class="timeline-body">
-                <p>Wrote my Master thesis for the course Master in Computer Science in collaboration with DFKI in the semantic desktop research area. I have 
-                  developed a context aware workspace for knowledge workers.</p>
+                <p>Authored a Master’s thesis in the field of semantic desktop research, focusing on the design and development of an AI-powered, context-aware workspace tailored for knowledge workers.</p>
               </div>
             </div>
           </li>

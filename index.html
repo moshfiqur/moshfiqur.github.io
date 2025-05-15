@@ -40,6 +40,22 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 15px;
   }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -79,6 +95,7 @@
         <ul class="nav navbar-nav">
           <li class="hidden"> <a href="#page-top"></a> </li>
           <li> <a class="page-scroll" href="#about">About</a> </li>
+          <li> <a class="page-scroll" href="#mobile-apps">Portfolio</a> </li>
           <li> <a class="page-scroll" href="#skills">Skills</a> </li>
           <li> <a class="page-scroll" href="#technology-stacks">Stacks</a> </li>
           <li> <a class="page-scroll" href="#resume">Resume</a> </li>
@@ -110,6 +127,99 @@
 
           <p class="text-center" style="margin-top: 50px;"><a class="btn btn-primary" href="resume/MoshfiqurRahman.CV.pdf"><i class="fa fa-download"></i> Download Resume</a></p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Mobile App Portfolio Section -->
+<div id="mobile-apps" class="text-center" style="margin-top: 50px; margin-bottom: 50px;">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Mobile App Portfolio</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/PR-nuKs5f1s" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Beauticator. Your AI Selfie Companion</h4>
+        <p>
+          Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with seamless user experience.
+          <br><br>
+          The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal of the image with advanced machine learning.
+          <br><br>
+          Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/CVBDpgK33Kg" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Yegdoo. Where Minds Meet Before Faces.</h4>
+        <p>
+          Yegdoo is a unique dating app designed for sapiosexuals—those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, Yegdoo creates a safe and engaging space for meaningful connections.
+          <br><br>
+          In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos to each other. This approach ensures that relationships are built on personality and shared interests first, fostering deeper and more authentic connections.
+          <br><br>
+          Yegdoo is the perfect platform for those who believe that true attraction starts with the mind.
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/J2_83rGoJPs" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Cinemated. No One Understands Your Movie Taste Better Than Us.</h4>
+        <p>
+          Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, Cinemated combines advanced machine learning with a user-friendly interface to deliver personalized movie suggestions.
+          <br><br>
+          Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI then analyzes these preferences to recommend movies tailored to their tastes. Cinemated goes beyond the usual genres, offering recommendations for special categories like horror movies in scary castles or whodunits with a charming detective.
+          <br><br>
+          Whether you're a casual viewer or a cinephile, Cinemated ensures that your next movie night is always a hit!
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/_ApXFTfjofw" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Artemis. Your Virtual Club Experience, Anytime, Anywhere.</h4>
+        <p>
+          Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, Artemis allows users to join clubs based on their specific interests, such as sports, literature, movies, or comedy, while also connecting them with people nearby through location-based clubs.
+          <br><br>
+          Each club is designed to replicate the vibe of a real club. For instance, there are limits on the number of male and female users who can enter a club at a given time, creating a balanced and engaging environment. Users can buy virtual drinks for others, adding a fun and interactive element to the experience. While multiple people can be in the club simultaneously, Artemis ensures meaningful connections by allowing only one-to-one chats.
+          <br><br>
+          Whether you're looking to share your passion, meet like-minded individuals, or simply unwind, Artemis is your go-to virtual club for a unique and immersive experience.
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/4j9suXQ46SQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Klara. Your Personal German Learning Assistant.</h4>
+        <p>
+          Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL and Firebase, Klara provides a differently structured approach to mastering the language.  
+          <br><br>
+          The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar. Klara provides sample words and sentences for each part of speech, complete with English translations and pronunciation audio. This makes it an excellent tool for practicing vocabulary, sentence construction, and pronunciation.  
+          <br><br>
+          Whether you're a beginner or looking to refine your German skills, Klara is your trusted companion on the journey to fluency.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/o6-ahDpa-o4" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Gutenberg. Rediscover the Classics.</h4>
+        <p>
+          Gutenberg is a simple yet powerful book reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, Gutenberg provides access to a vast collection of free books from the Gutenberg Project, making it the perfect companion for book lovers.
+          <br><br>
+          With Gutenberg, users can explore and read multiple books, with their last reading position automatically bookmarked for a seamless experience. The app also offers features like book search, adjustable font sizes, and a user-friendly interface to enhance your reading journey.
+          <br><br>
+          Whether you're diving into literary masterpieces or rediscovering old favorites, Gutenberg makes reading a pleasure, anytime and anywhere.
+        </p>
       </div>
     </div>
   </div>

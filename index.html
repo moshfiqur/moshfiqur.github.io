@@ -543,19 +543,28 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <div class="portfolio-modal__body">
-      <h3 class="portfolio-modal__title"></h3>
-      <div class="portfolio-modal__carousel" data-portfolio-carousel>
-        <button type="button" class="portfolio-modal__nav portfolio-modal__nav--prev" data-carousel-prev aria-label="Previous image">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </button>
-        <div class="portfolio-modal__viewport">
-          <ul class="portfolio-modal__track"></ul>
+      <div class="portfolio-modal__content">
+        <div class="portfolio-modal__media">
+          <div class="portfolio-modal__carousel" data-portfolio-carousel>
+            <button type="button" class="portfolio-modal__nav portfolio-modal__nav--prev" data-carousel-prev aria-label="Previous image">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="portfolio-modal__viewport">
+              <ul class="portfolio-modal__track"></ul>
+            </div>
+            <button type="button" class="portfolio-modal__nav portfolio-modal__nav--next" data-carousel-next aria-label="Next image">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="portfolio-modal__pagination" aria-hidden="true"></div>
         </div>
-        <button type="button" class="portfolio-modal__nav portfolio-modal__nav--next" data-carousel-next aria-label="Next image">
-          <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        </button>
+        <div class="portfolio-modal__details">
+          <span class="portfolio-pill portfolio-modal__tech"></span>
+          <h3 class="portfolio-modal__title"></h3>
+          <p class="portfolio-modal__subtitle"></p>
+          <div class="portfolio-modal__description"></div>
+        </div>
       </div>
-      <div class="portfolio-modal__pagination" aria-hidden="true"></div>
     </div>
   </div>
 </div>
@@ -1406,6 +1415,69 @@
       ]
     };
 
+    var projectDetails = {
+      beauticator: {
+        title: "Beauticator",
+        subtitle: "Your AI Selfie Companion",
+        tech: "Flutter · TensorFlow · MySQL · Firebase",
+        description: [
+          "Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with a seamless user experience.",
+          "The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.",
+          "Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!"
+        ]
+      },
+      yegdoo: {
+        title: "Yegdoo",
+        subtitle: "Where Minds Meet Before Faces",
+        tech: "Flutter · MySQL · Firebase",
+        description: [
+          "Yegdoo is a unique dating app designed for sapiosexuals--those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, it creates a safe and engaging space for meaningful connections.",
+          "In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.",
+          "Yegdoo is the perfect platform for those who believe that true attraction starts with the mind."
+        ]
+      },
+      cinemated: {
+        title: "Cinemated",
+        subtitle: "No One Understands Your Movie Taste Better Than Us",
+        tech: "Flutter · TensorFlow · MySQL · Firebase",
+        description: [
+          "Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, it blends advanced machine learning with a friendly interface.",
+          "Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.",
+          "Cinemated goes beyond the usual genres, surfacing special categories like horror films in eerie castles or whodunits with charming detectives, so every movie night is a hit."
+        ]
+      },
+      artemis: {
+        title: "Artemis",
+        subtitle: "Your Virtual Club Experience, Anytime, Anywhere.",
+        tech: "Flutter · MySQL · Firebase",
+        description: [
+          "Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, it helps people discover communities around their passions.",
+          "Users can join clubs for sports, literature, movies, comedy, or location-based meetups, with thoughtful entry limits to keep the vibe balanced. They can buy virtual drinks for others and spark one-to-one chats that feel natural and personal.",
+          "Whether you are sharing a passion, meeting like-minded individuals, or simply unwinding, Artemis creates an immersive club experience anywhere."
+        ]
+      },
+      klara: {
+        title: "Klara",
+        subtitle: "Your Personal German Learning Assistant",
+        tech: "Flutter · MySQL · Firebase",
+        description: [
+          "Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL, and Firebase, it supports learners with a structured path through the language.",
+          "The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar.",
+          "Klara provides sample words, sentences, and pronunciation audio for every concept, so practicing vocabulary, sentence construction, and speaking feels natural at your own pace."
+        ]
+      },
+      gutenberg: {
+        title: "Gutenberg",
+        subtitle: "Rediscover the Classics",
+        tech: "Flutter · MySQL",
+        description: [
+          "Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.",
+          "Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.",
+          "Adjustable font sizes, intuitive search, and a distraction-free interface make Gutenberg a delightful way to rediscover literary masterpieces anywhere."
+        ]
+      }
+    };
+
     var modal = document.getElementById('portfolio-modal');
     var galleryButtons = Array.prototype.slice.call(document.querySelectorAll('.portfolio-more-btn'));
 
@@ -1414,6 +1486,9 @@
     }
 
     var modalTitle = modal.querySelector('.portfolio-modal__title');
+    var modalTech = modal.querySelector('.portfolio-modal__tech');
+    var modalSubtitle = modal.querySelector('.portfolio-modal__subtitle');
+    var modalDescription = modal.querySelector('.portfolio-modal__description');
     var track = modal.querySelector('.portfolio-modal__track');
     var pagination = modal.querySelector('.portfolio-modal__pagination');
     var prevControl = modal.querySelector('[data-carousel-prev]');
@@ -1536,8 +1611,11 @@
         return;
       }
       lastFocus = trigger || null;
+      var details = projectDetails[key] || {};
       var projectTitle = '';
-      if (trigger) {
+      if (details.title) {
+        projectTitle = details.title;
+      } else if (trigger) {
         var detail = trigger.closest('.portfolio-details');
         var heading = detail ? detail.querySelector('h4') : null;
         if (heading) {
@@ -1547,9 +1625,41 @@
       if (!projectTitle) {
         projectTitle = key.charAt(0).toUpperCase() + key.slice(1);
       }
+
       if (modalTitle) {
-        modalTitle.textContent = projectTitle + ' Screens';
+        modalTitle.textContent = projectTitle;
       }
+
+      if (modalTech) {
+        if (details.tech) {
+          modalTech.textContent = details.tech;
+          modalTech.style.display = 'inline-block';
+        } else {
+          modalTech.textContent = '';
+          modalTech.style.display = 'none';
+        }
+      }
+
+      if (modalSubtitle) {
+        if (details.subtitle) {
+          modalSubtitle.textContent = details.subtitle;
+          modalSubtitle.style.display = 'block';
+        } else {
+          modalSubtitle.textContent = '';
+          modalSubtitle.style.display = 'none';
+        }
+      }
+
+      if (modalDescription) {
+        modalDescription.innerHTML = '';
+        var paragraphs = details.description || [];
+        paragraphs.forEach(function (copy) {
+          var paragraph = document.createElement('p');
+          paragraph.textContent = copy;
+          modalDescription.appendChild(paragraph);
+        });
+      }
+
       buildSlides(key, projectTitle);
       modal.classList.add('is-visible');
       modal.setAttribute('aria-hidden', 'false');
@@ -1576,9 +1686,24 @@
       if (pagination) {
         pagination.innerHTML = '';
       }
+      if (modalTech) {
+        modalTech.textContent = '';
+        modalTech.style.display = 'none';
+      }
+      if (modalSubtitle) {
+        modalSubtitle.textContent = '';
+        modalSubtitle.style.display = 'none';
+      }
+      if (modalTitle) {
+        modalTitle.textContent = '';
+      }
+      if (modalDescription) {
+        modalDescription.innerHTML = '';
+      }
       if (lastFocus && typeof lastFocus.focus === 'function') {
         lastFocus.focus();
       }
+      lastFocus = null;
     }
 
     galleryButtons.forEach(function (button) {

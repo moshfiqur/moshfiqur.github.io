@@ -616,8 +616,10 @@ ol.type li a:hover {
 
 .portfolio-modal__slide img {
 	display: block;
-	width: 100%;
+	width: 50%;
+	max-width: 420px;
 	height: auto;
+	margin: 0 auto;
 	border-radius: 16px;
 }
 

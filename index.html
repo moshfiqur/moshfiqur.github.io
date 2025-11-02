@@ -63,15 +63,57 @@
     padding: 20px 72px;
   }
 
+  #mobile-apps .portfolio-slides {
+    position: relative;
+    min-height: 440px;
+    height: auto;
+    transition: height 0.55s ease;
+  }
+
   #mobile-apps .portfolio-slide {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(80px);
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    z-index: 1;
   }
 
   #mobile-apps .portfolio-slide.is-active {
-    display: block;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  #mobile-apps .portfolio-slide.exiting-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.exiting-right {
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.entering-from-left {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+
+  #mobile-apps .portfolio-slide.entering-from-right {
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.is-active.entering-from-left,
+  #mobile-apps .portfolio-slide.is-active.entering-from-right {
     opacity: 1;
     transform: translateX(0);
   }
@@ -87,6 +129,7 @@
     border-radius: 20px;
     box-shadow: 0 20px 44px rgba(15, 23, 42, 0.12);
     text-align: left;
+    width: 100%;
   }
 
   #mobile-apps .portfolio-card.reverse {
@@ -103,14 +146,12 @@
   #mobile-apps .portfolio-image {
     max-width: 75%;
     border-radius: 18px;
-    /* box-shadow: 0 16px 26px rgba(0, 0, 0, 0.1); */
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     background: transparent;
   }
 
   #mobile-apps .portfolio-image:hover {
     transform: translateY(-4px);
-    /* box-shadow: 0 20px 32px rgba(17, 12, 46, 0.16); */
   }
 
   #mobile-apps .portfolio-details {
@@ -225,6 +266,10 @@
   @media (max-width: 991px) {
     #mobile-apps .portfolio-carousel {
       padding: 20px 48px;
+    }
+
+    #mobile-apps .portfolio-slides {
+      min-height: 520px;
     }
 
     #mobile-apps .portfolio-card,
@@ -347,84 +392,85 @@
         <i class="fa fa-chevron-right"></i>
       </button>
 
-      <div class="portfolio-slide is-active" data-title="Artemis">
-        <div class="portfolio-card">
-          <div class="portfolio-visual">
-            <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Product Ops &bull; Flutter</span>
-            <h4>Artemis</h4>
-            <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+      <div class="portfolio-slides">
+        <div class="portfolio-slide is-active" data-title="Artemis">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Product Ops &bull; Flutter</span>
+              <h4>Artemis</h4>
+              <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portfolio-slide" data-title="Beauticator">
-        <div class="portfolio-card reverse">
-          <div class="portfolio-visual">
-            <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
-            <h4>Beauticator</h4>
-            <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
+        <div class="portfolio-slide" data-title="Beauticator">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
+              <h4>Beauticator</h4>
+              <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portfolio-slide" data-title="Cinemated">
-        <div class="portfolio-card">
-          <div class="portfolio-visual">
-            <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Recommender Systems &bull; ML</span>
-            <h4>Cinemated</h4>
-            <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
+        <div class="portfolio-slide" data-title="Cinemated">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Recommender Systems &bull; ML</span>
+              <h4>Cinemated</h4>
+              <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portfolio-slide" data-title="Gutenberg">
-        <div class="portfolio-card reverse">
-          <div class="portfolio-visual">
-            <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
-            <h4>Gutenberg</h4>
-            <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
+        <div class="portfolio-slide" data-title="Gutenberg">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
+              <h4>Gutenberg</h4>
+              <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portfolio-slide" data-title="Klara">
-        <div class="portfolio-card">
-          <div class="portfolio-visual">
-            <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Language Learning &bull; ML</span>
-            <h4>Klara</h4>
-            <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
+        <div class="portfolio-slide" data-title="Klara">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Language Learning &bull; ML</span>
+              <h4>Klara</h4>
+              <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portfolio-slide" data-title="Yegdoo">
-        <div class="portfolio-card reverse">
-          <div class="portfolio-visual">
-            <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
-          </div>
-          <div class="portfolio-details">
-            <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
-            <h4>Yegdoo</h4>
-            <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
+        <div class="portfolio-slide" data-title="Yegdoo">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
+              <h4>Yegdoo</h4>
+              <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     <div class="portfolio-meta" aria-hidden="true">
       <span class="portfolio-counter">01 / 06</span>
@@ -772,6 +818,7 @@
       return;
     }
 
+    var slidesWrapper = carousel.querySelector('.portfolio-slides');
     var slides = Array.prototype.slice.call(carousel.querySelectorAll('.portfolio-slide'));
     if (!slides.length) {
       return;
@@ -804,18 +851,40 @@
     var currentIndex = startingIndex;
 
     var totalSlides = slides.length;
+    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var prefersReducedMotion = motionQuery.matches;
+
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', function (event) {
+        prefersReducedMotion = event.matches;
+        setWrapperHeight(slides[currentIndex]);
+      });
+    } else if (motionQuery.addListener) {
+      motionQuery.addListener(function (event) {
+        prefersReducedMotion = event.matches;
+        setWrapperHeight(slides[currentIndex]);
+      });
+    }
 
     var dots = slides.map(function (slide, index) {
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'portfolio-dot' + (index === currentIndex ? ' is-active' : '');
       dot.setAttribute('aria-label', 'Show ' + (slide.getAttribute('data-title') || 'portfolio') + ' project');
+      dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
       dot.addEventListener('click', function () {
         goToSlide(index);
       });
       dotsWrapper.appendChild(dot);
       return dot;
     });
+
+    function setWrapperHeight(slide) {
+      if (!slidesWrapper || !slide) {
+        return;
+      }
+      slidesWrapper.style.height = slide.offsetHeight + 'px';
+    }
 
     function updateCounter() {
       if (!counterEl) {
@@ -839,22 +908,95 @@
       }
     }
 
-    function setActiveSlide(newIndex) {
-      slides.forEach(function (slide, idx) {
-        slide.classList.toggle('is-active', idx === newIndex);
-        slide.setAttribute('aria-hidden', idx === newIndex ? 'false' : 'true');
-      });
+    slides.forEach(function (slide, idx) {
+      slide.classList.toggle('is-active', idx === currentIndex);
+      slide.setAttribute('aria-hidden', idx === currentIndex ? 'false' : 'true');
+      slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+    });
+
+    setWrapperHeight(slides[currentIndex]);
+
+    function updateDotsState() {
       dots.forEach(function (dot, idx) {
-        dot.classList.toggle('is-active', idx === newIndex);
+        dot.classList.toggle('is-active', idx === currentIndex);
+        dot.setAttribute('aria-current', idx === currentIndex ? 'true' : 'false');
       });
     }
 
+    var isAnimating = false;
+
+    function clearAnimationClasses(slide) {
+      slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+    }
+
     function goToSlide(index) {
-      if (index < 0 || index >= totalSlides || index === currentIndex) {
+      if (index < 0 || index >= totalSlides || index === currentIndex || isAnimating) {
         return;
       }
+
+      var direction = index > currentIndex ? 'next' : 'prev';
+      var currentSlide = slides[currentIndex];
+      var nextSlide = slides[index];
+
+      if (prefersReducedMotion) {
+        clearAnimationClasses(currentSlide);
+        currentSlide.classList.remove('is-active');
+        currentSlide.setAttribute('aria-hidden', 'true');
+
+        clearAnimationClasses(nextSlide);
+        nextSlide.classList.add('is-active');
+        nextSlide.setAttribute('aria-hidden', 'false');
+        setWrapperHeight(nextSlide);
+
+        currentIndex = index;
+        updateDotsState();
+        updateCounter();
+        updateNavState();
+        return;
+      }
+
+      isAnimating = true;
+
+      var exitClass = direction === 'next' ? 'exiting-left' : 'exiting-right';
+      var enterClass = direction === 'next' ? 'entering-from-right' : 'entering-from-left';
+
+      clearAnimationClasses(currentSlide);
+      clearAnimationClasses(nextSlide);
+
+      nextSlide.classList.add(enterClass);
+      nextSlide.setAttribute('aria-hidden', 'false');
+
+      // Force reflow to ensure starting transform is applied before the active state
+      void nextSlide.offsetWidth;
+
+      nextSlide.classList.add('is-active');
+      setWrapperHeight(nextSlide);
+
+      currentSlide.classList.add(exitClass);
+
+      var handleCurrentTransitionEnd = function (event) {
+        if (event.target !== currentSlide || event.propertyName !== 'transform') {
+          return;
+        }
+        currentSlide.classList.remove(exitClass, 'is-active');
+        currentSlide.setAttribute('aria-hidden', 'true');
+        currentSlide.removeEventListener('transitionend', handleCurrentTransitionEnd);
+      };
+
+      var handleNextTransitionEnd = function (event) {
+        if (event.target !== nextSlide || event.propertyName !== 'transform') {
+          return;
+        }
+        nextSlide.classList.remove(enterClass);
+        nextSlide.removeEventListener('transitionend', handleNextTransitionEnd);
+        isAnimating = false;
+      };
+
+      currentSlide.addEventListener('transitionend', handleCurrentTransitionEnd);
+      nextSlide.addEventListener('transitionend', handleNextTransitionEnd);
+
       currentIndex = index;
-      setActiveSlide(currentIndex);
+      updateDotsState();
       updateCounter();
       updateNavState();
     }
@@ -879,7 +1021,15 @@
       }
     });
 
-    setActiveSlide(currentIndex);
+    window.addEventListener('resize', function () {
+      setWrapperHeight(slides[currentIndex]);
+    });
+
+    window.addEventListener('load', function () {
+      setWrapperHeight(slides[currentIndex]);
+    });
+
+    updateDotsState();
     updateCounter();
     updateNavState();
 

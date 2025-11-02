@@ -140,6 +140,7 @@ hr {
 .navbar-custom .theme-switcher {
 	padding-left: 15px;
 	padding-right: 0;
+	padding-top: 10px;
 	display: flex;
 	align-items: center;
 }

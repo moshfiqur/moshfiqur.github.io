@@ -7,6 +7,10 @@ body, html {
 	width: 100% !important;
 	height: 100% !important;
 }
+
+body.is-modal-open {
+	overflow: hidden;
+}
 h1 {
 	font-weight: 700;
 }
@@ -464,6 +468,224 @@ ol.type li a:hover {
 	padding: 5px;
 	color: #E87E04;
 }
+
+.portfolio-more-btn {
+	margin-top: 20px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 18px;
+	border: 1px solid rgba(18, 29, 31, 0.16);
+	border-radius: 999px;
+	background: rgba(255,255,255,0.9);
+	color: #121d1f;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.portfolio-more-btn:after {
+	content: '\f105';
+	font-family: FontAwesome;
+	font-size: 13px;
+	transition: transform 0.25s ease;
+}
+
+.portfolio-more-btn:hover,
+.portfolio-more-btn:focus {
+	background: #7bc3d1;
+	color: #020617;
+	box-shadow: 0 12px 24px rgba(18, 29, 31, 0.18);
+	transform: translateY(-2px);
+}
+
+.portfolio-more-btn:hover:after,
+.portfolio-more-btn:focus:after {
+	transform: translateX(3px);
+}
+
+.portfolio-more-btn:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(123,195,209,0.45);
+}
+
+.portfolio-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 32px 16px;
+	background: rgba(10, 15, 26, 0.55);
+	z-index: 1050;
+}
+
+.portfolio-modal.is-visible {
+	display: flex;
+}
+
+.portfolio-modal__overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.portfolio-modal__dialog {
+	position: relative;
+	max-width: 980px;
+	width: 100%;
+	background: #ffffff;
+	border-radius: 24px;
+	box-shadow: 0 36px 68px rgba(18, 29, 31, 0.35);
+	overflow: hidden;
+	animation: modalFadeIn 0.35s ease;
+}
+
+.portfolio-modal__body {
+	padding: 32px 36px 44px;
+	text-align: left;
+}
+
+.portfolio-modal__title {
+	margin: 0 0 18px;
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.portfolio-modal__close {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 44px;
+	height: 44px;
+	border: none;
+	border-radius: 50%;
+	background: rgba(18, 29, 31, 0.08);
+	color: #121d1f;
+	font-size: 24px;
+	cursor: pointer;
+	transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.portfolio-modal__close:hover,
+.portfolio-modal__close:focus {
+	background: rgba(18, 29, 31, 0.14);
+	transform: scale(1.05);
+}
+
+.portfolio-modal__close:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(123,195,209,0.45);
+}
+
+.portfolio-modal__carousel {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+}
+
+.portfolio-modal__viewport {
+	flex: 1;
+	overflow: hidden;
+	border-radius: 16px;
+	box-shadow: inset 0 0 0 1px rgba(18, 29, 31, 0.06);
+}
+
+.portfolio-modal__track {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	transition: transform 0.5s ease;
+}
+
+.portfolio-modal__slide {
+	min-width: 100%;
+	flex: 0 0 100%;
+	position: relative;
+}
+
+.portfolio-modal__slide img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 16px;
+}
+
+.portfolio-modal__nav {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: none;
+	background: rgba(18, 29, 31, 0.75);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.portfolio-modal__nav:hover,
+.portfolio-modal__nav:focus {
+	background: rgba(123, 195, 209, 0.95);
+	color: #020617;
+	transform: translateY(-2px);
+}
+
+.portfolio-modal__nav:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(123,195,209,0.45);
+}
+
+.portfolio-modal__nav[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.portfolio-modal__pagination {
+	margin-top: 22px;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+.portfolio-modal__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(18, 29, 31, 0.2);
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.portfolio-modal__dot.is-active {
+	transform: scale(1.25);
+	background: #7bc3d1;
+}
+
+@keyframes modalFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 /* Achivements Section */
 #achievements {
 	padding: 100px 0;
@@ -851,6 +1073,68 @@ html[data-theme="dark"] .navbar-custom .nav li a:focus {
 	color: #7dd3fc;
 }
 
+html[data-theme="dark"] .portfolio-more-btn {
+	background: rgba(148, 163, 184, 0.1);
+	border-color: rgba(148, 163, 184, 0.35);
+	color: #e2e8f0;
+}
+
+html[data-theme="dark"] .portfolio-more-btn:hover,
+html[data-theme="dark"] .portfolio-more-btn:focus {
+	background: rgba(125, 211, 252, 0.35);
+	color: #020617;
+	box-shadow: 0 16px 30px rgba(2, 6, 23, 0.45);
+}
+
+html[data-theme="dark"] .portfolio-modal {
+	background: rgba(2, 6, 23, 0.7);
+}
+
+html[data-theme="dark"] .portfolio-modal__dialog {
+	background: #0f172a;
+	box-shadow: 0 44px 80px rgba(2, 6, 23, 0.6);
+}
+
+html[data-theme="dark"] .portfolio-modal__body {
+	color: #e2e8f0;
+}
+
+html[data-theme="dark"] .portfolio-modal__title {
+	color: #f8fafc;
+}
+
+html[data-theme="dark"] .portfolio-modal__close {
+	background: rgba(148, 163, 184, 0.2);
+	color: #e2e8f0;
+}
+
+html[data-theme="dark"] .portfolio-modal__close:hover,
+html[data-theme="dark"] .portfolio-modal__close:focus {
+	background: rgba(148, 163, 184, 0.35);
+	color: #020617;
+}
+
+html[data-theme="dark"] .portfolio-modal__viewport {
+	box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.25);
+}
+
+html[data-theme="dark"] .portfolio-modal__nav {
+	background: rgba(30, 41, 59, 0.85);
+}
+
+html[data-theme="dark"] .portfolio-modal__nav:hover,
+html[data-theme="dark"] .portfolio-modal__nav:focus {
+	background: rgba(125, 211, 252, 0.9);
+}
+
+html[data-theme="dark"] .portfolio-modal__dot {
+	background: rgba(148, 163, 184, 0.25);
+}
+
+html[data-theme="dark"] .portfolio-modal__dot.is-active {
+	background: #38bdf8;
+}
+
 html[data-theme="dark"] .theme-toggle-trigger {
 	background: rgba(148, 163, 184, 0.18);
 	border-color: rgba(148, 163, 184, 0.35);
@@ -963,6 +1247,25 @@ html[data-theme="dark"] .circle li:before {
 		left: 50%;
 		transform: translateX(-50%);
 		min-width: 70%;
+	}
+	.portfolio-modal__dialog {
+		border-radius: 20px;
+	}
+	.portfolio-modal__body {
+		padding: 24px 20px 36px;
+	}
+	.portfolio-modal__title {
+		font-size: 24px;
+	}
+	.portfolio-modal__carousel {
+		flex-direction: column;
+	}
+	.portfolio-modal__nav {
+		position: static;
+		transform: none;
+	}
+	.portfolio-modal__pagination {
+		margin-top: 16px;
 	}
 }
 

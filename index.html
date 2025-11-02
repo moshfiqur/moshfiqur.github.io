@@ -454,6 +454,7 @@
               <span class="portfolio-pill">Product Ops &bull; Flutter</span>
               <h4>Artemis</h4>
               <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="artemis">Show more</button>
             </div>
           </div>
         </div>
@@ -467,6 +468,7 @@
               <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
               <h4>Beauticator</h4>
               <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="beauticator">Show more</button>
             </div>
           </div>
         </div>
@@ -480,6 +482,7 @@
               <span class="portfolio-pill">Recommender Systems &bull; ML</span>
               <h4>Cinemated</h4>
               <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="cinemated">Show more</button>
             </div>
           </div>
         </div>
@@ -493,6 +496,7 @@
               <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
               <h4>Gutenberg</h4>
               <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="gutenberg">Show more</button>
             </div>
           </div>
         </div>
@@ -506,6 +510,7 @@
               <span class="portfolio-pill">Language Learning &bull; ML</span>
               <h4>Klara</h4>
               <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="klara">Show more</button>
             </div>
           </div>
         </div>
@@ -519,6 +524,7 @@
               <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
               <h4>Yegdoo</h4>
               <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="yegdoo">Show more</button>
             </div>
           </div>
         </div>
@@ -529,6 +535,30 @@
       <div class="portfolio-dots"></div>
     </div>
   </div>
+
+<div class="portfolio-modal" id="portfolio-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="portfolio-modal__overlay" data-modal-close></div>
+  <div class="portfolio-modal__dialog" role="document">
+    <button type="button" class="portfolio-modal__close" data-modal-close aria-label="Close gallery">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="portfolio-modal__body">
+      <h3 class="portfolio-modal__title"></h3>
+      <div class="portfolio-modal__carousel" data-portfolio-carousel>
+        <button type="button" class="portfolio-modal__nav portfolio-modal__nav--prev" data-carousel-prev aria-label="Previous image">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <div class="portfolio-modal__viewport">
+          <ul class="portfolio-modal__track"></ul>
+        </div>
+        <button type="button" class="portfolio-modal__nav portfolio-modal__nav--next" data-carousel-next aria-label="Next image">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="portfolio-modal__pagination" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
 </div>
 <!-- Skills Section -->
 <div id="skills" class="text-center">
@@ -1299,6 +1329,331 @@
     function padNumber(value) {
       return value < 10 ? '0' + value : String(value);
     }
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var galleryMap = {
+      artemis: [
+        '01_SplashScreen.png',
+        '02_Registration.png',
+        '03_Home.png',
+        '04_Home2.png',
+        '05_ClubHome.png',
+        '06_ClubChat.png',
+        '07_UserProfile.png'
+      ],
+      beauticator: [
+        '0.png',
+        '1.png',
+        '2.png',
+        '3.png',
+        '4.png',
+        '5.png'
+      ],
+      cinemated: [
+        '01_Home.png',
+        '02_Movies_of_the_Year.png',
+        '03_Popular_Movies.png',
+        '04_Recently_Released_Movies.png',
+        '05_User_Preferences_Director.png',
+        '06_User_Preferences_Favorite_Movies.png',
+        '07_User_Preferences_Production_House.png',
+        '08_User_Preferences_Set_Success.png',
+        '09_User_Preferences_Select_Actors.png',
+        '10_User_Preferences_Set_Genres.png',
+        '10_User_Preferences_Set_Movies_Styles.png',
+        '11_User_Preferences_Set_Genres.png',
+        '12_Watchlist_Movies.png',
+        '13_User_Profile.png',
+        '14_Upload_Profile_Image.png',
+        '15_Edit_Profile.png',
+        '16_Liked_Movies.png',
+        '17_Menu.png',
+        '18_Movie_Recommendation.png'
+      ],
+      gutenberg: [
+        '01_SplashScreen.png',
+        '02_Home.png',
+        '03_Reading.png',
+        '04_Menu.png',
+        '05_Search.png'
+      ],
+      klara: [
+        '01_Splash.png',
+        '02_Practice_Sentences.png',
+        '03_Parts_of_Speech.png',
+        '04_Parts_of_Speech_with_Audio.png',
+        '05_Parts_of_Speech_Examples.png',
+        '06_Parts_of_Speech_Verbs.png',
+        '07_Practice_Youtube_Videos.png',
+        '08_Practice_Youtube_Videos_Add_Note.png',
+        '09_Practice_Video3.png'
+      ],
+      yegdoo: [
+        '00_SplashLogo.png',
+        '01_Splash.png',
+        '02_Registration.png',
+        '03_Home.png',
+        '04_Settings.png',
+        '05_User_Profile.png',
+        '05_User_Profile2.png',
+        '06_Bookmarked_User.png',
+        '07_Edit_Profile.png',
+        '08_Chat.png',
+        '09_Chat2.png'
+      ]
+    };
+
+    var modal = document.getElementById('portfolio-modal');
+    var galleryButtons = Array.prototype.slice.call(document.querySelectorAll('.portfolio-more-btn'));
+
+    if (!modal || !galleryButtons.length) {
+      return;
+    }
+
+    var modalTitle = modal.querySelector('.portfolio-modal__title');
+    var track = modal.querySelector('.portfolio-modal__track');
+    var pagination = modal.querySelector('.portfolio-modal__pagination');
+    var prevControl = modal.querySelector('[data-carousel-prev]');
+    var nextControl = modal.querySelector('[data-carousel-next]');
+    var closeElements = Array.prototype.slice.call(modal.querySelectorAll('[data-modal-close]'));
+
+    var activeImages = [];
+    var activeIndex = 0;
+    var dots = [];
+    var autoTimer = null;
+    var autoDelay = 6000;
+    var lastFocus = null;
+
+    function padIndex(value) {
+      return value < 10 ? '0' + value : String(value);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function startAuto() {
+      stopAuto();
+      if (activeImages.length <= 1) {
+        return;
+      }
+      autoTimer = setInterval(function () {
+        goToSlide(activeIndex + 1);
+      }, autoDelay);
+    }
+
+    function updateDots() {
+      if (!dots.length) {
+        return;
+      }
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('is-active', index === activeIndex);
+      });
+    }
+
+    function updateNavState() {
+      var controls = [prevControl, nextControl];
+      controls.forEach(function (control) {
+        if (!control) {
+          return;
+        }
+        if (activeImages.length <= 1) {
+          control.setAttribute('disabled', 'true');
+        } else {
+          control.removeAttribute('disabled');
+        }
+      });
+    }
+
+    function goToSlide(index, userInitiated) {
+      if (!activeImages.length || !track) {
+        return;
+      }
+      var total = activeImages.length;
+      var nextIndex = ((index % total) + total) % total;
+      activeIndex = nextIndex;
+      track.style.transform = 'translateX(' + (-100 * activeIndex) + '%)';
+      updateDots();
+      if (userInitiated) {
+        startAuto();
+      }
+    }
+
+    function buildDots(total) {
+      dots = [];
+      if (!pagination) {
+        return;
+      }
+      pagination.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'portfolio-modal__dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Show slide ' + (i + 1) + ' of ' + total);
+        (function (idx) {
+          dot.addEventListener('click', function () {
+            goToSlide(idx, true);
+          });
+        })(i);
+        pagination.appendChild(dot);
+        dots.push(dot);
+      }
+    }
+
+    function buildSlides(key, projectTitle) {
+      if (!track) {
+        return;
+      }
+      var images = galleryMap[key] || [];
+      activeImages = images.slice();
+      track.innerHTML = '';
+      activeIndex = 0;
+
+      images.forEach(function (imageName, index) {
+        var slide = document.createElement('li');
+        slide.className = 'portfolio-modal__slide';
+        var img = document.createElement('img');
+        img.src = 'portfolio/' + key + '/' + imageName;
+        img.alt = projectTitle + ' screen ' + padIndex(index + 1);
+        slide.appendChild(img);
+        track.appendChild(slide);
+      });
+
+      track.style.transform = 'translateX(0%)';
+      buildDots(images.length);
+      updateNavState();
+      startAuto();
+    }
+
+    function openModal(key, trigger) {
+      if (!galleryMap[key] || !galleryMap[key].length) {
+        return;
+      }
+      lastFocus = trigger || null;
+      var projectTitle = '';
+      if (trigger) {
+        var detail = trigger.closest('.portfolio-details');
+        var heading = detail ? detail.querySelector('h4') : null;
+        if (heading) {
+          projectTitle = heading.textContent.trim();
+        }
+      }
+      if (!projectTitle) {
+        projectTitle = key.charAt(0).toUpperCase() + key.slice(1);
+      }
+      if (modalTitle) {
+        modalTitle.textContent = projectTitle + ' Screens';
+      }
+      buildSlides(key, projectTitle);
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-modal-open');
+      var closeButton = modal.querySelector('.portfolio-modal__close');
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    function closeModal() {
+      if (!modal.classList.contains('is-visible')) {
+        return;
+      }
+      stopAuto();
+      modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-modal-open');
+      activeImages = [];
+      dots = [];
+      if (track) {
+        track.innerHTML = '';
+      }
+      if (pagination) {
+        pagination.innerHTML = '';
+      }
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      }
+    }
+
+    galleryButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var key = button.getAttribute('data-gallery');
+        openModal(key, button);
+      });
+    });
+
+    if (prevControl) {
+      prevControl.addEventListener('click', function () {
+        goToSlide(activeIndex - 1, true);
+      });
+    }
+
+    if (nextControl) {
+      nextControl.addEventListener('click', function () {
+        goToSlide(activeIndex + 1, true);
+      });
+    }
+
+    closeElements.forEach(function (element) {
+      element.addEventListener('click', function () {
+        closeModal();
+      });
+    });
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (!modal.classList.contains('is-visible')) {
+        return;
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeModal();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToSlide(activeIndex + 1, true);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToSlide(activeIndex - 1, true);
+      }
+    });
+
+    modal.addEventListener('keydown', function (event) {
+      if (event.key !== 'Tab') {
+        return;
+      }
+      var focusable = modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+      focusable = Array.prototype.slice.call(focusable).filter(function (element) {
+        return element.offsetParent !== null;
+      });
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey) {
+        if (document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    });
   });
 </script>
 </body>

@@ -68,6 +68,107 @@
     margin-bottom: 0;
   }
 
+  #mobile-apps .portfolio-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  #mobile-apps .portfolio-slide {
+    display: none;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  #mobile-apps .portfolio-slide.is-active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #mobile-apps .portfolio-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(15, 23, 42, 0.65);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.25);
+    z-index: 2;
+  }
+
+  #mobile-apps .portfolio-nav:hover {
+    background: rgba(109, 76, 191, 0.85);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  #mobile-apps .portfolio-nav:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+  }
+
+  #mobile-apps .portfolio-nav.disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-nav.prev {
+    left: -12px;
+  }
+
+  #mobile-apps .portfolio-nav.next {
+    right: -12px;
+  }
+
+  #mobile-apps .portfolio-meta {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #6d4cbf;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  #mobile-apps .portfolio-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  #mobile-apps .portfolio-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(109, 76, 191, 0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #mobile-apps .portfolio-dot:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+  }
+
+  #mobile-apps .portfolio-dot.is-active {
+    background: #6d4cbf;
+    transform: scale(1.3);
+  }
+
   #mobile-apps .portfolio-col {
     flex: 1;
     padding: 0 12px;
@@ -128,6 +229,14 @@
 
     #mobile-apps .portfolio-copy {
       padding: 24px;
+    }
+
+    #mobile-apps .portfolio-nav.prev {
+      left: 12px;
+    }
+
+    #mobile-apps .portfolio-nav.next {
+      right: 12px;
     }
   }
 
@@ -232,82 +341,108 @@
       <h2>Mobile App Portfolio</h2>
       <hr>
     </div>
-    <div class="portfolio-row">
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
+    <div class="portfolio-carousel" role="region" aria-label="Mobile app projects carousel" tabindex="0">
+      <button class="portfolio-nav prev disabled" aria-label="Previous project">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="portfolio-nav next" aria-label="Next project">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+
+      <div class="portfolio-slide is-active" data-title="Artemis">
+        <div class="portfolio-row">
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
+          </div>
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Product Ops &bull; Flutter</span>
+              <h4>Artemis</h4>
+              <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Product Ops &bull; Flutter</span>
-          <h4>Artemis</h4>
-          <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+
+      <div class="portfolio-slide" data-title="Beauticator">
+        <div class="portfolio-row portfolio-row--reverse">
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
+              <h4>Beauticator</h4>
+              <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
+            </div>
+          </div>
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-slide" data-title="Cinemated">
+        <div class="portfolio-row">
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
+          </div>
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Recommender Systems &bull; ML</span>
+              <h4>Cinemated</h4>
+              <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-slide" data-title="Gutenberg">
+        <div class="portfolio-row portfolio-row--reverse">
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
+              <h4>Gutenberg</h4>
+              <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
+            </div>
+          </div>
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-slide" data-title="Klara">
+        <div class="portfolio-row">
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
+          </div>
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Language Learning &bull; ML</span>
+              <h4>Klara</h4>
+              <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-slide" data-title="Yegdoo">
+        <div class="portfolio-row portfolio-row--reverse">
+          <div class="portfolio-col copy-col">
+            <div class="portfolio-copy">
+              <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
+              <h4>Yegdoo</h4>
+              <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
+            </div>
+          </div>
+          <div class="portfolio-col image-col portfolio-image-wrapper">
+            <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="portfolio-row portfolio-row--reverse">
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
-          <h4>Beauticator</h4>
-          <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
-        </div>
-      </div>
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
-      </div>
-    </div>
-
-    <div class="portfolio-row">
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
-      </div>
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Recommender Systems &bull; ML</span>
-          <h4>Cinemated</h4>
-          <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-row portfolio-row--reverse">
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
-          <h4>Gutenberg</h4>
-          <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
-        </div>
-      </div>
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
-      </div>
-    </div>
-
-    <div class="portfolio-row">
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
-      </div>
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Language Learning &bull; ML</span>
-          <h4>Klara</h4>
-          <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-row portfolio-row--reverse">
-      <div class="portfolio-col copy-col">
-        <div class="portfolio-copy">
-          <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
-          <h4>Yegdoo</h4>
-          <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
-        </div>
-      </div>
-      <div class="portfolio-col image-col portfolio-image-wrapper">
-        <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
-      </div>
+    <div class="portfolio-meta" aria-hidden="true">
+      <span class="portfolio-counter">01 / 06</span>
+      <div class="portfolio-dots"></div>
     </div>
   </div>
 </div>
@@ -639,5 +774,133 @@
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
 <script type="text/javascript" src="js/contact_me.js"></script> 
 <script type="text/javascript" src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var portfolioSection = document.querySelector('#mobile-apps');
+    if (!portfolioSection) {
+      return;
+    }
+
+    var carousel = portfolioSection.querySelector('.portfolio-carousel');
+    if (!carousel) {
+      return;
+    }
+
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.portfolio-slide'));
+    if (!slides.length) {
+      return;
+    }
+
+    var prevButton = carousel.querySelector('.portfolio-nav.prev');
+    var nextButton = carousel.querySelector('.portfolio-nav.next');
+    var dotsWrapper = portfolioSection.querySelector('.portfolio-dots');
+    var counterEl = portfolioSection.querySelector('.portfolio-counter');
+
+    if (!dotsWrapper) {
+      dotsWrapper = document.createElement('div');
+      dotsWrapper.className = 'portfolio-dots';
+      var metaRow = portfolioSection.querySelector('.portfolio-meta');
+      if (metaRow) {
+        metaRow.appendChild(dotsWrapper);
+      }
+    }
+
+    dotsWrapper.innerHTML = '';
+
+    var startingIndex = 0;
+    for (var i = 0; i < slides.length; i++) {
+      if (slides[i].classList.contains('is-active')) {
+        startingIndex = i;
+        break;
+      }
+    }
+
+    var currentIndex = startingIndex;
+
+    var totalSlides = slides.length;
+
+    var dots = slides.map(function (slide, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'portfolio-dot' + (index === currentIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Show ' + (slide.getAttribute('data-title') || 'portfolio') + ' project');
+      dot.addEventListener('click', function () {
+        goToSlide(index);
+      });
+      dotsWrapper.appendChild(dot);
+      return dot;
+    });
+
+    function updateCounter() {
+      if (!counterEl) {
+        return;
+      }
+      var currentStr = padNumber(currentIndex + 1);
+      var totalStr = padNumber(totalSlides);
+      counterEl.textContent = currentStr + ' / ' + totalStr;
+    }
+
+    function updateNavState() {
+      if (prevButton) {
+        var prevDisabled = currentIndex === 0;
+        prevButton.classList.toggle('disabled', prevDisabled);
+        prevButton.setAttribute('aria-disabled', prevDisabled);
+      }
+      if (nextButton) {
+        var nextDisabled = currentIndex === totalSlides - 1;
+        nextButton.classList.toggle('disabled', nextDisabled);
+        nextButton.setAttribute('aria-disabled', nextDisabled);
+      }
+    }
+
+    function setActiveSlide(newIndex) {
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle('is-active', idx === newIndex);
+        slide.setAttribute('aria-hidden', idx === newIndex ? 'false' : 'true');
+      });
+      dots.forEach(function (dot, idx) {
+        dot.classList.toggle('is-active', idx === newIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides || index === currentIndex) {
+        return;
+      }
+      currentIndex = index;
+      setActiveSlide(currentIndex);
+      updateCounter();
+      updateNavState();
+    }
+
+    if (prevButton) {
+      prevButton.addEventListener('click', function () {
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', function () {
+        goToSlide(currentIndex + 1);
+      });
+    }
+
+    carousel.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    setActiveSlide(currentIndex);
+    updateCounter();
+    updateNavState();
+
+    function padNumber(value) {
+      return value < 10 ? '0' + value : String(value);
+    }
+  });
+</script>
 </body>
 </html>

@@ -383,10 +383,19 @@
           <li> <a class="page-scroll" href="#resume">Resume</a> </li>
           <li> <a class="page-scroll" href="#contact">Contact</a> </li>
           <li class="theme-switcher">
-            <div class="theme-toggle" data-theme-toggle-group role="radiogroup" aria-label="Theme selection">
-              <button type="button" class="theme-toggle-option" data-theme-value="light" role="radio" aria-checked="false">Light</button>
-              <button type="button" class="theme-toggle-option" data-theme-value="dark" role="radio" aria-checked="false">Dark</button>
-              <button type="button" class="theme-toggle-option" data-theme-value="system" role="radio" aria-checked="true">System</button>
+            <div class="theme-toggle" data-theme-toggle>
+              <button type="button" class="theme-toggle-trigger" data-theme-toggle-trigger aria-haspopup="listbox" aria-expanded="false" aria-label="Theme selection">System</button>
+              <ul class="theme-toggle-menu" role="listbox" aria-label="Select theme">
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="light" role="option" aria-selected="false">Light</button>
+                </li>
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="dark" role="option" aria-selected="false">Dark</button>
+                </li>
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="system" role="option" aria-selected="false">System</button>
+                </li>
+              </ul>
             </div>
           </li>
         </ul>
@@ -854,7 +863,11 @@
     var storageKey = 'theme-preference';
     var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     var controls = Array.prototype.slice.call(document.querySelectorAll('[data-theme-value]'));
-    var group = document.querySelector('[data-theme-toggle-group]');
+    var toggleRoot = document.querySelector('[data-theme-toggle]');
+    var trigger = toggleRoot ? toggleRoot.querySelector('[data-theme-toggle-trigger]') : null;
+    var menu = toggleRoot ? toggleRoot.querySelector('.theme-toggle-menu') : null;
+    var expandedClass = 'is-open';
+    var isMenuOpen = false;
 
     function sanitizePreference(value) {
       return value === 'light' || value === 'dark' || value === 'system' ? value : 'system';
@@ -882,13 +895,22 @@
       document.documentElement.setAttribute('data-theme', effective);
       document.documentElement.setAttribute('data-theme-preference', preference);
 
+      var label = preference;
+
       controls.forEach(function (control, index) {
         var value = sanitizePreference(control.getAttribute('data-theme-value'));
         var isActive = value === preference;
         control.classList.toggle('is-active', isActive);
-        control.setAttribute('aria-checked', isActive ? 'true' : 'false');
-        control.setAttribute('tabindex', isActive ? '0' : index === 0 ? '0' : '-1');
+        control.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        control.setAttribute('tabindex', isActive ? '0' : '-1');
+        if (isActive) {
+          label = control.textContent.trim();
+        }
       });
+
+      if (trigger) {
+        trigger.textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      }
     }
 
     function setPreference(value) {
@@ -904,41 +926,133 @@
         // Ignore write failures (e.g., storage disabled)
       }
       reflectPreference();
+      closeMenu();
     }
 
     controls.forEach(function (control) {
       control.addEventListener('click', function () {
         setPreference(control.getAttribute('data-theme-value'));
       });
+      control.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setPreference(control.getAttribute('data-theme-value'));
+        }
+      });
     });
 
-    if (group) {
-      group.addEventListener('keydown', function (event) {
-        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
-          return;
-        }
-        event.preventDefault();
-        if (!controls.length) {
-          return;
-        }
+    function focusControlAt(index) {
+      if (!controls.length) {
+        return;
+      }
+      var safeIndex = (index + controls.length) % controls.length;
+      var control = controls[safeIndex];
+      if (control) {
+        control.focus();
+      }
+    }
 
-        var currentIndex = 0;
-        for (var i = 0; i < controls.length; i++) {
-          if (controls[i].classList.contains('is-active')) {
-            currentIndex = i;
-            break;
-          }
+    function getActiveIndex() {
+      for (var i = 0; i < controls.length; i++) {
+        if (controls[i].classList.contains('is-active')) {
+          return i;
         }
+      }
+      return 0;
+    }
 
-        var increment = event.key === 'ArrowRight' ? 1 : -1;
-        var nextIndex = (currentIndex + increment + controls.length) % controls.length;
-        var nextControl = controls[nextIndex];
-        if (nextControl) {
-          setPreference(nextControl.getAttribute('data-theme-value'));
-          nextControl.focus();
+    function openMenu() {
+      if (!menu || !trigger || isMenuOpen) {
+        return;
+      }
+      menu.classList.add(expandedClass);
+      trigger.setAttribute('aria-expanded', 'true');
+      isMenuOpen = true;
+      focusControlAt(getActiveIndex());
+    }
+
+    function closeMenu() {
+      if (!menu || !trigger || !isMenuOpen) {
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+        return;
+      }
+      menu.classList.remove(expandedClass);
+      trigger.setAttribute('aria-expanded', 'false');
+      isMenuOpen = false;
+    }
+
+    function toggleMenu(explicitState) {
+      if (!trigger || !menu) {
+        return;
+      }
+      var shouldOpen = typeof explicitState === 'boolean' ? explicitState : !isMenuOpen;
+      if (shouldOpen) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    }
+
+    if (trigger) {
+      trigger.addEventListener('click', function () {
+        toggleMenu();
+      });
+
+      trigger.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          openMenu();
         }
       });
     }
+
+    if (menu) {
+      menu.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeMenu();
+          if (trigger) {
+            trigger.focus();
+          }
+          return;
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          var direction = event.key === 'ArrowDown' ? 1 : -1;
+          focusControlAt(getActiveIndex() + direction);
+        }
+      });
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!isMenuOpen || !toggleRoot) {
+        return;
+      }
+      if (!toggleRoot.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('focusin', function (event) {
+      if (!isMenuOpen || !toggleRoot) {
+        return;
+      }
+      if (!toggleRoot.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeMenu();
+        if (trigger && document.activeElement && !toggleRoot.contains(document.activeElement)) {
+          trigger.blur();
+        }
+      }
+    });
 
     function handleSystemThemeChange() {
       if (preference === 'system') {

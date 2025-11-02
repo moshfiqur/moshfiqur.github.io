@@ -563,6 +563,7 @@
           <h3 class="portfolio-modal__title"></h3>
           <p class="portfolio-modal__subtitle"></p>
           <div class="portfolio-modal__description"></div>
+          <a class="portfolio-screencast" href="#" target="_blank" rel="noopener" data-screencast-link>App Screencast</a>
         </div>
       </div>
     </div>
@@ -1420,6 +1421,7 @@
         title: "Beauticator",
         subtitle: "Your AI Selfie Companion",
         tech: "Flutter · TensorFlow · MySQL · Firebase",
+        screencast: "https://youtu.be/PR-nuKs5f1s",
         description: [
           "Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with a seamless user experience.",
           "The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.",
@@ -1430,6 +1432,7 @@
         title: "Yegdoo",
         subtitle: "Where Minds Meet Before Faces",
         tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/CVBDpgK33Kg",
         description: [
           "Yegdoo is a unique dating app designed for sapiosexuals--those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, it creates a safe and engaging space for meaningful connections.",
           "In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.",
@@ -1440,6 +1443,7 @@
         title: "Cinemated",
         subtitle: "No One Understands Your Movie Taste Better Than Us",
         tech: "Flutter · TensorFlow · MySQL · Firebase",
+        screencast: "https://youtu.be/J2_83rGoJPs",
         description: [
           "Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, it blends advanced machine learning with a friendly interface.",
           "Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.",
@@ -1450,6 +1454,7 @@
         title: "Artemis",
         subtitle: "Your Virtual Club Experience, Anytime, Anywhere.",
         tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/_ApXFTfjofw",
         description: [
           "Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, it helps people discover communities around their passions.",
           "Users can join clubs for sports, literature, movies, comedy, or location-based meetups, with thoughtful entry limits to keep the vibe balanced. They can buy virtual drinks for others and spark one-to-one chats that feel natural and personal.",
@@ -1460,6 +1465,7 @@
         title: "Klara",
         subtitle: "Your Personal German Learning Assistant",
         tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/4j9suXQ46SQ",
         description: [
           "Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL, and Firebase, it supports learners with a structured path through the language.",
           "The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar.",
@@ -1470,6 +1476,7 @@
         title: "Gutenberg",
         subtitle: "Rediscover the Classics",
         tech: "Flutter · MySQL",
+        screencast: "https://youtu.be/o6-ahDpa-o4",
         description: [
           "Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.",
           "Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.",
@@ -1489,6 +1496,7 @@
     var modalTech = modal.querySelector('.portfolio-modal__tech');
     var modalSubtitle = modal.querySelector('.portfolio-modal__subtitle');
     var modalDescription = modal.querySelector('.portfolio-modal__description');
+    var modalScreencast = modal.querySelector('[data-screencast-link]');
     var track = modal.querySelector('.portfolio-modal__track');
     var pagination = modal.querySelector('.portfolio-modal__pagination');
     var prevControl = modal.querySelector('[data-carousel-prev]');
@@ -1660,6 +1668,16 @@
         });
       }
 
+      if (modalScreencast) {
+        if (details.screencast) {
+          modalScreencast.href = details.screencast;
+          modalScreencast.style.display = 'inline-flex';
+        } else {
+          modalScreencast.href = '#';
+          modalScreencast.style.display = 'none';
+        }
+      }
+
       buildSlides(key, projectTitle);
       modal.classList.add('is-visible');
       modal.setAttribute('aria-hidden', 'false');
@@ -1699,6 +1717,10 @@
       }
       if (modalDescription) {
         modalDescription.innerHTML = '';
+      }
+      if (modalScreencast) {
+        modalScreencast.href = '#';
+        modalScreencast.style.display = 'none';
       }
       if (lastFocus && typeof lastFocus.focus === 'function') {
         lastFocus.focus();

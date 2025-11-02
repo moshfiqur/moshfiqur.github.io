@@ -512,6 +512,38 @@ ol.type li a:hover {
 	box-shadow: 0 0 0 3px rgba(123,195,209,0.45);
 }
 
+.portfolio-screencast {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 18px;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #121d1f;
+	transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.portfolio-screencast:before {
+	content: '\f16a';
+	font-family: FontAwesome;
+	font-size: 14px;
+}
+
+.portfolio-screencast:hover,
+.portfolio-screencast:focus {
+	color: #7bc3d1;
+	opacity: 0.85;
+}
+
+.portfolio-screencast:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(123,195,209,0.35);
+	border-radius: 6px;
+	padding: 2px 4px;
+}
+
 .portfolio-modal {
 	position: fixed;
 	top: 0;
@@ -1126,6 +1158,15 @@ html[data-theme="dark"] .portfolio-more-btn:focus {
 	background: rgba(125, 211, 252, 0.35);
 	color: #020617;
 	box-shadow: 0 16px 30px rgba(2, 6, 23, 0.45);
+}
+
+html[data-theme="dark"] .portfolio-screencast {
+	color: #e2e8f0;
+}
+
+html[data-theme="dark"] .portfolio-screencast:hover,
+html[data-theme="dark"] .portfolio-screencast:focus {
+	color: #7dd3fc;
 }
 
 html[data-theme="dark"] .portfolio-modal {

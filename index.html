@@ -60,16 +60,16 @@
   #mobile-apps .portfolio-row {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
     width: 100%;
-    max-width: 980px;
+    max-width: 960px;
     margin: 0 auto;
   }
 
   #mobile-apps .portfolio-carousel {
     position: relative;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 20px 72px;
   }
 
   #mobile-apps .portfolio-slide {
@@ -121,11 +121,11 @@
   }
 
   #mobile-apps .portfolio-nav.prev {
-    left: -12px;
+    left: 12px;
   }
 
   #mobile-apps .portfolio-nav.next {
-    right: -12px;
+    right: 12px;
   }
 
   #mobile-apps .portfolio-meta {
@@ -169,29 +169,31 @@
 
   #mobile-apps .portfolio-col {
     flex: 1;
-    padding: 0 12px;
+    padding: 0 8px;
   }
 
   #mobile-apps .portfolio-image-wrapper {
     text-align: center;
+    background: transparent;
   }
 
   #mobile-apps .portfolio-image {
-    max-width: 50%;
+    max-width: 68%;
     border-radius: 18px;
-    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.1);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: transparent;
   }
 
   #mobile-apps .portfolio-image:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 38px rgba(17, 12, 46, 0.18);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 32px rgba(17, 12, 46, 0.16);
   }
 
   #mobile-apps .portfolio-copy {
     background: linear-gradient(135deg, #ffffff 0%, #f6f7ff 100%);
     border-radius: 16px;
-    padding: 32px;
+    padding: 28px;
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
     text-align: left;
   }
@@ -220,6 +222,14 @@
   }
 
   @media (max-width: 767px) {
+    #mobile-apps .portfolio-row {
+      gap: 16px;
+    }
+
+    #mobile-apps .portfolio-carousel {
+      padding: 20px 48px;
+    }
+
     #mobile-apps .portfolio-image {
       max-width: 65%;
       margin-bottom: 24px;
@@ -230,11 +240,11 @@
     }
 
     #mobile-apps .portfolio-nav.prev {
-      left: 12px;
+      left: 0;
     }
 
     #mobile-apps .portfolio-nav.next {
-      right: 12px;
+      right: 0;
     }
   }
 
@@ -242,7 +252,7 @@
     #mobile-apps .portfolio-row {
       flex-direction: row;
       align-items: center;
-      gap: 48px;
+      gap: 16px;
     }
 
     #mobile-apps .portfolio-row.portfolio-row--reverse {
@@ -250,11 +260,11 @@
     }
 
     #mobile-apps .portfolio-col.image-col {
-      flex: 0 0 40%;
+      flex: 0 0 42%;
     }
 
     #mobile-apps .portfolio-col.copy-col {
-      flex: 0 0 60%;
+      flex: 0 0 58%;
     }
   }
 </style>

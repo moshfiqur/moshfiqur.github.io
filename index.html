@@ -56,6 +56,100 @@
     width: 100%;
     height: 100%;
   }
+
+  #mobile-apps .portfolio-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  #mobile-apps .portfolio-row:last-of-type {
+    margin-bottom: 0;
+  }
+
+  #mobile-apps .portfolio-col {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  #mobile-apps .portfolio-image-wrapper {
+    text-align: center;
+  }
+
+  #mobile-apps .portfolio-image {
+    max-width: 50%;
+    border-radius: 18px;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #mobile-apps .portfolio-image:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 38px rgba(17, 12, 46, 0.18);
+  }
+
+  #mobile-apps .portfolio-copy {
+    background: linear-gradient(135deg, #ffffff 0%, #f6f7ff 100%);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    text-align: left;
+  }
+
+  #mobile-apps .portfolio-copy h4 {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+  }
+
+  #mobile-apps .portfolio-copy p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  #mobile-apps .portfolio-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(109, 76, 191, 0.12);
+    color: #6d4cbf;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 767px) {
+    #mobile-apps .portfolio-image {
+      max-width: 65%;
+      margin-bottom: 24px;
+    }
+
+    #mobile-apps .portfolio-copy {
+      padding: 24px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    #mobile-apps .portfolio-row {
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+    }
+
+    #mobile-apps .portfolio-row.portfolio-row--reverse {
+      flex-direction: row-reverse;
+    }
+
+    #mobile-apps .portfolio-col.image-col {
+      flex: 0 0 40%;
+    }
+
+    #mobile-apps .portfolio-col.copy-col {
+      flex: 0 0 60%;
+    }
+  }
 </style>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -138,48 +232,81 @@
       <h2>Mobile App Portfolio</h2>
       <hr>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Artemis</h4>
-          <p style="font-size: 1.4rem;">Product operations command center that keeps distributed releases aligned in real time.</p>
+    <div class="portfolio-row">
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
+      </div>
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Product Ops &bull; Flutter</span>
+          <h4>Artemis</h4>
+          <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Beauticator</h4>
-          <p style="font-size: 1.4rem;">On-device AI selfie coach that scores every snap in milliseconds.</p>
+    </div>
+
+    <div class="portfolio-row portfolio-row--reverse">
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
+          <h4>Beauticator</h4>
+          <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Cinemated</h4>
-          <p style="font-size: 1.4rem;">Hyper-personal movie companion that curates watchlists from your moods.</p>
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
+      </div>
+    </div>
+
+    <div class="portfolio-row">
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
+      </div>
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Recommender Systems &bull; ML</span>
+          <h4>Cinemated</h4>
+          <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Gutenberg</h4>
-          <p style="font-size: 1.4rem;">Offline-first reader that syncs annotations across a personal classics library.</p>
+    </div>
+
+    <div class="portfolio-row portfolio-row--reverse">
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
+          <h4>Gutenberg</h4>
+          <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/klara.png" alt="Klara mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Klara</h4>
-          <p style="font-size: 1.4rem;">Guided German tutor delivering bite-sized grammar drills with speech practice.</p>
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
+      </div>
+    </div>
+
+    <div class="portfolio-row">
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
+      </div>
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Language Learning &bull; ML</span>
+          <h4>Klara</h4>
+          <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="portfolio-card" style="margin-bottom: 30px;">
-          <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="img-fluid" style="width: 100%; border-radius: 8px;">
-          <h4 style="margin-top: 15px;">Yegdoo</h4>
-          <p style="font-size: 1.4rem;">Sapiosexual dating space where conversations unlock profile reveals.</p>
+    </div>
+
+    <div class="portfolio-row portfolio-row--reverse">
+      <div class="portfolio-col copy-col">
+        <div class="portfolio-copy">
+          <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
+          <h4>Yegdoo</h4>
+          <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
         </div>
+      </div>
+      <div class="portfolio-col image-col portfolio-image-wrapper">
+        <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
       </div>
     </div>
   </div>

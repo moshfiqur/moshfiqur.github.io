@@ -302,6 +302,42 @@
       flex-direction: row-reverse;
     }
   }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-card {
+    background: linear-gradient(135deg, #1a2644 0%, #0f172a 100%);
+    box-shadow: 0 20px 48px rgba(2, 6, 23, 0.5);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-details p {
+    color: #cbd5f5;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-meta {
+    color: #9ca3af;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-pill {
+    background: rgba(125, 211, 252, 0.18);
+    color: #7dd3fc;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-nav {
+    background: rgba(148, 163, 184, 0.2);
+    color: #f8fafc;
+    box-shadow: 0 12px 26px rgba(2, 6, 23, 0.45);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-nav:hover {
+    background: rgba(109, 76, 191, 0.85);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-dot {
+    background: rgba(148, 163, 184, 0.45);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-dot.is-active {
+    background: #7bc3d1;
+  }
 </style>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -346,6 +382,13 @@
           <li> <a class="page-scroll" href="#technology-stacks">Stacks</a> </li>
           <li> <a class="page-scroll" href="#resume">Resume</a> </li>
           <li> <a class="page-scroll" href="#contact">Contact</a> </li>
+          <li class="theme-switcher">
+            <div class="theme-toggle" data-theme-toggle-group role="radiogroup" aria-label="Theme selection">
+              <button type="button" class="theme-toggle-option" data-theme-value="light" role="radio" aria-checked="false">Light</button>
+              <button type="button" class="theme-toggle-option" data-theme-value="dark" role="radio" aria-checked="false">Dark</button>
+              <button type="button" class="theme-toggle-option" data-theme-value="system" role="radio" aria-checked="true">System</button>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -806,6 +849,112 @@
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
 <script type="text/javascript" src="js/contact_me.js"></script> 
 <script type="text/javascript" src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var storageKey = 'theme-preference';
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    var controls = Array.prototype.slice.call(document.querySelectorAll('[data-theme-value]'));
+    var group = document.querySelector('[data-theme-toggle-group]');
+
+    function sanitizePreference(value) {
+      return value === 'light' || value === 'dark' || value === 'system' ? value : 'system';
+    }
+
+    function readStoredPreference() {
+      try {
+        return sanitizePreference(localStorage.getItem(storageKey));
+      } catch (error) {
+        return 'system';
+      }
+    }
+
+    var preference = readStoredPreference();
+
+    function resolveEffectiveTheme(value) {
+      if (value === 'light' || value === 'dark') {
+        return value;
+      }
+      return mediaQuery.matches ? 'dark' : 'light';
+    }
+
+    function reflectPreference() {
+      var effective = resolveEffectiveTheme(preference);
+      document.documentElement.setAttribute('data-theme', effective);
+      document.documentElement.setAttribute('data-theme-preference', preference);
+
+      controls.forEach(function (control, index) {
+        var value = sanitizePreference(control.getAttribute('data-theme-value'));
+        var isActive = value === preference;
+        control.classList.toggle('is-active', isActive);
+        control.setAttribute('aria-checked', isActive ? 'true' : 'false');
+        control.setAttribute('tabindex', isActive ? '0' : index === 0 ? '0' : '-1');
+      });
+    }
+
+    function setPreference(value) {
+      var nextPreference = sanitizePreference(value);
+      if (preference === nextPreference) {
+        reflectPreference();
+        return;
+      }
+      preference = nextPreference;
+      try {
+        localStorage.setItem(storageKey, preference);
+      } catch (error) {
+        // Ignore write failures (e.g., storage disabled)
+      }
+      reflectPreference();
+    }
+
+    controls.forEach(function (control) {
+      control.addEventListener('click', function () {
+        setPreference(control.getAttribute('data-theme-value'));
+      });
+    });
+
+    if (group) {
+      group.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+          return;
+        }
+        event.preventDefault();
+        if (!controls.length) {
+          return;
+        }
+
+        var currentIndex = 0;
+        for (var i = 0; i < controls.length; i++) {
+          if (controls[i].classList.contains('is-active')) {
+            currentIndex = i;
+            break;
+          }
+        }
+
+        var increment = event.key === 'ArrowRight' ? 1 : -1;
+        var nextIndex = (currentIndex + increment + controls.length) % controls.length;
+        var nextControl = controls[nextIndex];
+        if (nextControl) {
+          setPreference(nextControl.getAttribute('data-theme-value'));
+          nextControl.focus();
+        }
+      });
+    }
+
+    function handleSystemThemeChange() {
+      if (preference === 'system') {
+        reflectPreference();
+      }
+    }
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
+    } else if (typeof mediaQuery.addListener === 'function') {
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+
+    reflectPreference();
+  });
+</script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var portfolioSection = document.querySelector('#mobile-apps');

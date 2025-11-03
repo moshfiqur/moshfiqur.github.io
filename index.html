@@ -570,6 +570,54 @@
   </div>
 </div>
 </div>
+
+<div id="productivity-apps" class="productivity-section text-center" style="margin-bottom: 60px;">
+  <div class="container">
+    <div class="productivity-header">
+      <span class="productivity-label">Browser Workflows</span>
+      <h2>Productivity App Portfolio</h2>
+      <p class="productivity-tagline">Automation-first tools that tame information overload and keep creative flow intact.</p>
+    </div>
+
+    <div class="productivity-carousel" role="region" aria-label="Productivity app projects carousel" tabindex="0">
+      <button class="productivity-nav prev disabled" aria-label="Previous project">
+        <i class="fa fa-angle-left"></i>
+      </button>
+      <button class="productivity-nav next disabled" aria-label="Next project">
+        <i class="fa fa-angle-right"></i>
+      </button>
+
+      <div class="productivity-slides">
+        <div class="productivity-slide is-active" data-title="BookSmart">
+          <div class="productivity-card">
+            <div class="productivity-visual">
+              <div class="productivity-image-frame">
+                <img src="portfolio/booksmart.png" alt="BookSmart productivity extension preview" class="productivity-image img-responsive">
+              </div>
+            </div>
+            <div class="productivity-details">
+              <span class="portfolio-pill">Chrome Extension &bull; LLM-Assisted</span>
+              <h4>BookSmart</h4>
+              <p class="productivity-summary">Turns open browser chaos into structured knowledge by auto-classifying sessions, syncing favicons, and keeping safety gates on sensitive content.</p>
+              <div class="productivity-meta">
+                <span class="meta-item"><i class="fa fa-bolt"></i> Local + Cloud LLM</span>
+                <span class="meta-item"><i class="fa fa-bookmark"></i> Smart Snapshots</span>
+                <span class="meta-item"><i class="fa fa-lock"></i> Privacy Guard</span>
+              </div>
+              <button type="button" class="portfolio-more-btn" data-gallery="booksmart">Show more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="productivity-meta-bar" aria-hidden="true">
+        <span class="productivity-counter">01 / 01</span>
+        <div class="productivity-dots"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Skills Section -->
 <div id="skills" class="text-center">
   <div class="container">
@@ -1336,6 +1384,208 @@
     updateCounter();
     updateNavState();
 
+    var productivitySection = document.querySelector('#productivity-apps');
+    if (productivitySection) {
+      var productivityCarousel = productivitySection.querySelector('.productivity-carousel');
+      if (productivityCarousel) {
+        var productivityWrapper = productivityCarousel.querySelector('.productivity-slides');
+        var productivitySlides = Array.prototype.slice.call(productivityCarousel.querySelectorAll('.productivity-slide'));
+        if (productivitySlides.length) {
+          var productivityPrev = productivityCarousel.querySelector('.productivity-nav.prev');
+          var productivityNext = productivityCarousel.querySelector('.productivity-nav.next');
+          var productivityDotsWrapper = productivitySection.querySelector('.productivity-dots');
+          var productivityCounter = productivitySection.querySelector('.productivity-counter');
+          var productivityMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+          var productivityReduced = productivityMotionQuery.matches;
+
+          if (typeof productivityMotionQuery.addEventListener === 'function') {
+            productivityMotionQuery.addEventListener('change', function (event) {
+              productivityReduced = event.matches;
+              setProductivityHeight(productivitySlides[productivityIndex]);
+            });
+          } else if (typeof productivityMotionQuery.addListener === 'function') {
+            productivityMotionQuery.addListener(function (event) {
+              productivityReduced = event.matches;
+              setProductivityHeight(productivitySlides[productivityIndex]);
+            });
+          }
+
+          var productivityDots = [];
+          var productivityIndex = 0;
+          var productivityTotal = productivitySlides.length;
+          var productivityAnimating = false;
+
+          if (productivityDotsWrapper) {
+            productivityDotsWrapper.innerHTML = '';
+            for (var d = 0; d < productivitySlides.length; d++) {
+              var dot = document.createElement('button');
+              dot.type = 'button';
+              dot.className = 'productivity-dot' + (d === 0 ? ' is-active' : '');
+              dot.setAttribute('aria-label', 'Show ' + (productivitySlides[d].getAttribute('data-title') || 'portfolio') + ' project');
+              (function (index) {
+                dot.addEventListener('click', function () {
+                  goToProductivitySlide(index);
+                });
+              })(d);
+              productivityDotsWrapper.appendChild(dot);
+              productivityDots.push(dot);
+            }
+          }
+
+          productivitySlides.forEach(function (slide, index) {
+            slide.classList.toggle('is-active', index === productivityIndex);
+            slide.setAttribute('aria-hidden', index === productivityIndex ? 'false' : 'true');
+            slide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+          });
+
+          function setProductivityHeight(slide) {
+            if (!productivityWrapper || !slide) {
+              return;
+            }
+            productivityWrapper.style.height = slide.offsetHeight + 'px';
+          }
+
+          function updateProductivityCounter() {
+            if (!productivityCounter) {
+              return;
+            }
+            productivityCounter.textContent = padNumber(productivityIndex + 1) + ' / ' + padNumber(productivityTotal);
+          }
+
+          function updateProductivityNav() {
+            var disable = productivityTotal <= 1;
+            if (productivityPrev) {
+              var prevDisabled = disable || productivityIndex === 0;
+              productivityPrev.classList.toggle('disabled', prevDisabled);
+              productivityPrev.setAttribute('aria-disabled', prevDisabled);
+              productivityPrev.disabled = prevDisabled;
+              if (prevDisabled) {
+                productivityPrev.setAttribute('tabindex', '-1');
+              } else {
+                productivityPrev.removeAttribute('tabindex');
+              }
+            }
+            if (productivityNext) {
+              var nextDisabled = disable || productivityIndex === productivityTotal - 1;
+              productivityNext.classList.toggle('disabled', nextDisabled);
+              productivityNext.setAttribute('aria-disabled', nextDisabled);
+              productivityNext.disabled = nextDisabled;
+              if (nextDisabled) {
+                productivityNext.setAttribute('tabindex', '-1');
+              } else {
+                productivityNext.removeAttribute('tabindex');
+              }
+            }
+          }
+
+          function updateProductivityDots() {
+            productivityDots.forEach(function (dot, index) {
+              dot.classList.toggle('is-active', index === productivityIndex);
+            });
+          }
+
+          function goToProductivitySlide(targetIndex) {
+            if (targetIndex < 0 || targetIndex >= productivityTotal || targetIndex === productivityIndex || productivityAnimating) {
+              return;
+            }
+
+            var currentSlide = productivitySlides[productivityIndex];
+            var nextSlide = productivitySlides[targetIndex];
+
+            if (productivityReduced) {
+              currentSlide.classList.remove('is-active', 'entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+              currentSlide.setAttribute('aria-hidden', 'true');
+              nextSlide.classList.add('is-active');
+              nextSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+              nextSlide.setAttribute('aria-hidden', 'false');
+              productivityIndex = targetIndex;
+              updateProductivityDots();
+              updateProductivityCounter();
+              updateProductivityNav();
+              setProductivityHeight(nextSlide);
+              return;
+            }
+
+            productivityAnimating = true;
+
+            var direction = targetIndex > productivityIndex ? 'down' : 'up';
+            var exitClass = direction === 'down' ? 'exiting-up' : 'exiting-down';
+            var enterClass = direction === 'down' ? 'entering-from-bottom' : 'entering-from-top';
+
+            currentSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+            nextSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+
+            nextSlide.classList.add(enterClass);
+            nextSlide.setAttribute('aria-hidden', 'false');
+            void nextSlide.offsetWidth;
+            nextSlide.classList.add('is-active');
+            setProductivityHeight(nextSlide);
+
+            currentSlide.classList.add(exitClass);
+
+            var handleCurrentEnd = function (event) {
+              if (event.target !== currentSlide || event.propertyName !== 'transform') {
+                return;
+              }
+              currentSlide.classList.remove(exitClass, 'is-active');
+              currentSlide.setAttribute('aria-hidden', 'true');
+              currentSlide.removeEventListener('transitionend', handleCurrentEnd);
+            };
+
+            var handleNextEnd = function (event) {
+              if (event.target !== nextSlide || event.propertyName !== 'transform') {
+                return;
+              }
+              nextSlide.classList.remove(enterClass);
+              nextSlide.removeEventListener('transitionend', handleNextEnd);
+              productivityAnimating = false;
+            };
+
+            currentSlide.addEventListener('transitionend', handleCurrentEnd);
+            nextSlide.addEventListener('transitionend', handleNextEnd);
+
+            productivityIndex = targetIndex;
+            updateProductivityDots();
+            updateProductivityCounter();
+            updateProductivityNav();
+          }
+
+          if (productivityPrev && productivityTotal > 1) {
+            productivityPrev.addEventListener('click', function () {
+              goToProductivitySlide(productivityIndex - 1);
+            });
+          }
+
+          if (productivityNext && productivityTotal > 1) {
+            productivityNext.addEventListener('click', function () {
+              goToProductivitySlide(productivityIndex + 1);
+            });
+          }
+
+          productivityCarousel.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+              goToProductivitySlide(productivityIndex + 1);
+            } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+              goToProductivitySlide(productivityIndex - 1);
+            }
+          });
+
+          window.addEventListener('resize', function () {
+            setProductivityHeight(productivitySlides[productivityIndex]);
+          });
+
+          window.addEventListener('load', function () {
+            setProductivityHeight(productivitySlides[productivityIndex]);
+          });
+
+          setProductivityHeight(productivitySlides[productivityIndex]);
+          updateProductivityDots();
+          updateProductivityCounter();
+          updateProductivityNav();
+        }
+      }
+    }
+
     function padNumber(value) {
       return value < 10 ? '0' + value : String(value);
     }
@@ -1413,6 +1663,18 @@
         '07_Edit_Profile.png',
         '08_Chat.png',
         '09_Chat2.png'
+      ],
+      booksmart: [
+        '01_Cluttered_Browser_Long.png',
+        '02_Cluttered_Browser.png',
+        '03_Settings1.png',
+        '04_Settings2.png',
+        '05_Settings3.png',
+        '06_Settings4.png',
+        '07_Action_Window.png',
+        '08_Bookmark_Tab_Groups.png',
+        '09_Bookmark_Categories.png',
+        '10_Bookmark_Sessions.png'
       ]
     };
 
@@ -1481,6 +1743,17 @@
           "Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.",
           "Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.",
           "Adjustable font sizes, intuitive search, and a distraction-free interface make Gutenberg a delightful way to rediscover literary masterpieces anywhere."
+        ]
+      },
+      booksmart: {
+        title: "BookSmart",
+        subtitle: "Tabs to knowledge in one click",
+        tech: "TypeScript · Chrome Extension APIs · WebLLM",
+        description: [
+          "BookSmart is a Chrome extension that turns all open tabs into smart bookmarks, keeping titles, descriptions, visit history, and favicons in one organized dashboard.",
+          "It solves the tab overwhelm problem by classifying saved pages automatically, offering session snapshots, exports, and quick reopen actions so nothing important is lost.",
+          "Classification can run locally via WebLLM or route through online LLMs like DeepSeek and OpenAI, with a built-in safety gate that keeps sensitive content away from external APIs.",
+          "Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage."
         ]
       }
     };

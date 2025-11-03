@@ -578,6 +578,46 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+
+<!-- Web App Portfolio Section -->
+<div id="web-apps" class="text-center portfolio-section" style="margin-top: 50px; margin-bottom: 50px;">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Web App Portfolio</h2>
+      <hr>
+    </div>
+    <div class="portfolio-carousel" role="region" aria-label="Web app projects carousel" tabindex="0">
+      <button class="portfolio-nav prev disabled" aria-label="Previous project">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="portfolio-nav next disabled" aria-label="Next project">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+
+      <div class="portfolio-slides">
+        <div class="portfolio-slide is-active" data-title="Creative Storyboard API">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/creative-storyboard-api.png" alt="Creative Storyboard API web app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Backend API &bull; Node.js</span>
+              <h4>Creative Storyboard API</h4>
+              <p>Node.js + MySQL backbone that secures storyboard planning with analytics, nested project hierarchies, and media hygiene for uploads and audio assets.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="creative-storyboard-api">Show more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-meta" aria-hidden="true">
+        <span class="portfolio-counter">01 / 01</span>
+        <div class="portfolio-dots"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="productivity-apps" class="productivity-section text-center portfolio-section" style="margin-bottom: 60px;">
@@ -1505,6 +1545,13 @@
         '09_Bookmark_Categories.png',
         '10_Bookmark_Sessions.png'
       ],
+      'creative-storyboard-api': [
+        '01_APIDoc1.png',
+        '02_APIDoc2.png',
+        '03_APIDoc3.png',
+        '04_APIDoc4.png',
+        '05_APIDoc5.png'
+      ],
       'creative-storyboard': [
         '01_Landing.png',
         '02_Home.png',
@@ -1596,6 +1643,17 @@
           "It solves the tab overwhelm problem by classifying saved pages automatically, offering session snapshots, exports, and quick reopen actions so nothing important is lost.",
           "Classification can run locally via WebLLM or route through online LLMs like DeepSeek and OpenAI, with a built-in safety gate that keeps sensitive content away from external APIs.",
           "Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage."
+        ]
+      },
+      'creative-storyboard-api': {
+        title: "Creative Storyboard API",
+        subtitle: "Secure backend for storyboard workflows",
+        tech: "Node.js · Express · MySQL · Multer",
+        screencast: null,
+        description: [
+          "Creative Storyboard API powers the storyboard planning platform with a secure Node.js/Express backend, exposing endpoints for authentication, dashboard analytics, project -> scene -> shot hierarchies, and rich media management (uploads plus audio-library linking).",
+          "Key features include cookie-based sessions with bcrypt-hardened login, activity logging, aggregated stats, MySQL-backed CRUD for nested resources, multer-powered media uploads with file hygiene, and fuzzy-search across a local sound library.",
+          "The stack combines Express, mysql2, bcryptjs, multer, body-parser, cors, dotenv, and vanilla SPA docs, running on Node.js and MySQL--ready to drop behind any Next.js or React frontend."
         ]
       },
       'creative-storyboard': {

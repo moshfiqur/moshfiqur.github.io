@@ -1455,6 +1455,7 @@
               dot.type = 'button';
               dot.className = 'productivity-dot' + (d === 0 ? ' is-active' : '');
               dot.setAttribute('aria-label', 'Show ' + (productivitySlides[d].getAttribute('data-title') || 'portfolio') + ' project');
+              dot.setAttribute('aria-current', d === productivityIndex ? 'true' : 'false');
               (function (index) {
                 dot.addEventListener('click', function () {
                   goToProductivitySlide(index);
@@ -1468,7 +1469,7 @@
           productivitySlides.forEach(function (slide, index) {
             slide.classList.toggle('is-active', index === productivityIndex);
             slide.setAttribute('aria-hidden', index === productivityIndex ? 'false' : 'true');
-            slide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+            slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
           });
 
           function setProductivityHeight(slide) {
@@ -1492,28 +1493,19 @@
               productivityPrev.classList.toggle('disabled', prevDisabled);
               productivityPrev.setAttribute('aria-disabled', prevDisabled);
               productivityPrev.disabled = prevDisabled;
-              if (prevDisabled) {
-                productivityPrev.setAttribute('tabindex', '-1');
-              } else {
-                productivityPrev.removeAttribute('tabindex');
-              }
             }
             if (productivityNext) {
               var nextDisabled = disable || productivityIndex === productivityTotal - 1;
               productivityNext.classList.toggle('disabled', nextDisabled);
               productivityNext.setAttribute('aria-disabled', nextDisabled);
               productivityNext.disabled = nextDisabled;
-              if (nextDisabled) {
-                productivityNext.setAttribute('tabindex', '-1');
-              } else {
-                productivityNext.removeAttribute('tabindex');
-              }
             }
           }
 
           function updateProductivityDots() {
             productivityDots.forEach(function (dot, index) {
               dot.classList.toggle('is-active', index === productivityIndex);
+              dot.setAttribute('aria-current', index === productivityIndex ? 'true' : 'false');
             });
           }
 
@@ -1526,10 +1518,10 @@
             var nextSlide = productivitySlides[targetIndex];
 
             if (productivityReduced) {
-              currentSlide.classList.remove('is-active', 'entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+              currentSlide.classList.remove('is-active', 'entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
               currentSlide.setAttribute('aria-hidden', 'true');
               nextSlide.classList.add('is-active');
-              nextSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+              nextSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
               nextSlide.setAttribute('aria-hidden', 'false');
               productivityIndex = targetIndex;
               updateProductivityDots();
@@ -1541,12 +1533,12 @@
 
             productivityAnimating = true;
 
-            var direction = targetIndex > productivityIndex ? 'down' : 'up';
-            var exitClass = direction === 'down' ? 'exiting-up' : 'exiting-down';
-            var enterClass = direction === 'down' ? 'entering-from-bottom' : 'entering-from-top';
+            var direction = targetIndex > productivityIndex ? 'next' : 'prev';
+            var exitClass = direction === 'next' ? 'exiting-left' : 'exiting-right';
+            var enterClass = direction === 'next' ? 'entering-from-right' : 'entering-from-left';
 
-            currentSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
-            nextSlide.classList.remove('entering-from-top', 'entering-from-bottom', 'exiting-up', 'exiting-down');
+            currentSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+            nextSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
 
             nextSlide.classList.add(enterClass);
             nextSlide.setAttribute('aria-hidden', 'false');
@@ -1596,9 +1588,9 @@
           }
 
           productivityCarousel.addEventListener('keydown', function (event) {
-            if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+            if (event.key === 'ArrowRight') {
               goToProductivitySlide(productivityIndex + 1);
-            } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+            } else if (event.key === 'ArrowLeft') {
               goToProductivitySlide(productivityIndex - 1);
             }
           });

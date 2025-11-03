@@ -838,34 +838,34 @@ ol.type li a:hover {
 	left: 0;
 	width: 100%;
 	opacity: 0;
-	transform: translateY(60px) scale(0.96);
-	transition: opacity 0.45s ease, transform 0.45s ease;
+	transform: translateX(80px);
+	transition: opacity 0.55s ease, transform 0.55s ease;
 	pointer-events: none;
 }
 
 .productivity-slide.is-active {
 	opacity: 1;
-	transform: translateY(0) scale(1);
+	transform: translateX(0);
 	position: relative;
 	pointer-events: auto;
 }
 
-.productivity-slide.entering-from-top {
-	transform: translateY(-60px) scale(0.94);
+.productivity-slide.entering-from-left {
+	transform: translateX(-80px);
 }
 
-.productivity-slide.entering-from-bottom {
-	transform: translateY(60px) scale(0.94);
+.productivity-slide.entering-from-right {
+	transform: translateX(80px);
 }
 
-.productivity-slide.exiting-up {
+.productivity-slide.exiting-left {
 	opacity: 0;
-	transform: translateY(-60px) scale(0.94);
+	transform: translateX(-80px);
 }
 
-.productivity-slide.exiting-down {
+.productivity-slide.exiting-right {
 	opacity: 0;
-	transform: translateY(60px) scale(0.94);
+	transform: translateX(80px);
 }
 
 .productivity-card {
@@ -881,6 +881,14 @@ ol.type li a:hover {
 
 .productivity-card.reverse {
 	grid-template-columns: 1.1fr 1fr;
+}
+
+.productivity-card.reverse .productivity-visual {
+	order: 2;
+}
+
+.productivity-card.reverse .productivity-details {
+	order: 1;
 }
 
 .productivity-image-frame {
@@ -943,32 +951,33 @@ ol.type li a:hover {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 46px;
-	height: 46px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	border: none;
-	background: rgba(99, 102, 241, 0.18);
-	color: #312e81;
+	background: rgba(15, 23, 42, 0.65);
+	color: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 12px 24px rgba(99,102,241,0.2);
+	box-shadow: 0 9px 18px rgba(15, 23, 42, 0.35);
 	cursor: pointer;
 	transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.productivity-nav.prev { left: -18px; }
-.productivity-nav.next { right: -18px; }
+.productivity-nav.prev { left: -14px; }
+.productivity-nav.next { right: -14px; }
 
-.productivity-nav:hover, .productivity-nav:focus {
-	background: rgba(99,102,241,0.75);
+.productivity-nav:hover,
+.productivity-nav:focus {
+	background: rgba(109, 76, 191, 0.85);
 	color: #fff;
 	transform: translateY(-50%) scale(1.05);
 }
 
 .productivity-nav:focus-visible {
 	outline: none;
-	box-shadow: 0 0 0 3px rgba(99,102,241,0.3);
+	box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
 }
 
 .productivity-nav.disabled {
@@ -976,6 +985,7 @@ ol.type li a:hover {
 	cursor: default;
 	box-shadow: none;
 	transform: translateY(-50%);
+	pointer-events: none;
 }
 
 .productivity-meta-bar {
@@ -1026,6 +1036,11 @@ ol.type li a:hover {
 
 	.productivity-card.reverse {
 		grid-template-columns: 1fr;
+	}
+
+	.productivity-card.reverse .productivity-visual,
+	.productivity-card.reverse .productivity-details {
+		order: initial;
 	}
 
 	.productivity-details {
@@ -1587,13 +1602,13 @@ html[data-theme="dark"] .productivity-meta .meta-item i {
 }
 
 html[data-theme="dark"] .productivity-nav {
-	background: rgba(99,102,241,0.24);
+	background: rgba(59,130,246,0.28);
 	color: #e0e7ff;
 }
 
 html[data-theme="dark"] .productivity-nav:hover,
 html[data-theme="dark"] .productivity-nav:focus {
-	background: rgba(99,102,241,0.85);
+	background: rgba(99,102,241,0.9);
 	color: #fff;
 }
 

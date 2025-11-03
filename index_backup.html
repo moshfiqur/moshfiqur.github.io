@@ -22,6 +22,15 @@
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script>
+  window.Modernizr = window.Modernizr || {};
+  if (typeof window.Modernizr.addTest !== 'function') {
+    window.Modernizr.addTest = function (feature, test) {
+      window.Modernizr[feature] = typeof test === 'function' ? test() : test;
+      return window.Modernizr;
+    };
+  }
+</script>
 <style>
   .tech-stack-container {
     display: flex;
@@ -56,6 +65,288 @@
     width: 100%;
     height: 100%;
   }
+
+  #mobile-apps .portfolio-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 72px;
+  }
+
+  #mobile-apps .portfolio-slides {
+    position: relative;
+    min-height: 440px;
+    height: auto;
+    transition: height 0.55s ease;
+  }
+
+  #mobile-apps .portfolio-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    z-index: 1;
+  }
+
+  #mobile-apps .portfolio-slide.is-active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  #mobile-apps .portfolio-slide.exiting-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.exiting-right {
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.entering-from-left {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+
+  #mobile-apps .portfolio-slide.entering-from-right {
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-slide.is-active.entering-from-left,
+  #mobile-apps .portfolio-slide.is-active.entering-from-right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #mobile-apps .portfolio-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 36px;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f7ff 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 44px rgba(15, 23, 42, 0.12);
+    text-align: left;
+    width: 100%;
+  }
+
+  #mobile-apps .portfolio-card.reverse {
+    flex-direction: row-reverse;
+  }
+
+  #mobile-apps .portfolio-visual {
+    flex: 0 0 42%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #mobile-apps .portfolio-image {
+    max-width: 75%;
+    border-radius: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: transparent;
+  }
+
+  #mobile-apps .portfolio-image:hover {
+    transform: translateY(-4px);
+  }
+
+  #mobile-apps .portfolio-details {
+    flex: 1;
+  }
+
+  #mobile-apps .portfolio-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(15, 23, 42, 0.65);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 9px 12px rgba(15, 23, 42, 0.25);
+    z-index: 2;
+  }
+
+  #mobile-apps .portfolio-nav:hover {
+    background: rgba(109, 76, 191, 0.85);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  #mobile-apps .portfolio-nav:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+  }
+
+  #mobile-apps .portfolio-nav.disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  #mobile-apps .portfolio-nav.prev {
+    left: 12px;
+  }
+
+  #mobile-apps .portfolio-nav.next {
+    right: 12px;
+  }
+
+  #mobile-apps .portfolio-meta {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #6d4cbf;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  #mobile-apps .portfolio-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  #mobile-apps .portfolio-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(109, 76, 191, 0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #mobile-apps .portfolio-dot:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+  }
+
+  #mobile-apps .portfolio-dot.is-active {
+    background: #6d4cbf;
+    transform: scale(1.3);
+  }
+ 
+  #mobile-apps .portfolio-details h4 {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+  }
+
+  #mobile-apps .portfolio-details p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  #mobile-apps .portfolio-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(109, 76, 191, 0.12);
+    color: #6d4cbf;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 991px) {
+    #mobile-apps .portfolio-carousel {
+      padding: 20px 48px;
+    }
+
+    #mobile-apps .portfolio-slides {
+      min-height: 520px;
+    }
+
+    #mobile-apps .portfolio-card,
+    #mobile-apps .portfolio-card.reverse {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+      padding: 24px 22px;
+    }
+
+    #mobile-apps .portfolio-details {
+      text-align: center;
+    }
+
+    #mobile-apps .portfolio-image {
+      max-width: 70%;
+    }
+
+    #mobile-apps .portfolio-nav.prev {
+      left: 0;
+    }
+
+    #mobile-apps .portfolio-nav.next {
+      right: 0;
+    }
+  }
+
+  @media (min-width: 992px) {
+    #mobile-apps .portfolio-card.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-card {
+    background: linear-gradient(135deg, #1a2644 0%, #0f172a 100%);
+    box-shadow: 0 20px 48px rgba(2, 6, 23, 0.5);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-details p {
+    color: #cbd5f5;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-meta {
+    color: #9ca3af;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-pill {
+    background: rgba(125, 211, 252, 0.18);
+    color: #7dd3fc;
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-nav {
+    background: rgba(148, 163, 184, 0.2);
+    color: #f8fafc;
+    box-shadow: 0 12px 26px rgba(2, 6, 23, 0.45);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-nav:hover {
+    background: rgba(109, 76, 191, 0.85);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-dot {
+    background: rgba(148, 163, 184, 0.45);
+  }
+
+  html[data-theme="dark"] #mobile-apps .portfolio-dot.is-active {
+    background: #7bc3d1;
+  }
 </style>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -74,7 +365,7 @@
       <div class="row">
         <div class="intro-text">
           <h1>Hello, I'm <span class="name">Moshfiqur</span></h1>
-          <p>Software Engineer | Crafting AI, Apps, and Scalable Solutions with Precision</p>
+          <p>Organic Intelligence | Full-Stack Developer | 19+ Years Building Robust Systems | Freelance & Consulting for Startups and Enterprises</p>
           <!-- <a href="#about" class="btn btn-default btn-lg page-scroll">Learn More</a> </div> -->
       </div>
     </div>
@@ -100,6 +391,22 @@
           <li> <a class="page-scroll" href="#technology-stacks">Stacks</a> </li>
           <li> <a class="page-scroll" href="#resume">Resume</a> </li>
           <li> <a class="page-scroll" href="#contact">Contact</a> </li>
+          <li class="theme-switcher">
+            <div class="theme-toggle" data-theme-toggle>
+              <button type="button" class="theme-toggle-trigger" data-theme-toggle-trigger aria-haspopup="listbox" aria-expanded="false" aria-label="Theme selection">System</button>
+              <ul class="theme-toggle-menu" role="listbox" aria-label="Select theme">
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="light" role="option" aria-selected="false">Light</button>
+                </li>
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="dark" role="option" aria-selected="false">Dark</button>
+                </li>
+                <li>
+                  <button type="button" class="theme-toggle-option" data-theme-value="system" role="option" aria-selected="false">System</button>
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -138,92 +445,209 @@
       <h2>Mobile App Portfolio</h2>
       <hr>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/PR-nuKs5f1s" frameborder="0" allowfullscreen></iframe>
+    <div class="portfolio-carousel" role="region" aria-label="Mobile app projects carousel" tabindex="0">
+      <button class="portfolio-nav prev disabled" aria-label="Previous project">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="portfolio-nav next" aria-label="Next project">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+
+      <div class="portfolio-slides">
+        <div class="portfolio-slide is-active" data-title="Artemis">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/artemis.png" alt="Artemis mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Product Ops &bull; Flutter</span>
+              <h4>Artemis</h4>
+              <p>Product ops command center that keeps multi-market release trains aligned in real time.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="artemis">Show more</button>
+            </div>
+          </div>
         </div>
-        <h4>Beauticator <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">Your AI Selfie Companion</span></h4>
-        <p>
-          Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with seamless user experience.
-          <br><br>
-          The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal of the image with advanced machine learning.
-          <br><br>
-          Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!
-        </p>
-      </div>
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/CVBDpgK33Kg" frameborder="0" allowfullscreen></iframe>
+
+        <div class="portfolio-slide" data-title="Beauticator">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/beauticator.png" alt="Beauticator mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Computer Vision &bull; On-device AI</span>
+              <h4>Beauticator</h4>
+              <p>Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="beauticator">Show more</button>
+            </div>
+          </div>
         </div>
-        <h4>Yegdoo <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">Where Minds Meet Before Faces</span></h4>
-        <p>
-          Yegdoo is a unique dating app designed for sapiosexuals—those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, Yegdoo creates a safe and engaging space for meaningful connections.
-          <br><br>
-          In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos to each other. This approach ensures that relationships are built on personality and shared interests first, fostering deeper and more authentic connections.
-          <br><br>
-          Yegdoo is the perfect platform for those who believe that true attraction starts with the mind.
-        </p>
+
+        <div class="portfolio-slide" data-title="Cinemated">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/cinemated.png" alt="Cinemated mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Recommender Systems &bull; ML</span>
+              <h4>Cinemated</h4>
+              <p>Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="cinemated">Show more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-slide" data-title="Gutenberg">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/gutenberg.png" alt="Gutenberg mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Reading Experience &bull; Offline-first</span>
+              <h4>Gutenberg</h4>
+              <p>Immersive reader for classics, syncing highlights and bookmarks across devices even offline.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="gutenberg">Show more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-slide" data-title="Klara">
+          <div class="portfolio-card">
+            <div class="portfolio-visual">
+              <img src="portfolio/klara.png" alt="Klara mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Language Learning &bull; ML</span>
+              <h4>Klara</h4>
+              <p>Guided German tutor delivering bite-sized grammar drills with contextual speech practice.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="klara">Show more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-slide" data-title="Yegdoo">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/yegdoo.png" alt="Yegdoo mobile app preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Social Discovery &bull; Privacy-first</span>
+              <h4>Yegdoo</h4>
+              <p>Sapiosexual dating space where conversations unlock profile reveals and build trust first.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="yegdoo">Show more</button>
+            </div>
+          </div>
+        </div>
       </div>
+
+    <div class="portfolio-meta" aria-hidden="true">
+      <span class="portfolio-counter">01 / 06</span>
+      <div class="portfolio-dots"></div>
     </div>
-    <div class="row" style="margin-top: 30px;">
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/J2_83rGoJPs" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+<div class="portfolio-modal" id="portfolio-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="portfolio-modal__overlay" data-modal-close></div>
+  <div class="portfolio-modal__dialog" role="document">
+    <button type="button" class="portfolio-modal__close" data-modal-close aria-label="Close gallery">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="portfolio-modal__body">
+      <div class="portfolio-modal__content">
+        <div class="portfolio-modal__media">
+          <div class="portfolio-modal__carousel" data-portfolio-carousel>
+            <button type="button" class="portfolio-modal__nav portfolio-modal__nav--prev" data-carousel-prev aria-label="Previous image">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="portfolio-modal__viewport">
+              <ul class="portfolio-modal__track"></ul>
+            </div>
+            <button type="button" class="portfolio-modal__nav portfolio-modal__nav--next" data-carousel-next aria-label="Next image">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="portfolio-modal__pagination" aria-hidden="true"></div>
         </div>
-        <h4>Cinemated. <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">No One Understands Your Movie Taste Better Than Us</span></h4>
-        <p>
-          Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, Cinemated combines advanced machine learning with a user-friendly interface to deliver personalized movie suggestions.
-          <br><br>
-          Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI then analyzes these preferences to recommend movies tailored to their tastes. Cinemated goes beyond the usual genres, offering recommendations for special categories like horror movies in scary castles or whodunits with a charming detective.
-          <br><br>
-          Whether you're a casual viewer or a cinephile, Cinemated ensures that your next movie night is always a hit!
-        </p>
-      </div>
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/_ApXFTfjofw" frameborder="0" allowfullscreen></iframe>
+        <div class="portfolio-modal__details">
+          <span class="portfolio-pill portfolio-modal__tech"></span>
+          <h3 class="portfolio-modal__title"></h3>
+          <p class="portfolio-modal__subtitle"></p>
+          <div class="portfolio-modal__description"></div>
+          <a class="portfolio-screencast" href="#" target="_blank" rel="noopener" data-screencast-link>App Screencast</a>
         </div>
-        <h4>Artemis <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">Your Virtual Club Experience, Anytime, Anywhere..</span></h4>
-        <p>
-          Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, Artemis allows users to join clubs based on their specific interests, such as sports, literature, movies, or comedy, while also connecting them with people nearby through location-based clubs.
-          <br><br>
-          Each club is designed to replicate the vibe of a real club. For instance, there are limits on the number of male and female users who can enter a club at a given time, creating a balanced and engaging environment. Users can buy virtual drinks for others, adding a fun and interactive element to the experience. While multiple people can be in the club simultaneously, Artemis ensures meaningful connections by allowing only one-to-one chats.
-          <br><br>
-          Whether you're looking to share your passion, meet like-minded individuals, or simply unwind, Artemis is your go-to virtual club for a unique and immersive experience.
-        </p>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 30px;">
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/4j9suXQ46SQ" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <h4>Klara <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">Your Personal German Learning Assistant</span></h4>
-        <p>
-          Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL and Firebase, Klara provides a differently structured approach to mastering the language.  
-          <br><br>
-          The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar. Klara provides sample words and sentences for each part of speech, complete with English translations and pronunciation audio. This makes it an excellent tool for practicing vocabulary, sentence construction, and pronunciation.  
-          <br><br>
-          Whether you're a beginner or looking to refine your German skills, Klara is your trusted companion on the journey to fluency.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/o6-ahDpa-o4" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <h4>Gutenberg <span style="font-size: 1.5rem; color: #6c757d; font-style: italic;">Rediscover the Classics</span></h4>
-        <p>
-          Gutenberg is a simple yet powerful book reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, Gutenberg provides access to a vast collection of free books from the Gutenberg Project, making it the perfect companion for book lovers.
-          <br><br>
-          With Gutenberg, users can explore and read multiple books, with their last reading position automatically bookmarked for a seamless experience. The app also offers features like book search, adjustable font sizes, and a user-friendly interface to enhance your reading journey.
-          <br><br>
-          Whether you're diving into literary masterpieces or rediscovering old favorites, Gutenberg makes reading a pleasure, anytime and anywhere.
-        </p>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+<div id="productivity-apps" class="productivity-section text-center" style="margin-bottom: 60px;">
+  <div class="container">
+    <div class="productivity-header">
+      <span class="productivity-label">Browser Workflows</span>
+      <h2>Productivity App Portfolio</h2>
+      <p class="productivity-tagline">Automation-first tools that tame information overload and keep creative flow intact.</p>
+    </div>
+
+    <div class="portfolio-carousel productivity-carousel" role="region" aria-label="Productivity app projects carousel" tabindex="0">
+      <button class="portfolio-nav productivity-nav prev disabled" aria-label="Previous project">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="portfolio-nav productivity-nav next" aria-label="Next project">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+
+      <div class="portfolio-slides productivity-slides">
+        <div class="portfolio-slide productivity-slide is-active" data-title="BookSmart">
+          <div class="portfolio-card productivity-card">
+            <div class="portfolio-visual productivity-visual">
+              <div class="productivity-image-frame">
+                <img src="portfolio/booksmart.png" alt="BookSmart productivity extension preview" class="portfolio-image productivity-image img-responsive">
+              </div>
+            </div>
+            <div class="portfolio-details productivity-details">
+              <span class="portfolio-pill">Chrome Extension &bull; LLM-Assisted</span>
+              <h4>BookSmart</h4>
+              <p class="productivity-summary">Turns open browser chaos into structured knowledge by auto-classifying sessions, syncing favicons, and keeping safety gates on sensitive content.</p>
+              <div class="productivity-meta">
+                <span class="meta-item"><i class="fa fa-bolt"></i> Local + Cloud LLM</span>
+                <span class="meta-item"><i class="fa fa-bookmark"></i> Smart Snapshots</span>
+                <span class="meta-item"><i class="fa fa-lock"></i> Privacy Guard</span>
+              </div>
+              <button type="button" class="portfolio-more-btn" data-gallery="booksmart">Show more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-slide productivity-slide" data-title="Creative Storyboard">
+          <div class="portfolio-card productivity-card reverse">
+            <div class="portfolio-visual productivity-visual">
+              <div class="productivity-image-frame">
+                <img src="portfolio/creative-storyboard.png" alt="Creative Storyboard web app preview" class="portfolio-image productivity-image img-responsive">
+              </div>
+            </div>
+            <div class="portfolio-details productivity-details">
+              <span class="portfolio-pill">Web App &bull; Full Stack</span>
+              <h4>Creative Storyboard</h4>
+              <p class="productivity-summary">Keeps filmmakers and creators aligned with projects, scenes, shots, rich media uploads, and AI prompt notes—all mapped in one responsive storyboard hub.</p>
+              <div class="productivity-meta">
+                <span class="meta-item"><i class="fa fa-layer-group"></i> Projects • Scenes • Shots</span>
+                <span class="meta-item"><i class="fa fa-photo"></i> Rich Media Vault</span>
+                <span class="meta-item"><i class="fa fa-magic"></i> AI Ideation Prompts</span>
+              </div>
+              <button type="button" class="portfolio-more-btn" data-gallery="creative-storyboard">Show more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="productivity-meta-bar" aria-hidden="true">
+        <span class="portfolio-counter productivity-counter">01 / 02</span>
+        <div class="portfolio-dots productivity-dots"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Skills Section -->
 <div id="skills" class="text-center">
   <div class="container">
@@ -543,6 +967,9 @@
 </div>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="js/bootstrap.js"></script> 
+<script>
+  window.refresh = window.refresh || function () {};
+</script>
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
 <script type="text/javascript" src="js/easypiechart.js"></script> 
 <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
@@ -552,5 +979,1157 @@
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
 <script type="text/javascript" src="js/contact_me.js"></script> 
 <script type="text/javascript" src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var storageKey = 'theme-preference';
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    var controls = Array.prototype.slice.call(document.querySelectorAll('[data-theme-value]'));
+    var toggleRoot = document.querySelector('[data-theme-toggle]');
+    var trigger = toggleRoot ? toggleRoot.querySelector('[data-theme-toggle-trigger]') : null;
+    var menu = toggleRoot ? toggleRoot.querySelector('.theme-toggle-menu') : null;
+    var expandedClass = 'is-open';
+    var isMenuOpen = false;
+
+    function sanitizePreference(value) {
+      return value === 'light' || value === 'dark' || value === 'system' ? value : 'system';
+    }
+
+    function readStoredPreference() {
+      try {
+        return sanitizePreference(localStorage.getItem(storageKey));
+      } catch (error) {
+        return 'system';
+      }
+    }
+
+    var preference = readStoredPreference();
+
+    function resolveEffectiveTheme(value) {
+      if (value === 'light' || value === 'dark') {
+        return value;
+      }
+      return mediaQuery.matches ? 'dark' : 'light';
+    }
+
+    function reflectPreference() {
+      var effective = resolveEffectiveTheme(preference);
+      document.documentElement.setAttribute('data-theme', effective);
+      document.documentElement.setAttribute('data-theme-preference', preference);
+
+      var label = preference;
+
+      controls.forEach(function (control, index) {
+        var value = sanitizePreference(control.getAttribute('data-theme-value'));
+        var isActive = value === preference;
+        control.classList.toggle('is-active', isActive);
+        control.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        control.setAttribute('tabindex', isActive ? '0' : '-1');
+        if (isActive) {
+          label = control.textContent.trim();
+        }
+      });
+
+      if (trigger) {
+        trigger.textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      }
+    }
+
+    function setPreference(value) {
+      var nextPreference = sanitizePreference(value);
+      if (preference === nextPreference) {
+        reflectPreference();
+        return;
+      }
+      preference = nextPreference;
+      try {
+        localStorage.setItem(storageKey, preference);
+      } catch (error) {
+        // Ignore write failures (e.g., storage disabled)
+      }
+      reflectPreference();
+      closeMenu();
+    }
+
+    controls.forEach(function (control) {
+      control.addEventListener('click', function () {
+        setPreference(control.getAttribute('data-theme-value'));
+      });
+      control.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setPreference(control.getAttribute('data-theme-value'));
+        }
+      });
+    });
+
+    function focusControlAt(index) {
+      if (!controls.length) {
+        return;
+      }
+      var safeIndex = (index + controls.length) % controls.length;
+      var control = controls[safeIndex];
+      if (control) {
+        control.focus();
+      }
+    }
+
+    function getActiveIndex() {
+      for (var i = 0; i < controls.length; i++) {
+        if (controls[i].classList.contains('is-active')) {
+          return i;
+        }
+      }
+      return 0;
+    }
+
+    function openMenu() {
+      if (!menu || !trigger || isMenuOpen) {
+        return;
+      }
+      menu.classList.add(expandedClass);
+      trigger.setAttribute('aria-expanded', 'true');
+      isMenuOpen = true;
+      focusControlAt(getActiveIndex());
+    }
+
+    function closeMenu() {
+      if (!menu || !trigger || !isMenuOpen) {
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+        return;
+      }
+      menu.classList.remove(expandedClass);
+      trigger.setAttribute('aria-expanded', 'false');
+      isMenuOpen = false;
+    }
+
+    function toggleMenu(explicitState) {
+      if (!trigger || !menu) {
+        return;
+      }
+      var shouldOpen = typeof explicitState === 'boolean' ? explicitState : !isMenuOpen;
+      if (shouldOpen) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    }
+
+    if (trigger) {
+      trigger.addEventListener('click', function () {
+        toggleMenu();
+      });
+
+      trigger.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          openMenu();
+        }
+      });
+    }
+
+    if (menu) {
+      menu.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeMenu();
+          if (trigger) {
+            trigger.focus();
+          }
+          return;
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          var direction = event.key === 'ArrowDown' ? 1 : -1;
+          focusControlAt(getActiveIndex() + direction);
+        }
+      });
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!isMenuOpen || !toggleRoot) {
+        return;
+      }
+      if (!toggleRoot.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('focusin', function (event) {
+      if (!isMenuOpen || !toggleRoot) {
+        return;
+      }
+      if (!toggleRoot.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeMenu();
+        if (trigger && document.activeElement && !toggleRoot.contains(document.activeElement)) {
+          trigger.blur();
+        }
+      }
+    });
+
+    function handleSystemThemeChange() {
+      if (preference === 'system') {
+        reflectPreference();
+      }
+    }
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
+    } else if (typeof mediaQuery.addListener === 'function') {
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+
+    reflectPreference();
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var portfolioSection = document.querySelector('#mobile-apps');
+    if (!portfolioSection) {
+      return;
+    }
+
+    var carousel = portfolioSection.querySelector('.portfolio-carousel');
+    if (!carousel) {
+      return;
+    }
+
+    var slidesWrapper = carousel.querySelector('.portfolio-slides');
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.portfolio-slide'));
+    if (!slides.length) {
+      return;
+    }
+
+    var prevButton = carousel.querySelector('.portfolio-nav.prev');
+    var nextButton = carousel.querySelector('.portfolio-nav.next');
+    var dotsWrapper = portfolioSection.querySelector('.portfolio-dots');
+    var counterEl = portfolioSection.querySelector('.portfolio-counter');
+
+    if (!dotsWrapper) {
+      dotsWrapper = document.createElement('div');
+      dotsWrapper.className = 'portfolio-dots';
+      var metaRow = portfolioSection.querySelector('.portfolio-meta');
+      if (metaRow) {
+        metaRow.appendChild(dotsWrapper);
+      }
+    }
+
+    dotsWrapper.innerHTML = '';
+
+    var startingIndex = 0;
+    for (var i = 0; i < slides.length; i++) {
+      if (slides[i].classList.contains('is-active')) {
+        startingIndex = i;
+        break;
+      }
+    }
+
+    var currentIndex = startingIndex;
+
+    var totalSlides = slides.length;
+    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var prefersReducedMotion = motionQuery.matches;
+
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', function (event) {
+        prefersReducedMotion = event.matches;
+        setWrapperHeight(slides[currentIndex]);
+      });
+    } else if (motionQuery.addListener) {
+      motionQuery.addListener(function (event) {
+        prefersReducedMotion = event.matches;
+        setWrapperHeight(slides[currentIndex]);
+      });
+    }
+
+    var dots = slides.map(function (slide, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'portfolio-dot' + (index === currentIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Show ' + (slide.getAttribute('data-title') || 'portfolio') + ' project');
+      dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+      dot.addEventListener('click', function () {
+        goToSlide(index);
+      });
+      dotsWrapper.appendChild(dot);
+      return dot;
+    });
+
+    function setWrapperHeight(slide) {
+      if (!slidesWrapper || !slide) {
+        return;
+      }
+      slidesWrapper.style.height = slide.offsetHeight + 'px';
+    }
+
+    function updateCounter() {
+      if (!counterEl) {
+        return;
+      }
+      var currentStr = padNumber(currentIndex + 1);
+      var totalStr = padNumber(totalSlides);
+      counterEl.textContent = currentStr + ' / ' + totalStr;
+    }
+
+    function updateNavState() {
+      if (prevButton) {
+        var prevDisabled = currentIndex === 0;
+        prevButton.classList.toggle('disabled', prevDisabled);
+        prevButton.setAttribute('aria-disabled', prevDisabled);
+      }
+      if (nextButton) {
+        var nextDisabled = currentIndex === totalSlides - 1;
+        nextButton.classList.toggle('disabled', nextDisabled);
+        nextButton.setAttribute('aria-disabled', nextDisabled);
+      }
+    }
+
+    slides.forEach(function (slide, idx) {
+      slide.classList.toggle('is-active', idx === currentIndex);
+      slide.setAttribute('aria-hidden', idx === currentIndex ? 'false' : 'true');
+      slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+    });
+
+    setWrapperHeight(slides[currentIndex]);
+
+    function updateDotsState() {
+      dots.forEach(function (dot, idx) {
+        dot.classList.toggle('is-active', idx === currentIndex);
+        dot.setAttribute('aria-current', idx === currentIndex ? 'true' : 'false');
+      });
+    }
+
+    var isAnimating = false;
+
+    function clearAnimationClasses(slide) {
+      slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides || index === currentIndex || isAnimating) {
+        return;
+      }
+
+      var direction = index > currentIndex ? 'next' : 'prev';
+      var currentSlide = slides[currentIndex];
+      var nextSlide = slides[index];
+
+      if (prefersReducedMotion) {
+        clearAnimationClasses(currentSlide);
+        currentSlide.classList.remove('is-active');
+        currentSlide.setAttribute('aria-hidden', 'true');
+
+        clearAnimationClasses(nextSlide);
+        nextSlide.classList.add('is-active');
+        nextSlide.setAttribute('aria-hidden', 'false');
+        setWrapperHeight(nextSlide);
+
+        currentIndex = index;
+        updateDotsState();
+        updateCounter();
+        updateNavState();
+        return;
+      }
+
+      isAnimating = true;
+
+      var exitClass = direction === 'next' ? 'exiting-left' : 'exiting-right';
+      var enterClass = direction === 'next' ? 'entering-from-right' : 'entering-from-left';
+
+      clearAnimationClasses(currentSlide);
+      clearAnimationClasses(nextSlide);
+
+      nextSlide.classList.add(enterClass);
+      nextSlide.setAttribute('aria-hidden', 'false');
+
+      // Force reflow to ensure starting transform is applied before the active state
+      void nextSlide.offsetWidth;
+
+      nextSlide.classList.add('is-active');
+      setWrapperHeight(nextSlide);
+
+      currentSlide.classList.add(exitClass);
+
+      var handleCurrentTransitionEnd = function (event) {
+        if (event.target !== currentSlide || event.propertyName !== 'transform') {
+          return;
+        }
+        currentSlide.classList.remove(exitClass, 'is-active');
+        currentSlide.setAttribute('aria-hidden', 'true');
+        currentSlide.removeEventListener('transitionend', handleCurrentTransitionEnd);
+      };
+
+      var handleNextTransitionEnd = function (event) {
+        if (event.target !== nextSlide || event.propertyName !== 'transform') {
+          return;
+        }
+        nextSlide.classList.remove(enterClass);
+        nextSlide.removeEventListener('transitionend', handleNextTransitionEnd);
+        isAnimating = false;
+      };
+
+      currentSlide.addEventListener('transitionend', handleCurrentTransitionEnd);
+      nextSlide.addEventListener('transitionend', handleNextTransitionEnd);
+
+      currentIndex = index;
+      updateDotsState();
+      updateCounter();
+      updateNavState();
+    }
+
+    if (prevButton) {
+      prevButton.addEventListener('click', function () {
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', function () {
+        goToSlide(currentIndex + 1);
+      });
+    }
+
+    carousel.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      setWrapperHeight(slides[currentIndex]);
+    });
+
+    window.addEventListener('load', function () {
+      setWrapperHeight(slides[currentIndex]);
+    });
+
+    updateDotsState();
+    updateCounter();
+    updateNavState();
+
+    var productivitySection = document.querySelector('#productivity-apps');
+    if (productivitySection) {
+      var productivityCarousel = productivitySection.querySelector('.productivity-carousel');
+      if (productivityCarousel) {
+        var productivityWrapper = productivityCarousel.querySelector('.portfolio-slides');
+        var productivitySlides = Array.prototype.slice.call(productivityCarousel.querySelectorAll('.portfolio-slide'));
+        if (productivitySlides.length) {
+          var productivityPrev = productivityCarousel.querySelector('.portfolio-nav.prev');
+          var productivityNext = productivityCarousel.querySelector('.portfolio-nav.next');
+          var productivityDotsWrapper = productivitySection.querySelector('.portfolio-dots');
+          var productivityCounter = productivitySection.querySelector('.portfolio-counter');
+          var productivityMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+          var productivityReduced = productivityMotionQuery.matches;
+
+          if (typeof productivityMotionQuery.addEventListener === 'function') {
+            productivityMotionQuery.addEventListener('change', function (event) {
+              productivityReduced = event.matches;
+              setProductivityHeight(productivitySlides[productivityIndex]);
+            });
+          } else if (typeof productivityMotionQuery.addListener === 'function') {
+            productivityMotionQuery.addListener(function (event) {
+              productivityReduced = event.matches;
+              setProductivityHeight(productivitySlides[productivityIndex]);
+            });
+          }
+
+          var productivityDots = [];
+          var productivityIndex = 0;
+          var productivityTotal = productivitySlides.length;
+          var productivityAnimating = false;
+
+          if (productivityDotsWrapper) {
+            productivityDotsWrapper.innerHTML = '';
+            for (var d = 0; d < productivitySlides.length; d++) {
+              var dot = document.createElement('button');
+              dot.type = 'button';
+              dot.className = 'portfolio-dot productivity-dot' + (d === 0 ? ' is-active' : '');
+              dot.setAttribute('aria-label', 'Show ' + (productivitySlides[d].getAttribute('data-title') || 'portfolio') + ' project');
+              dot.setAttribute('aria-current', d === productivityIndex ? 'true' : 'false');
+              (function (index) {
+                dot.addEventListener('click', function () {
+                  goToProductivitySlide(index);
+                });
+              })(d);
+              productivityDotsWrapper.appendChild(dot);
+              productivityDots.push(dot);
+            }
+          }
+
+          productivitySlides.forEach(function (slide, index) {
+            slide.classList.toggle('is-active', index === productivityIndex);
+            slide.setAttribute('aria-hidden', index === productivityIndex ? 'false' : 'true');
+            slide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+          });
+
+          function setProductivityHeight(slide) {
+            if (!productivityWrapper || !slide) {
+              return;
+            }
+            productivityWrapper.style.height = slide.offsetHeight + 'px';
+          }
+
+          function updateProductivityCounter() {
+            if (!productivityCounter) {
+              return;
+            }
+            productivityCounter.textContent = padNumber(productivityIndex + 1) + ' / ' + padNumber(productivityTotal);
+          }
+
+          function updateProductivityNav() {
+            var disable = productivityTotal <= 1;
+            if (productivityPrev) {
+              var prevDisabled = disable || productivityIndex === 0;
+              productivityPrev.classList.toggle('disabled', prevDisabled);
+              productivityPrev.setAttribute('aria-disabled', prevDisabled);
+              productivityPrev.disabled = prevDisabled;
+            }
+            if (productivityNext) {
+              var nextDisabled = disable || productivityIndex === productivityTotal - 1;
+              productivityNext.classList.toggle('disabled', nextDisabled);
+              productivityNext.setAttribute('aria-disabled', nextDisabled);
+              productivityNext.disabled = nextDisabled;
+            }
+          }
+
+          function updateProductivityDots() {
+            productivityDots.forEach(function (dot, index) {
+              dot.classList.toggle('is-active', index === productivityIndex);
+              dot.setAttribute('aria-current', index === productivityIndex ? 'true' : 'false');
+            });
+          }
+
+          function goToProductivitySlide(targetIndex) {
+            if (targetIndex < 0 || targetIndex >= productivityTotal || targetIndex === productivityIndex || productivityAnimating) {
+              return;
+            }
+
+            var currentSlide = productivitySlides[productivityIndex];
+            var nextSlide = productivitySlides[targetIndex];
+
+            if (productivityReduced) {
+              currentSlide.classList.remove('is-active', 'entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+              currentSlide.setAttribute('aria-hidden', 'true');
+              nextSlide.classList.add('is-active');
+              nextSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+              nextSlide.setAttribute('aria-hidden', 'false');
+              productivityIndex = targetIndex;
+              updateProductivityDots();
+              updateProductivityCounter();
+              updateProductivityNav();
+              setProductivityHeight(nextSlide);
+              return;
+            }
+
+            productivityAnimating = true;
+
+            var direction = targetIndex > productivityIndex ? 'next' : 'prev';
+            var exitClass = direction === 'next' ? 'exiting-left' : 'exiting-right';
+            var enterClass = direction === 'next' ? 'entering-from-right' : 'entering-from-left';
+
+            currentSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+            nextSlide.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
+
+            nextSlide.classList.add(enterClass);
+            nextSlide.setAttribute('aria-hidden', 'false');
+            void nextSlide.offsetWidth;
+            nextSlide.classList.add('is-active');
+            setProductivityHeight(nextSlide);
+
+            currentSlide.classList.add(exitClass);
+
+            var handleCurrentEnd = function (event) {
+              if (event.target !== currentSlide || event.propertyName !== 'transform') {
+                return;
+              }
+              currentSlide.classList.remove(exitClass, 'is-active');
+              currentSlide.setAttribute('aria-hidden', 'true');
+              currentSlide.removeEventListener('transitionend', handleCurrentEnd);
+            };
+
+            var handleNextEnd = function (event) {
+              if (event.target !== nextSlide || event.propertyName !== 'transform') {
+                return;
+              }
+              nextSlide.classList.remove(enterClass);
+              nextSlide.removeEventListener('transitionend', handleNextEnd);
+              productivityAnimating = false;
+            };
+
+            currentSlide.addEventListener('transitionend', handleCurrentEnd);
+            nextSlide.addEventListener('transitionend', handleNextEnd);
+
+            productivityIndex = targetIndex;
+            updateProductivityDots();
+            updateProductivityCounter();
+            updateProductivityNav();
+          }
+
+          if (productivityPrev && productivityTotal > 1) {
+            productivityPrev.addEventListener('click', function () {
+              goToProductivitySlide(productivityIndex - 1);
+            });
+          }
+
+          if (productivityNext && productivityTotal > 1) {
+            productivityNext.addEventListener('click', function () {
+              goToProductivitySlide(productivityIndex + 1);
+            });
+          }
+
+          productivityCarousel.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowRight') {
+              goToProductivitySlide(productivityIndex + 1);
+            } else if (event.key === 'ArrowLeft') {
+              goToProductivitySlide(productivityIndex - 1);
+            }
+          });
+
+          window.addEventListener('resize', function () {
+            setProductivityHeight(productivitySlides[productivityIndex]);
+          });
+
+          window.addEventListener('load', function () {
+            setProductivityHeight(productivitySlides[productivityIndex]);
+          });
+
+          setProductivityHeight(productivitySlides[productivityIndex]);
+          updateProductivityDots();
+          updateProductivityCounter();
+          updateProductivityNav();
+        }
+      }
+    }
+
+    function padNumber(value) {
+      return value < 10 ? '0' + value : String(value);
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var galleryMap = {
+      artemis: [
+        '01_SplashScreen.png',
+        '02_Registration.png',
+        '03_Home.png',
+        '04_Home2.png',
+        '05_ClubHome.png',
+        '06_ClubChat.png',
+        '07_UserProfile.png'
+      ],
+      beauticator: [
+        '0.png',
+        '1.png',
+        '2.png',
+        '3.png',
+        '4.png',
+        '5.png'
+      ],
+      cinemated: [
+        '01_Home.png',
+        '02_Movies_of_the_Year.png',
+        '03_Popular_Movies.png',
+        '04_Recently_Released_Movies.png',
+        '05_User_Preferences_Director.png',
+        '06_User_Preferences_Favorite_Movies.png',
+        '07_User_Preferences_Production_House.png',
+        '08_User_Preferences_Set_Success.png',
+        '09_User_Preferences_Select_Actors.png',
+        '10_User_Preferences_Set_Genres.png',
+        '10_User_Preferences_Set_Movies_Styles.png',
+        '11_User_Preferences_Set_Genres.png',
+        '12_Watchlist_Movies.png',
+        '13_User_Profile.png',
+        '14_Upload_Profile_Image.png',
+        '15_Edit_Profile.png',
+        '16_Liked_Movies.png',
+        '17_Menu.png',
+        '18_Movie_Recommendation.png'
+      ],
+      gutenberg: [
+        '01_SplashScreen.png',
+        '02_Home.png',
+        '03_Reading.png',
+        '04_Menu.png',
+        '05_Search.png'
+      ],
+      klara: [
+        '01_Splash.png',
+        '02_Practice_Sentences.png',
+        '03_Parts_of_Speech.png',
+        '04_Parts_of_Speech_with_Audio.png',
+        '05_Parts_of_Speech_Examples.png',
+        '06_Parts_of_Speech_Verbs.png',
+        '07_Practice_Youtube_Videos.png',
+        '08_Practice_Youtube_Videos_Add_Note.png',
+        '09_Practice_Video3.png'
+      ],
+      yegdoo: [
+        '00_SplashLogo.png',
+        '01_Splash.png',
+        '02_Registration.png',
+        '03_Home.png',
+        '04_Settings.png',
+        '05_User_Profile.png',
+        '05_User_Profile2.png',
+        '06_Bookmarked_User.png',
+        '07_Edit_Profile.png',
+        '08_Chat.png',
+        '09_Chat2.png'
+      ],
+      booksmart: [
+        '01_Cluttered_Browser_Long.png',
+        '02_Cluttered_Browser.png',
+        '03_Settings1.png',
+        '04_Settings2.png',
+        '05_Settings3.png',
+        '06_Settings4.png',
+        '07_Action_Window.png',
+        '08_Bookmark_Tab_Groups.png',
+        '09_Bookmark_Categories.png',
+        '10_Bookmark_Sessions.png'
+      ],
+      'creative-storyboard': [
+        '01_Landing.png',
+        '02_Home.png',
+        '03_Profile.png',
+        '04_ProjectHome.png',
+        '05_Scenes.png',
+        '06_SceneHome.png',
+        '07_ShotHome.png',
+        '08_PreviewImage.png',
+        '09_AudioLibrary.png',
+        '10_MyProjects.png'
+      ]
+    };
+
+    var projectDetails = {
+      beauticator: {
+        title: "Beauticator",
+        subtitle: "Your AI Selfie Companion",
+        tech: "Flutter · TensorFlow · MySQL · Firebase",
+        screencast: "https://youtu.be/PR-nuKs5f1s",
+        description: [
+          "Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with a seamless user experience.",
+          "The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.",
+          "Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!"
+        ]
+      },
+      yegdoo: {
+        title: "Yegdoo",
+        subtitle: "Where Minds Meet Before Faces",
+        tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/CVBDpgK33Kg",
+        description: [
+          "Yegdoo is a unique dating app designed for sapiosexuals--those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, it creates a safe and engaging space for meaningful connections.",
+          "In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.",
+          "Yegdoo is the perfect platform for those who believe that true attraction starts with the mind."
+        ]
+      },
+      cinemated: {
+        title: "Cinemated",
+        subtitle: "No One Understands Your Movie Taste Better Than Us",
+        tech: "Flutter · TensorFlow · MySQL · Firebase",
+        screencast: "https://youtu.be/J2_83rGoJPs",
+        description: [
+          "Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, it blends advanced machine learning with a friendly interface.",
+          "Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.",
+          "Cinemated goes beyond the usual genres, surfacing special categories like horror films in eerie castles or whodunits with charming detectives, so every movie night is a hit."
+        ]
+      },
+      artemis: {
+        title: "Artemis",
+        subtitle: "Your Virtual Club Experience, Anytime, Anywhere.",
+        tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/_ApXFTfjofw",
+        description: [
+          "Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, it helps people discover communities around their passions.",
+          "Users can join clubs for sports, literature, movies, comedy, or location-based meetups, with thoughtful entry limits to keep the vibe balanced. They can buy virtual drinks for others and spark one-to-one chats that feel natural and personal.",
+          "Whether you are sharing a passion, meeting like-minded individuals, or simply unwinding, Artemis creates an immersive club experience anywhere."
+        ]
+      },
+      klara: {
+        title: "Klara",
+        subtitle: "Your Personal German Learning Assistant",
+        tech: "Flutter · MySQL · Firebase",
+        screencast: "https://youtu.be/4j9suXQ46SQ",
+        description: [
+          "Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL, and Firebase, it supports learners with a structured path through the language.",
+          "The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar.",
+          "Klara provides sample words, sentences, and pronunciation audio for every concept, so practicing vocabulary, sentence construction, and speaking feels natural at your own pace."
+        ]
+      },
+      gutenberg: {
+        title: "Gutenberg",
+        subtitle: "Rediscover the Classics",
+        tech: "Flutter · MySQL",
+        screencast: "https://youtu.be/o6-ahDpa-o4",
+        description: [
+          "Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.",
+          "Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.",
+          "Adjustable font sizes, intuitive search, and a distraction-free interface make Gutenberg a delightful way to rediscover literary masterpieces anywhere."
+        ]
+      },
+      booksmart: {
+        title: "BookSmart",
+        subtitle: "Tabs to knowledge in one click",
+        tech: "TypeScript · Chrome Extension APIs · WebLLM",
+        screencast: null,
+        description: [
+          "BookSmart is a Chrome extension that turns all open tabs into smart bookmarks, keeping titles, descriptions, visit history, and favicons in one organized dashboard.",
+          "It solves the tab overwhelm problem by classifying saved pages automatically, offering session snapshots, exports, and quick reopen actions so nothing important is lost.",
+          "Classification can run locally via WebLLM or route through online LLMs like DeepSeek and OpenAI, with a built-in safety gate that keeps sensitive content away from external APIs.",
+          "Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage."
+        ]
+      },
+      'creative-storyboard': {
+        title: "Creative Storyboard",
+        subtitle: "Storyboard planning for modern crews",
+        tech: "Next.js 14 · Express · MySQL · WebLLM",
+        screencast: null,
+        description: [
+          "Creative Storyboard is a full-stack storyboarding app that helps filmmakers and creators plan projects with a clear hierarchy of Projects -> Scenes -> Shots, rich media uploads (images, video, audio), and AI prompt notes for ideation.",
+          "It streamlines pre-production by centralizing assets, notes, and progress with dashboards, activity feeds, profile management, and a polished, responsive UI.",
+          "Features include user registration/login, project creation and editing with banners, scene and shot management, drag-and-drop uploads with progress, lightbox previews, audio playback, and an integrated searchable audio library.",
+          "It solves the common pain of scattered files and spreadsheets by keeping visual references, timing, and creative direction in one place—fast to set up and easy to iterate. Tech stack: Next.js 14 (React 18) for the frontend, Express/Node.js API, MySQL (mysql2) for persistence, multer for uploads, bcryptjs for auth, and dotenv/cors/body-parser for configuration and middleware, with custom components and global CSS for styling."
+        ]
+      }
+    };
+
+    var modal = document.getElementById('portfolio-modal');
+    var galleryButtons = Array.prototype.slice.call(document.querySelectorAll('.portfolio-more-btn'));
+
+    if (!modal || !galleryButtons.length) {
+      return;
+    }
+
+    var modalTitle = modal.querySelector('.portfolio-modal__title');
+    var modalTech = modal.querySelector('.portfolio-modal__tech');
+    var modalSubtitle = modal.querySelector('.portfolio-modal__subtitle');
+    var modalDescription = modal.querySelector('.portfolio-modal__description');
+    var modalScreencast = modal.querySelector('[data-screencast-link]');
+    var track = modal.querySelector('.portfolio-modal__track');
+    var pagination = modal.querySelector('.portfolio-modal__pagination');
+    var prevControl = modal.querySelector('[data-carousel-prev]');
+    var nextControl = modal.querySelector('[data-carousel-next]');
+    var closeElements = Array.prototype.slice.call(modal.querySelectorAll('[data-modal-close]'));
+
+    var activeImages = [];
+    var activeIndex = 0;
+    var dots = [];
+    var autoTimer = null;
+    var autoDelay = 6000;
+    var lastFocus = null;
+
+    function padIndex(value) {
+      return value < 10 ? '0' + value : String(value);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function startAuto() {
+      stopAuto();
+      if (activeImages.length <= 1) {
+        return;
+      }
+      autoTimer = setInterval(function () {
+        goToSlide(activeIndex + 1);
+      }, autoDelay);
+    }
+
+    function updateDots() {
+      if (!dots.length) {
+        return;
+      }
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('is-active', index === activeIndex);
+      });
+    }
+
+    function updateNavState() {
+      var controls = [prevControl, nextControl];
+      controls.forEach(function (control) {
+        if (!control) {
+          return;
+        }
+        if (activeImages.length <= 1) {
+          control.setAttribute('disabled', 'true');
+        } else {
+          control.removeAttribute('disabled');
+        }
+      });
+    }
+
+    function goToSlide(index, userInitiated) {
+      if (!activeImages.length || !track) {
+        return;
+      }
+      var total = activeImages.length;
+      var nextIndex = ((index % total) + total) % total;
+      activeIndex = nextIndex;
+      track.style.transform = 'translateX(' + (-100 * activeIndex) + '%)';
+      updateDots();
+      if (userInitiated) {
+        startAuto();
+      }
+    }
+
+    function buildDots(total) {
+      dots = [];
+      if (!pagination) {
+        return;
+      }
+      pagination.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'portfolio-modal__dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Show slide ' + (i + 1) + ' of ' + total);
+        (function (idx) {
+          dot.addEventListener('click', function () {
+            goToSlide(idx, true);
+          });
+        })(i);
+        pagination.appendChild(dot);
+        dots.push(dot);
+      }
+    }
+
+    function buildSlides(key, projectTitle) {
+      if (!track) {
+        return;
+      }
+      var images = galleryMap[key] || [];
+      activeImages = images.slice();
+      track.innerHTML = '';
+      activeIndex = 0;
+
+        images.forEach(function (imageName, index) {
+          var slide = document.createElement('li');
+          slide.className = 'portfolio-modal__slide';
+          var link = document.createElement('a');
+          link.href = 'portfolio/' + key + '/' + imageName;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          var img = document.createElement('img');
+          img.src = 'portfolio/' + key + '/' + imageName;
+          img.alt = projectTitle + ' screen ' + padIndex(index + 1);
+          link.appendChild(img);
+          slide.appendChild(link);
+          track.appendChild(slide);
+        });
+
+      track.style.transform = 'translateX(0%)';
+      buildDots(images.length);
+      updateNavState();
+      startAuto();
+    }
+
+    function openModal(key, trigger) {
+      if (!galleryMap[key] || !galleryMap[key].length) {
+        return;
+      }
+      lastFocus = trigger || null;
+      var details = projectDetails[key] || {};
+      var projectTitle = '';
+      if (details.title) {
+        projectTitle = details.title;
+      } else if (trigger) {
+        var detail = trigger.closest('.portfolio-details');
+        var heading = detail ? detail.querySelector('h4') : null;
+        if (heading) {
+          projectTitle = heading.textContent.trim();
+        }
+      }
+      if (!projectTitle) {
+        projectTitle = key.charAt(0).toUpperCase() + key.slice(1);
+      }
+
+      if (modalTitle) {
+        modalTitle.textContent = projectTitle;
+      }
+
+      if (modalTech) {
+        if (details.tech) {
+          modalTech.textContent = details.tech;
+          modalTech.style.display = 'inline-block';
+        } else {
+          modalTech.textContent = '';
+          modalTech.style.display = 'none';
+        }
+      }
+
+      if (modalSubtitle) {
+        if (details.subtitle) {
+          modalSubtitle.textContent = details.subtitle;
+          modalSubtitle.style.display = 'block';
+        } else {
+          modalSubtitle.textContent = '';
+          modalSubtitle.style.display = 'none';
+        }
+      }
+
+      if (modalDescription) {
+        modalDescription.innerHTML = '';
+        var paragraphs = details.description || [];
+        paragraphs.forEach(function (copy) {
+          var paragraph = document.createElement('p');
+          paragraph.textContent = copy;
+          modalDescription.appendChild(paragraph);
+        });
+      }
+
+      if (modalScreencast) {
+        if (details.screencast) {
+          modalScreencast.href = details.screencast;
+          modalScreencast.style.display = 'inline-flex';
+        } else {
+          modalScreencast.href = '#';
+          modalScreencast.style.display = 'none';
+        }
+      }
+
+      buildSlides(key, projectTitle);
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-modal-open');
+      var closeButton = modal.querySelector('.portfolio-modal__close');
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    function closeModal() {
+      if (!modal.classList.contains('is-visible')) {
+        return;
+      }
+      stopAuto();
+      modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-modal-open');
+      activeImages = [];
+      dots = [];
+      if (track) {
+        track.innerHTML = '';
+      }
+      if (pagination) {
+        pagination.innerHTML = '';
+      }
+      if (modalTech) {
+        modalTech.textContent = '';
+        modalTech.style.display = 'none';
+      }
+      if (modalSubtitle) {
+        modalSubtitle.textContent = '';
+        modalSubtitle.style.display = 'none';
+      }
+      if (modalTitle) {
+        modalTitle.textContent = '';
+      }
+      if (modalDescription) {
+        modalDescription.innerHTML = '';
+      }
+      if (modalScreencast) {
+        modalScreencast.href = '#';
+        modalScreencast.style.display = 'none';
+      }
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      }
+      lastFocus = null;
+    }
+
+    galleryButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var key = button.getAttribute('data-gallery');
+        openModal(key, button);
+      });
+    });
+
+    if (prevControl) {
+      prevControl.addEventListener('click', function () {
+        goToSlide(activeIndex - 1, true);
+      });
+    }
+
+    if (nextControl) {
+      nextControl.addEventListener('click', function () {
+        goToSlide(activeIndex + 1, true);
+      });
+    }
+
+    closeElements.forEach(function (element) {
+      element.addEventListener('click', function () {
+        closeModal();
+      });
+    });
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (!modal.classList.contains('is-visible')) {
+        return;
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeModal();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToSlide(activeIndex + 1, true);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToSlide(activeIndex - 1, true);
+      }
+    });
+
+    modal.addEventListener('keydown', function (event) {
+      if (event.key !== 'Tab') {
+        return;
+      }
+      var focusable = modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+      focusable = Array.prototype.slice.call(focusable).filter(function (element) {
+        return element.offsetParent !== null;
+      });
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey) {
+        if (document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  });
+</script>
 </body>
 </html>

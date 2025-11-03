@@ -673,7 +673,6 @@ ol.type li a:hover {
 	align-items: center;
 	justify-content: center;
 	height: clamp(320px, 65vh, 720px);
-	padding: 12px;
 }
 
 .portfolio-modal__track {
@@ -702,6 +701,7 @@ ol.type li a:hover {
 	max-height: 100%;
 	object-fit: contain;
 	border-radius: 16px;
+	padding: 12px;
 }
 
 .portfolio-modal__slide a {
@@ -1060,8 +1060,7 @@ ol.type li a:hover {
 
 	.portfolio-modal__viewport {
 		height: clamp(240px, 60vh, 560px);
-		padding: 10px;
-	}
+}
 }
 
 /* Achivements Section */

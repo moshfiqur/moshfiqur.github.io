@@ -592,7 +592,7 @@
       <button class="portfolio-nav prev disabled" aria-label="Previous project">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <button class="portfolio-nav next disabled" aria-label="Next project">
+      <button class="portfolio-nav next" aria-label="Next project">
         <i class="fa fa-chevron-right"></i>
       </button>
 
@@ -610,10 +610,24 @@
             </div>
           </div>
         </div>
+
+        <div class="portfolio-slide" data-title="Royalia">
+          <div class="portfolio-card reverse">
+            <div class="portfolio-visual">
+              <img src="portfolio/royalia.png" alt="Royalia social network preview" class="portfolio-image img-responsive">
+            </div>
+            <div class="portfolio-details">
+              <span class="portfolio-pill">Social Network &bull; Work in Progress</span>
+              <h4>Royalia</h4>
+              <p>Early-stage community for the &quot;mentally royal&quot; where IQ-shaped profiles drive status; current build covers auth, themed profiles, and Bunny.net powered media uploads.</p>
+              <button type="button" class="portfolio-more-btn" data-gallery="royalia">Show more</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="portfolio-meta" aria-hidden="true">
-        <span class="portfolio-counter">01 / 01</span>
+        <span class="portfolio-counter">01 / 02</span>
         <div class="portfolio-dots"></div>
       </div>
     </div>
@@ -1552,6 +1566,11 @@
         '04_APIDoc4.png',
         '05_APIDoc5.png'
       ],
+      royalia: [
+        '01_Login.png',
+        '02_UserProfile.png',
+        '03_Album.png'
+      ],
       'creative-storyboard': [
         '01_Landing.png',
         '02_Home.png',
@@ -1654,6 +1673,19 @@
           "Creative Storyboard API powers the storyboard planning platform with a secure Node.js/Express backend, exposing endpoints for authentication, dashboard analytics, project -> scene -> shot hierarchies, and rich media management (uploads plus audio-library linking).",
           "Key features include cookie-based sessions with bcrypt-hardened login, activity logging, aggregated stats, MySQL-backed CRUD for nested resources, multer-powered media uploads with file hygiene, and fuzzy-search across a local sound library.",
           "The stack combines Express, mysql2, bcryptjs, multer, body-parser, cors, dotenv, and vanilla SPA docs, running on Node.js and MySQL--ready to drop behind any Next.js or React frontend."
+        ]
+      },
+      royalia: {
+        title: "Royalia",
+        subtitle: "Social network for the mentally royal",
+        tech: "Meteor · React 18 · MongoDB · Bunny.net",
+        screencast: null,
+        description: [
+          "Royalia is a social network where status and participation follow IQ-informed profiles, giving the mentally royal a shared place to compare notes and collaborate.",
+          "The in-progress build ships authentication, themed profile pages, and rich media layouts with cover photos and avatars across light and dark modes.",
+          "Uploads are validated for type and size before heading to Bunny.net storage, keeping profile imagery fast, reliable, and easy to manage.",
+          "Next on the roadmap: IQ-weighted feeds, friend graph, messaging, and reputation anchored to verified profile data.",
+          "Built with Meteor for full-stack reactivity, React 18 with react-meteor-data, Node.js modules configured via dotenv, Mongo-backed data models, Bunny.net storage SDK helpers, and automated tests through meteortesting:mocha."
         ]
       },
       'creative-storyboard': {

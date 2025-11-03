@@ -1872,15 +1872,20 @@
       track.innerHTML = '';
       activeIndex = 0;
 
-      images.forEach(function (imageName, index) {
-        var slide = document.createElement('li');
-        slide.className = 'portfolio-modal__slide';
-        var img = document.createElement('img');
-        img.src = 'portfolio/' + key + '/' + imageName;
-        img.alt = projectTitle + ' screen ' + padIndex(index + 1);
-        slide.appendChild(img);
-        track.appendChild(slide);
-      });
+        images.forEach(function (imageName, index) {
+          var slide = document.createElement('li');
+          slide.className = 'portfolio-modal__slide';
+          var link = document.createElement('a');
+          link.href = 'portfolio/' + key + '/' + imageName;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          var img = document.createElement('img');
+          img.src = 'portfolio/' + key + '/' + imageName;
+          img.alt = projectTitle + ' screen ' + padIndex(index + 1);
+          link.appendChild(img);
+          slide.appendChild(link);
+          track.appendChild(slide);
+        });
 
       track.style.transform = 'translateX(0%)';
       buildDots(images.length);

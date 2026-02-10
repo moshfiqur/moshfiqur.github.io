@@ -1,0 +1,16 @@
+<div id="github-repos" class="text-center" style="margin-top: 50px;">
+  <div class="container">
+    <div class="section-title center">
+      <h2>GitHub Repositories</h2>
+      <hr>
+    </div>
+    <div class="row">
+      {% for repo in site.data.github_repos %}
+      <div class="col-md-3">
+        <h4><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></h4>
+        <p>{{ repo.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

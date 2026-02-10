@@ -1,0 +1,15 @@
+- title: "Flutter On-device LLM Inference"
+  url: "https://github.com/moshfiqur/Flutter-On-device-LLM"
+  description: "A Flutter application demonstrating on-device LLM inference using llama.cpp and Dart FFI."
+
+- title: "Beauticator"
+  url: "https://github.com/moshfiqur/beauticator-ai-selfie-companion"
+  description: "Your AI selfie companion, implemented using Flutter and on-device ML model."
+
+- title: "dockerized-yolov3-coco"
+  url: "https://github.com/moshfiqur/dockerized-yolov3-coco"
+  description: "A dockerized micro-service implementation of object detection using YOLOV v3."
+
+- title: "Business Intelligence"
+  url: "https://github.com/moshfiqur/business-intelligence"
+  description: "A set of utility python scripts to gather semantics from enterprise data."

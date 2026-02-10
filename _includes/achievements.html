@@ -1,0 +1,18 @@
+<div id="achievements" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Some Stats</h2>
+      <hr>
+    </div>
+    <div class="row">
+      {% for achievement in site.data.achievements %}
+      <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="{{ achievement.delay }}">
+        <div class="achievement-box">
+          <span class="count">{{ achievement.count }}</span>
+          <h4>{{ achievement.label }}</h4>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

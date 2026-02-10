@@ -1,0 +1,15 @@
+- name: "Twitter"
+  icon: "fa-twitter"
+  url: "https://x.com/evenflair"
+
+- name: "GitHub"
+  icon: "fa-github"
+  url: "https://github.com/moshfiqur"
+
+- name: "LinkedIn"
+  icon: "fa-linkedin"
+  url: "https://linkedin.com/in/moshfiqurrahman"
+
+- name: "Stack Overflow"
+  icon: "fa-stack-overflow"
+  url: "https://stackoverflow.com/users/304504/moshfiqur"

@@ -19,3 +19,11 @@ portfolio/klara/edits
 portfolio/yegdoo/edits
 portfolio/booksmart/edits
 portfolio/creative-storyboard/edits
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+vendor/

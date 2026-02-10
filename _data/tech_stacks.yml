@@ -1,0 +1,53 @@
+column1:
+  - title: "Web App (Python)"
+    items:
+      - "Django, Flask, FastAPI"
+      - "Celery (Task Queues), SQLAlchemy"
+      - "Scalable web apps & APIs"
+  
+  - title: "Web App (PHP)"
+    items:
+      - "Laravel, Symfony, CodeIgniter"
+      - "WordPress, Drupal"
+      - "High-traffic web portals"
+  
+  - title: "Backend (Java)"
+    items:
+      - "Spring Boot, Hibernate"
+      - "Scalable server applications"
+
+column2:
+  - title: "Full Stack (JavaScript & TypeScript)"
+    items:
+      - "React, Angular, Vue.js, Next.js"
+      - "Node.js, Express.js"
+      - "Vercel"
+  
+  - title: "Mobile App (Flutter + React Native)"
+    items:
+      - "Dart, Flutter, React Native"
+      - "State Management: Redux, Provider, Riverpod"
+  
+  - title: "Version Control & CI/CD"
+    items:
+      - "Git, GitHub, GitLab"
+      - "Pipeline Integration"
+
+column3:
+  - title: "AI/ML"
+    items:
+      - "LLMs: GPT, Mistral, Llama, BERT, LLaVA, DeepSeek"
+      - "NLP, Predictive Analytics, Computer Vision"
+      - "TensorFlow, PyTorch, Scikit-learn, OpenCV"
+      - "RAG, AI Agents, Content Moderation (OpenAI, HiveAI)"
+  
+  - title: "Cloud & Deployment"
+    items:
+      - "AWS (EC2, S3, Lambda), GCP (Cloud Functions, BigQuery)"
+      - "Docker, Scalable Infrastructure"
+  
+  - title: "Database & APIs"
+    items:
+      - "SQL: MySQL, MariaDB, PostgreSQL"
+      - "NoSQL: MongoDB, CouchDB, Couchbase"
+      - "REST, GraphQL, Apollo GraphQL"

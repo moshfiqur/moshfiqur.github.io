@@ -1,0 +1,29 @@
+name: "Moshfiqur Rahman"
+tagline: "Machine Learning Engineer & Fullstack Developer"
+
+about:
+  image: "img/about_me.jpg"
+  paragraphs:
+    - "Experienced software engineer with a strong track record in designing, developing, and deploying scalable, high-traffic web and server applications. Holds a Bachelor's degree and a Master's degree in Computer Science, with a solid academic foundation and hands-on experience in both research and industry settings."
+    - "Throughout my career, I have contributed to diverse projects, from AI-driven solutions to mobile applications, with a focus on creating innovative, user-centric services that simplify and connect lives. My expertise spans the full software development lifecycle, from requirement engineering to deployment, and I am passionate about solving complex problems through scalable and efficient solutions."
+    - "I thrive in collaborative environments, leveraging my analytical thinking and problem-solving skills to deliver high-quality results. My work has consistently emphasized interdisciplinary collaboration, knowledge sharing, and a commitment to continuous learning."
+  resume_url: "resume/MoshfiqurRahman.CV.pdf"
+
+navigation:
+  - name: "About"
+    url: "#about"
+  - name: "Portfolio"
+    url: "#portfolio"
+  - name: "Skills"
+    url: "#skills"
+  - name: "Stacks"
+    url: "#technology-stacks"
+  - name: "Resume"
+    url: "resume/MoshfiqurRahman.CV.pdf"
+    external: true
+  - name: "Contact"
+    url: "#contact"
+
+footer:
+  credits: "Design by <a href='http://www.templatewire.com' rel='nofollow'>TemplateWire</a>"
+  nasa_credit: "Background photo by <a href='https://unsplash.com/@nasa' target='_blank' rel='noopener'>NASA</a> on Unsplash"

@@ -19,11 +19,10 @@ navigation:
   - name: "Stacks"
     url: "#technology-stacks"
   - name: "Resume"
-    url: "resume/MoshfiqurRahman.CV.pdf"
-    external: true
+    url: "#resume"
   - name: "Contact"
     url: "#contact"
 
 footer:
-  credits: "Design by <a href='http://www.templatewire.com' rel='nofollow'>TemplateWire</a>"
-  nasa_credit: "Background photo by <a href='https://unsplash.com/@nasa' target='_blank' rel='noopener'>NASA</a> on Unsplash"
+  credits: "Designed by <a href='http://www.templatewire.com' rel='nofollow'>TemplateWire</a>"
+  nasa_credit: "The astronaut's photo in the header is provided by <a href='https://unsplash.com/@nasa' target='_blank' rel='noopener'>NASA</a> on Unsplash"

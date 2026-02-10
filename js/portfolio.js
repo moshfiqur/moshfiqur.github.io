@@ -207,8 +207,6 @@
 
     reflectPreference();
   });
-</script>
-<script>
   document.addEventListener('DOMContentLoaded', function () {
     var carousels = Array.prototype.slice.call(document.querySelectorAll('.portfolio-carousel'));
 
@@ -441,9 +439,7 @@
       return value < 10 ? '0' + value : String(value);
     }
   });
-</script>
 
-<script>
   document.addEventListener('DOMContentLoaded', function () {
     var galleryMap = {
       artemis: [

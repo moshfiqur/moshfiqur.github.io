@@ -1,0 +1,28 @@
+<div id="about">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>About Me</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="{{ site.baseurl }}/{{ site.data.site.about.image }}" class="img-responsive">
+      </div>
+      <div class="col-md-12" style="height: 20px;">
+        &nbsp;
+      </div>
+      <div class="col-md-12">
+        <div class="about-text" style="font-size: 1.8rem; text-align: justify;">
+          {% for paragraph in site.data.site.about.paragraphs %}
+          <p>{{ paragraph }}</p>
+          {% endfor %}
+          <p class="text-center" style="margin-top: 50px;">
+            <a class="btn btn-primary" href="{{ site.baseurl }}/{{ site.data.site.about.resume_url }}">
+              <i class="fa fa-download"></i> Download Resume
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

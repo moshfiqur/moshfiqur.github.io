@@ -1,0 +1,40 @@
+# Site settings
+title: Moshfiqur Rahman - Machine Learning Engineer & Fullstack Developer
+description: Experienced software engineer with expertise in ML, web development, and scalable applications
+author: Moshfiqur Rahman
+url: https://moshfiqur.github.io
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - index_backup.html
+  - index_original.html
+  - portfolio/*/edits
+  - README.md
+
+# Include files
+include:
+  - _pages
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name

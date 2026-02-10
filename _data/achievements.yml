@@ -1,0 +1,15 @@
+- count: 27
+  label: "Successful Projects"
+  delay: "200ms"
+
+- count: 1400
+  label: "Hours of Freelancing Work"
+  delay: "400ms"
+
+- count: 20
+  label: "Technologies"
+  delay: "600ms"
+
+- count: 19
+  label: "Years of Experience"
+  delay: "800ms"

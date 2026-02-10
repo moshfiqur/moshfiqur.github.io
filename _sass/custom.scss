@@ -1,0 +1,329 @@
+// Custom styles for Jekyll site
+
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col-md-4 {
+    padding: 10px;
+  }
+
+  ul {
+    height: 150px;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+  }
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.portfolio-section {
+  .portfolio-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 72px;
+  }
+
+  .portfolio-slides {
+    position: relative;
+    min-height: 440px;
+    height: auto;
+    transition: height 0.55s ease;
+  }
+
+  .portfolio-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    z-index: 1;
+
+    &.is-active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 2;
+
+      &.entering-from-left,
+      &.entering-from-right {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &.exiting-left {
+      opacity: 0;
+      transform: translateX(-80px);
+      pointer-events: none;
+    }
+
+    &.exiting-right {
+      opacity: 0;
+      transform: translateX(80px);
+      pointer-events: none;
+    }
+
+    &.entering-from-left {
+      opacity: 0;
+      transform: translateX(-80px);
+    }
+
+    &.entering-from-right {
+      opacity: 0;
+      transform: translateX(80px);
+      pointer-events: none;
+    }
+  }
+
+  .portfolio-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 36px;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f7ff 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 44px rgba(15, 23, 42, 0.12);
+    text-align: left;
+    width: 100%;
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .portfolio-visual {
+    flex: 0 0 42%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .portfolio-image {
+    max-width: 75%;
+    border-radius: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: transparent;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  .portfolio-details {
+    flex: 1;
+
+    h4 {
+      font-size: 2.6rem;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+  }
+
+  .portfolio-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(15, 23, 42, 0.65);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 9px 12px rgba(15, 23, 42, 0.25);
+    z-index: 2;
+
+    &:hover {
+      background: rgba(109, 76, 191, 0.85);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+    }
+
+    &.disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &.prev {
+      left: 12px;
+    }
+
+    &.next {
+      right: 12px;
+    }
+  }
+
+  .portfolio-meta {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #6d4cbf;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  .portfolio-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .portfolio-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(109, 76, 191, 0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(109, 76, 191, 0.35);
+    }
+
+    &.is-active {
+      background: #6d4cbf;
+      transform: scale(1.3);
+    }
+  }
+
+  .portfolio-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(109, 76, 191, 0.12);
+    color: #6d4cbf;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 991px) {
+    .portfolio-carousel {
+      padding: 20px 48px;
+    }
+
+    .portfolio-slides {
+      min-height: 520px;
+    }
+
+    .portfolio-card,
+    .portfolio-card.reverse {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+      padding: 24px 22px;
+    }
+
+    .portfolio-details {
+      text-align: center;
+    }
+
+    .portfolio-image {
+      max-width: 70%;
+    }
+
+    .portfolio-nav {
+      &.prev {
+        left: 0;
+      }
+
+      &.next {
+        right: 0;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .portfolio-card.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+// Dark theme styles
+html[data-theme="dark"] {
+  .portfolio-section {
+    .portfolio-card {
+      background: linear-gradient(135deg, #1a2644 0%, #0f172a 100%);
+      box-shadow: 0 20px 48px rgba(2, 6, 23, 0.5);
+    }
+
+    .portfolio-details p {
+      color: #cbd5f5;
+    }
+
+    .portfolio-meta {
+      color: #9ca3af;
+    }
+
+    .portfolio-pill {
+      background: rgba(125, 211, 252, 0.18);
+      color: #7dd3fc;
+    }
+
+    .portfolio-nav {
+      background: rgba(148, 163, 184, 0.2);
+      color: #f8fafc;
+      box-shadow: 0 12px 26px rgba(2, 6, 23, 0.45);
+
+      &:hover {
+        background: rgba(109, 76, 191, 0.85);
+      }
+    }
+
+    .portfolio-dot {
+      background: rgba(148, 163, 184, 0.45);
+
+      &.is-active {
+        background: #7bc3d1;
+      }
+    }
+  }
+}

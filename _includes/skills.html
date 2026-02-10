@@ -1,0 +1,18 @@
+<div id="skills" class="text-center">
+  <div class="container">
+    <div class="section-title center">
+      <h2>Skills</h2>
+      <hr>
+    </div>
+    <div class="row">
+      {% for skill in site.data.skills %}
+      <div class="col-md-4 col-sm-6 skill">
+        <span class="chart" data-percent="{{ skill.percent }}">
+          <span class="percent">{{ skill.percent }}</span>
+        </span>
+        <h4>{{ skill.name }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

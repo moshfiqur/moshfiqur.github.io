@@ -1,0 +1,33 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<meta name="author" content="{{ site.author }}">
+
+<link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl }}/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/fonts/font-awesome/css/font-awesome.css">
+
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css">
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/list.css">
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/prettyPhoto.css">
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ site.baseurl }}/js/modernizr.custom.js"></script>
+<script>
+  window.Modernizr = window.Modernizr || {};
+  if (typeof window.Modernizr.addTest !== 'function') {
+    window.Modernizr.addTest = function (feature, test) {
+      window.Modernizr[feature] = typeof test === 'function' ? test() : test;
+      return window.Modernizr;
+    };
+  }
+</script>
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/custom.css">
+</head>

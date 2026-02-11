@@ -9,32 +9,24 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 - **Modular design**: Reusable components via includes and layouts
 - **Responsive layout**: Mobile-friendly design with Bootstrap
 - **Portfolio showcase**: Interactive carousels for mobile apps, web apps, and productivity tools
-- **Dynamic sections**: Tech stacks and work experience
 
 ## Project Structure
 
 ```
 ├── _config.yml           # Jekyll configuration
 ├── _data/                # YAML data files for content
-│   ├── experience.yml
-│   ├── github_repos.yml
 │   ├── portfolio.yml
 │   ├── site.yml
-│   ├── social.yml
-│   └── tech_stacks.yml
+│   └── social.yml
 ├── _includes/            # Reusable HTML components
 │   ├── about.html
-│   ├── contact.html
 │   ├── footer.html
-│   ├── github-repos.html
 │   ├── head.html
 │   ├── header.html
 │   ├── nav.html
 │   ├── portfolio.html
 │   ├── portfolio-modal.html
-│   ├── resume.html
-│   ├── scripts.html
-│   └── tech-stacks.html
+│   └── scripts.html
 ├── _layouts/             # Page templates
 │   └── default.html
 ├── _sass/                # SCSS stylesheets
@@ -98,9 +90,6 @@ This site is designed to be deployed on GitHub Pages:
 All content is managed through YAML files in the `_data/` directory:
 
 - **Portfolio projects**: Edit `_data/portfolio.yml`
-- **Technology stacks**: Edit `_data/tech_stacks.yml`
-- **Work experience**: Edit `_data/experience.yml`
-- **GitHub repositories**: Edit `_data/github_repos.yml`
 - **Social links**: Edit `_data/social.yml`
 - **Site metadata**: Edit `_data/site.yml`
 

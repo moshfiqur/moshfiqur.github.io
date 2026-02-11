@@ -14,14 +14,8 @@ navigation:
     url: "#about"
   - name: "Portfolio"
     url: "#portfolio"
-  - name: "Stacks"
-    url: "#technology-stacks"
   - name: "Blog"
     url: "/blog/"
-  - name: "Resume"
-    url: "#resume"
-  - name: "Contact"
-    url: "#contact"
 
 footer:
   credits: "Designed by <a href='http://www.templatewire.com' rel='nofollow'>TemplateWire</a>"

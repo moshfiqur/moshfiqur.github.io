@@ -1144,9 +1144,9 @@ html[data-theme="dark"] h6 {
 	color: #f8fafc;
 }
 
-html[data-theme="dark"] a {
+/* html[data-theme="dark"] a {
 	color: #7dd3fc;
-}
+} */
 
 html[data-theme="dark"] a:hover,
 html[data-theme="dark"] a:focus {

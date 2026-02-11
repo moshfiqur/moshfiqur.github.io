@@ -290,51 +290,6 @@ hr {
 	margin-top: 20px;
 	margin-bottom: 30px;
 }
-/* Skills Section */
-#skills {
-	padding: 100px 0;
-	background: #7bc3d1;
-}
-#skills h2 {
-	color: #fff;
-}
-#skills hr {
-	background: rgba(255,255,255,0.3);
-}
-#skills .skill {
-	margin-bottom: 40px;
-	text-align: center;
-	padding: 0px;
-}
-#skills .skill h4 {
-	font-weight: 600;
-	color: #fff;
-}
-.chart {
-	position: relative;
-	display: inline-block;
-	width: 152px;
-	height: 152px;
-	margin-bottom: 26px;
-	text-align: center;
-}
-.chart canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.percent {
-	display: inline-block;
-	font-size: 21px;
-	color: #121d1f;
-	line-height: 152px;
-	z-index: 2;
-}
-.percent:after {
-	content: '%';
-	margin-left: 0.1em;
-	font-size: .8em;
-}
 /* Portfolio Section */
 #portfolio {
 	padding: 80px 0;

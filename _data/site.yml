@@ -14,8 +14,6 @@ navigation:
     url: "#about"
   - name: "Portfolio"
     url: "#portfolio"
-  - name: "Skills"
-    url: "#skills"
   - name: "Stacks"
     url: "#technology-stacks"
   - name: "Blog"

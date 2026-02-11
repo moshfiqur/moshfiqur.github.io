@@ -1,6 +1,6 @@
 # Personal Portfolio Website
 
-This is a personal portfolio website built with Jekyll, showcasing professional experience, skills, and projects.
+This is a personal portfolio website built with Jekyll, showcasing professional experience and projects.
 
 ## Features
 
@@ -9,7 +9,7 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 - **Modular design**: Reusable components via includes and layouts
 - **Responsive layout**: Mobile-friendly design with Bootstrap
 - **Portfolio showcase**: Interactive carousels for mobile apps, web apps, and productivity tools
-- **Dynamic sections**: Skills, tech stacks, work experience, and achievements
+- **Dynamic sections**: Tech stacks, work experience, and achievements
 
 ## Project Structure
 
@@ -21,7 +21,6 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 │   ├── github_repos.yml
 │   ├── portfolio.yml
 │   ├── site.yml
-│   ├── skills.yml
 │   ├── social.yml
 │   └── tech_stacks.yml
 ├── _includes/            # Reusable HTML components
@@ -37,7 +36,6 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 │   ├── portfolio-modal.html
 │   ├── resume.html
 │   ├── scripts.html
-│   ├── skills.html
 │   └── tech-stacks.html
 ├── _layouts/             # Page templates
 │   └── default.html
@@ -102,7 +100,6 @@ This site is designed to be deployed on GitHub Pages:
 All content is managed through YAML files in the `_data/` directory:
 
 - **Portfolio projects**: Edit `_data/portfolio.yml`
-- **Skills**: Edit `_data/skills.yml`
 - **Technology stacks**: Edit `_data/tech_stacks.yml`
 - **Work experience**: Edit `_data/experience.yml`
 - **Achievements**: Edit `_data/achievements.yml`

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body id="page-top" class="index">
+
+{% include nav.html %}
+
+<section style="padding-top: 100px; min-height: 100vh; background: #f9f9f9;">
+  <div class="container" style="max-width: 900px;">
+    {{ content }}
+    
+    <div style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+      <a href="/blog/" class="btn btn-default" style="padding: 12px 30px; font-size: 16px;">← Back to Blog</a>
+    </div>
+  </div>
+</section>
+
+{% include footer.html %}
+
+{% include scripts.html %}
+
+</body>
+</html>

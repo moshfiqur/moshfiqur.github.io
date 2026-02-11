@@ -18,6 +18,8 @@ navigation:
     url: "#skills"
   - name: "Stacks"
     url: "#technology-stacks"
+  - name: "Blog"
+    url: "/blog/"
   - name: "Resume"
     url: "#resume"
   - name: "Contact"

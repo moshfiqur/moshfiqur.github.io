@@ -8,7 +8,7 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 - **Data-driven**: Content managed through YAML data files for easy updates
 - **Modular design**: Reusable components via includes and layouts
 - **Responsive layout**: Mobile-friendly design with Bootstrap
-- **Portfolio showcase**: Interactive carousels for mobile apps, web apps, and productivity tools
+- **Portfolio showcase**: Single interactive carousel covering mobile, web, and productivity builds
 
 ## Project Structure
 

@@ -735,93 +735,6 @@ ol.type li a:hover {
 	}
 }
 
-#productivity-apps {
-	padding: 90px 0 110px;
-	background: linear-gradient(135deg, #f5f9ff 0%, #eef2ff 48%, #f7f5ff 100%);
-	overflow: hidden;
-}
-
-.productivity-header {
-	text-align: center;
-	max-width: 720px;
-	margin: 0 auto 48px;
-}
-
-.productivity-label {
-	display: inline-block;
-	margin-bottom: 18px;
-	padding: 6px 14px;
-	border-radius: 999px;
-	background: rgba(99, 102, 241, 0.12);
-	color: #4c51bf;
-	letter-spacing: 0.16em;
-	font-size: 12px;
-	text-transform: uppercase;
-	font-weight: 700;
-}
-
-.productivity-header h2 {
-	font-size: 3.2rem;
-	margin-bottom: 14px;
-	color: #0f172a;
-}
-
-.productivity-tagline {
-	font-size: 1.6rem;
-	color: #475569;
-	margin: 0;
-}
-
-.productivity-summary {
-	font-size: 1.55rem;
-	line-height: 1.7;
-	color: #1f2937;
-	margin-bottom: 20px;
-}
-
-.productivity-meta {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-	margin-bottom: 26px;
-}
-
-.productivity-meta .meta-item {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	padding: 6px 14px;
-	border-radius: 999px;
-	background: rgba(99, 102, 241, 0.1);
-	color: #312e81;
-	font-size: 1.2rem;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
-	font-weight: 600;
-}
-
-.productivity-meta .meta-item i {
-	color: #6366f1;
-}
-
-@media (max-width: 991px) {
-	.productivity-meta {
-		justify-content: center;
-	}
-}
-
-@media (max-width: 575px) {
-	.productivity-meta {
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.productivity-meta .meta-item {
-		width: 100%;
-		justify-content: center;
-	}
-}
-
 /* Footer Section*/
 #footer {
 	background: #121d1f;
@@ -994,36 +907,6 @@ html[data-theme="dark"] .portfolio-modal__dot {
 
 html[data-theme="dark"] .portfolio-modal__dot.is-active {
 	background: #38bdf8;
-}
-
-html[data-theme="dark"] #productivity-apps {
-	background: linear-gradient(135deg, #0f172a 0%, #111c34 50%, #0b1222 100%);
-}
-
-html[data-theme="dark"] .productivity-header h2 {
-	color: #f8fafc;
-}
-
-html[data-theme="dark"] .productivity-tagline {
-	color: #cbd5f5;
-}
-
-html[data-theme="dark"] .productivity-label {
-	background: rgba(59,130,246,0.22);
-	color: #cbd5f5;
-}
-
-html[data-theme="dark"] .productivity-summary {
-	color: #cbd5f5;
-}
-
-html[data-theme="dark"] .productivity-meta .meta-item {
-	background: rgba(79,70,229,0.22);
-	color: #e0e7ff;
-}
-
-html[data-theme="dark"] .productivity-meta .meta-item i {
-	color: #93c5fd;
 }
 
 html[data-theme="dark"] .theme-toggle-trigger {

@@ -693,67 +693,6 @@ html[data-theme="dark"] #nav .navbar-custom {
   }
 }
 
-/* AI News Section */
-#ai-news {
-  padding: 80px 0;
-  background: #ffffff;
-}
-
-.ai-news-grid {
-  margin-top: 40px;
-}
-
-.ai-news-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  padding: 35px;
-  text-align: center;
-  transition: all 0.3s ease;
-  margin-bottom: 30px;
-  height: 100%;
-  border: 2px solid transparent;
-
-  &:hover {
-    transform: translateY(-5px);
-    border-color: #667eea;
-    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
-  }
-}
-
-.ai-news-icon {
-  font-size: 5rem;
-  color: #667eea;
-  margin-bottom: 20px;
-
-  i {
-    transition: transform 0.3s ease;
-  }
-
-  .ai-news-card:hover & i {
-    transform: scale(1.1);
-  }
-}
-
-.ai-news-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.ai-news-description {
-  font-size: 1.6rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.ai-news-date {
-  font-size: 1.4rem;
-  color: #999;
-  font-style: italic;
-}
-
 /* Footer Section */
 #footer {
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
@@ -930,46 +869,6 @@ html[data-theme="dark"] {
     }
   }
 
-  #ai-news {
-    background: #2d3748;
-
-    .section-title {
-      h2 {
-        color: #f7fafc;
-      }
-
-      .section-description {
-        color: #cbd5e0;
-      }
-    }
-
-    .ai-news-card {
-      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-      border-color: transparent;
-
-      &:hover {
-        border-color: #90cdf4;
-        box-shadow: 0 12px 30px rgba(144, 205, 244, 0.2);
-      }
-    }
-
-    .ai-news-icon {
-      color: #90cdf4;
-    }
-
-    .ai-news-title {
-      color: #f7fafc;
-    }
-
-    .ai-news-description {
-      color: #cbd5e0;
-    }
-
-    .ai-news-date {
-      color: #a0aec0;
-    }
-  }
-
   #footer {
     background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
 
@@ -1038,8 +937,7 @@ html[data-theme="dark"] {
     font-size: 3rem;
   }
 
-  .blog-preview-card,
-  .ai-news-card {
+  .blog-preview-card {
     margin-bottom: 20px;
   }
 

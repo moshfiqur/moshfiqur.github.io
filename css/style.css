@@ -822,31 +822,6 @@ ol.type li a:hover {
 	}
 }
 
-/* Achivements Section */
-#achievements {
-	padding: 100px 0;
-	background: #7bc3d1;
-}
-#achievements h2 {
-	color: #fff;
-}
-#achievements hr {
-	background: rgba(255,255,255,0.3);
-}
-.achievement-box h4 {
-	color: #fff;
-	font-size: 20px;
-	font-weight: 400;
-	margin-left: 5px;
-}
-.achievement-box span.count {
-	font-size: 52px;
-	font-weight: 600;
-	display: block;
-	color: #121d1f;
-	padding: 0;
-	margin: 0;
-}
 /* Resume Section */
 #resume {
 	padding: 100px 0;
@@ -1127,20 +1102,6 @@ html[data-theme="dark"] .portfolio-item .hover-bg {
 
 html[data-theme="dark"] .portfolio-item .hover-bg .hover-text {
 	background: rgba(15, 23, 42, 0.8);
-}
-
-html[data-theme="dark"] #achievements {
-	background: #0f172a;
-}
-
-html[data-theme="dark"] #achievements h2,
-html[data-theme="dark"] #achievements hr,
-html[data-theme="dark"] #achievements .achievement-box h4 {
-	color: #f8fafc;
-}
-
-html[data-theme="dark"] .achievement-box span.count {
-	color: #7bc3d1;
 }
 
 html[data-theme="dark"] #contact {

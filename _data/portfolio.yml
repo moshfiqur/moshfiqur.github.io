@@ -1,15 +1,15 @@
 projects:
 - id: artemis
   title: Artemis
-  pill: Product Ops &bull; Flutter
-  description: Product ops command center that keeps multi-market release trains aligned in real time.
+  pill: Flutter, Firebase
+  description: Building the "Digital Third Space" - Scaling Artemis with Flutter and Firebase.
   image: portfolio/artemis.png
   reverse: false
   subtitle: Your Virtual Club Experience, Anytime, Anywhere.
-  tech: Flutter · MySQL · Firebase
+  tech: Flutter · Firebase
   screencast: https://youtu.be/_ApXFTfjofw
   full_description:
-  - Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, MySQL, and Firebase, it helps people discover communities around their passions.
+  - Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, and Firebase, it helps people discover communities around their passions.
   - Users can join clubs for sports, literature, movies, comedy, or location-based meetups, with thoughtful entry limits to keep the vibe balanced. They can buy virtual drinks for others and spark one-to-one chats that feel natural and personal.
   - Whether you are sharing a passion, meeting like-minded individuals, or simply unwinding, Artemis creates an immersive club experience anywhere.
   gallery:

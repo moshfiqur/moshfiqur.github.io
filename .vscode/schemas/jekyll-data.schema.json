@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "description": "Schema-less placeholder so VS Code doesn’t apply the Ansible schema."
+}

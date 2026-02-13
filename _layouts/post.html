@@ -6,7 +6,41 @@
 
 {% include nav.html %}
 
-<section style="padding-top: 100px; min-height: 100vh; background: #f9f9f9;">
+<style>
+  .post-section {
+    padding-top: 120px;
+    min-height: 100vh;
+    background: #f9f9f9;
+  }
+
+  html[data-theme="dark"] .post-section {
+    background: #1a202c;
+  }
+
+  html[data-theme="dark"] .blog-post {
+    background: #2d3748;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  html[data-theme="dark"] .blog-post h2 {
+    color: #f7fafc;
+  }
+
+  html[data-theme="dark"] .blog-post h3 {
+    color: #e2e8f0;
+  }
+
+  html[data-theme="dark"] .blog-post p,
+  html[data-theme="dark"] .blog-post ul li {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .blog-post strong {
+    color: #f7fafc;
+  }
+</style>
+
+<section class="post-section">
   <div class="container" style="max-width: 900px;">
     {{ content }}
     

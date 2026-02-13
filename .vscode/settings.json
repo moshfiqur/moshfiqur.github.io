@@ -1,0 +1,7 @@
+{
+  "yaml.schemas": {
+    ".vscode/schemas/jekyll-data.schema.json": [
+      "_data/site.yml"
+    ]
+  }
+}

@@ -5,7 +5,7 @@ title: Blog
 
 <style>
 .blog-section {
-  padding: 80px 0;
+  padding: 120px 0 80px;
   background: #f9f9f9;
 }
 
@@ -106,6 +106,48 @@ title: Blog
   .blog-header h1 {
     font-size: 32px;
   }
+}
+
+/* Dark mode styles */
+html[data-theme="dark"] .blog-section {
+  background: #1a202c;
+}
+
+html[data-theme="dark"] .blog-header h1 {
+  color: #f7fafc;
+}
+
+html[data-theme="dark"] .blog-header p {
+  color: #cbd5e0;
+}
+
+html[data-theme="dark"] .blog-card {
+  background: #2d3748;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+html[data-theme="dark"] .blog-card:hover {
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+html[data-theme="dark"] .blog-card-date {
+  color: #a0aec0;
+}
+
+html[data-theme="dark"] .blog-card-title {
+  color: #f7fafc;
+}
+
+html[data-theme="dark"] .blog-card-excerpt {
+  color: #cbd5e0;
+}
+
+html[data-theme="dark"] .blog-card-readmore {
+  color: #90cdf4;
+}
+
+html[data-theme="dark"] .blog-card:hover .blog-card-readmore {
+  color: #63b3ed;
 }
 </style>
 

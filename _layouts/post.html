@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body id="page-top" class="index">
+
+{% include nav.html %}
+
+<style>
+  .post-section {
+    padding-top: 120px;
+    min-height: 100vh;
+    background: #f9f9f9;
+  }
+
+  html[data-theme="dark"] .post-section {
+    background: #1a202c;
+  }
+
+  html[data-theme="dark"] .blog-post {
+    background: #2d3748;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  html[data-theme="dark"] .blog-post h2 {
+    color: #f7fafc;
+  }
+
+  html[data-theme="dark"] .blog-post h3 {
+    color: #e2e8f0;
+  }
+
+  html[data-theme="dark"] .blog-post p,
+  html[data-theme="dark"] .blog-post ul li {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .blog-post strong {
+    color: #f7fafc;
+  }
+</style>
+
+<section class="post-section">
+  <div class="container" style="max-width: 900px;">
+    {{ content }}
+    
+    <div style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+      <a href="/blog/" class="btn btn-default" style="padding: 12px 30px; font-size: 16px;">← Back to Blog</a>
+    </div>
+  </div>
+</section>
+
+{% include footer.html %}
+
+{% include scripts.html %}
+
+</body>
+</html>

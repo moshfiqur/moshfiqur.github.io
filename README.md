@@ -1,6 +1,6 @@
 # Personal Portfolio Website
 
-This is a personal portfolio website built with Jekyll, showcasing professional experience, skills, and projects.
+This is a personal portfolio website built with Jekyll, showcasing professional experience and projects.
 
 ## Features
 
@@ -8,37 +8,25 @@ This is a personal portfolio website built with Jekyll, showcasing professional 
 - **Data-driven**: Content managed through YAML data files for easy updates
 - **Modular design**: Reusable components via includes and layouts
 - **Responsive layout**: Mobile-friendly design with Bootstrap
-- **Portfolio showcase**: Interactive carousels for mobile apps, web apps, and productivity tools
-- **Dynamic sections**: Skills, tech stacks, work experience, and achievements
+- **Portfolio showcase**: Single interactive carousel covering mobile, web, and productivity builds
 
 ## Project Structure
 
 ```
 ├── _config.yml           # Jekyll configuration
 ├── _data/                # YAML data files for content
-│   ├── achievements.yml
-│   ├── experience.yml
-│   ├── github_repos.yml
 │   ├── portfolio.yml
 │   ├── site.yml
-│   ├── skills.yml
-│   ├── social.yml
-│   └── tech_stacks.yml
+│   └── social.yml
 ├── _includes/            # Reusable HTML components
 │   ├── about.html
-│   ├── achievements.html
-│   ├── contact.html
 │   ├── footer.html
-│   ├── github-repos.html
 │   ├── head.html
 │   ├── header.html
 │   ├── nav.html
 │   ├── portfolio.html
 │   ├── portfolio-modal.html
-│   ├── resume.html
-│   ├── scripts.html
-│   ├── skills.html
-│   └── tech-stacks.html
+│   └── scripts.html
 ├── _layouts/             # Page templates
 │   └── default.html
 ├── _sass/                # SCSS stylesheets
@@ -102,11 +90,6 @@ This site is designed to be deployed on GitHub Pages:
 All content is managed through YAML files in the `_data/` directory:
 
 - **Portfolio projects**: Edit `_data/portfolio.yml`
-- **Skills**: Edit `_data/skills.yml`
-- **Technology stacks**: Edit `_data/tech_stacks.yml`
-- **Work experience**: Edit `_data/experience.yml`
-- **Achievements**: Edit `_data/achievements.yml`
-- **GitHub repositories**: Edit `_data/github_repos.yml`
 - **Social links**: Edit `_data/social.yml`
 - **Site metadata**: Edit `_data/site.yml`
 

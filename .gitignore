@@ -27,3 +27,6 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 vendor/
+PLANS.md
+img/post/edits
+ai_prompts/

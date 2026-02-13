@@ -1,11 +1,15 @@
-<!-- Mobile App Portfolio Section -->
-<div id="mobile-apps" class="text-center portfolio-section" style="margin-top: 50px; margin-bottom: 50px;">
+<div id="portfolio" class="text-center portfolio-section" style="margin: 50px 0 60px;">
   <div class="container">
     <div class="section-title center">
-      <h2>Mobile App Portfolio</h2>
+      <h2>Portfolio</h2>
+      <p class="section-description">A single carousel spanning mobile, web, and productivity builds.</p>
       <hr>
     </div>
-    <div class="portfolio-carousel" role="region" aria-label="Mobile app projects carousel" tabindex="0">
+
+    {% assign all_projects = site.data.portfolio.projects %}
+    {% assign project_count = all_projects | size %}
+    {% if project_count > 0 %}
+    <div class="portfolio-carousel" role="region" aria-label="Portfolio projects carousel" tabindex="0">
       <button class="portfolio-nav prev disabled" aria-label="Previous project">
         <i class="fa fa-chevron-left"></i>
       </button>
@@ -14,11 +18,11 @@
       </button>
 
       <div class="portfolio-slides">
-        {% for project in site.data.portfolio.mobile_apps %}
+        {% for project in all_projects %}
         <div class="portfolio-slide{% if forloop.first %} is-active{% endif %}" data-title="{{ project.title }}">
           <div class="portfolio-card{% if project.reverse %} reverse{% endif %}">
             <div class="portfolio-visual">
-              <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} mobile app preview" class="portfolio-image img-responsive">
+              <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview" class="portfolio-image img-responsive">
             </div>
             <div class="portfolio-details">
               <span class="portfolio-pill">{{ project.pill }}</span>
@@ -32,95 +36,12 @@
       </div>
 
       <div class="portfolio-meta" aria-hidden="true">
-        <span class="portfolio-counter">01 / {{ site.data.portfolio.mobile_apps | size | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="portfolio-counter">01 / {{ project_count | prepend: '0' | slice: -2, 2 }}</span>
         <div class="portfolio-dots"></div>
       </div>
     </div>
+    {% endif %}
 
     {% include portfolio-modal.html %}
-  </div>
-</div>
-
-<!-- Web App Portfolio Section -->
-<div id="web-apps" class="text-center portfolio-section" style="margin-top: 50px; margin-bottom: 50px;">
-  <div class="container">
-    <div class="section-title center">
-      <h2>Web App Portfolio</h2>
-      <hr>
-    </div>
-    <div class="portfolio-carousel" role="region" aria-label="Web app projects carousel" tabindex="0">
-      <button class="portfolio-nav prev disabled" aria-label="Previous project">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="portfolio-nav next" aria-label="Next project">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-
-      <div class="portfolio-slides">
-        {% for project in site.data.portfolio.web_apps %}
-        <div class="portfolio-slide{% if forloop.first %} is-active{% endif %}" data-title="{{ project.title }}">
-          <div class="portfolio-card{% if project.reverse %} reverse{% endif %}">
-            <div class="portfolio-visual">
-              <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} web app preview" class="portfolio-image img-responsive">
-            </div>
-            <div class="portfolio-details">
-              <span class="portfolio-pill">{{ project.pill }}</span>
-              <h4>{{ project.title }}</h4>
-              <p>{{ project.description }}</p>
-              <button type="button" class="portfolio-more-btn" data-gallery="{{ project.id }}">Show more</button>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-
-      <div class="portfolio-meta" aria-hidden="true">
-        <span class="portfolio-counter">01 / {{ site.data.portfolio.web_apps | size | prepend: '0' | slice: -2, 2 }}</span>
-        <div class="portfolio-dots"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Productivity App Portfolio Section -->
-<div id="productivity-apps" class="productivity-section text-center portfolio-section" style="margin-bottom: 60px;">
-  <div class="container">
-    <div class="productivity-header">
-      <span class="productivity-label">Browser Workflows</span>
-      <h2>Productivity App Portfolio</h2>
-      <p class="productivity-tagline">Automation-first tools that tame information overload and keep creative flow intact.</p>
-    </div>
-
-    <div class="portfolio-carousel" role="region" aria-label="Productivity app projects carousel" tabindex="0">
-      <button class="portfolio-nav prev disabled" aria-label="Previous project">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="portfolio-nav next disabled" aria-label="Next project">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-
-      <div class="portfolio-slides">
-        {% for project in site.data.portfolio.productivity_apps %}
-        <div class="portfolio-slide{% if forloop.first %} is-active{% endif %}" data-title="{{ project.title }}">
-          <div class="portfolio-card{% if project.reverse %} reverse{% endif %}">
-            <div class="portfolio-visual">
-              <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} productivity extension preview" class="portfolio-image img-responsive">
-            </div>
-            <div class="portfolio-details">
-              <span class="portfolio-pill">{{ project.pill }}</span>
-              <h4>{{ project.title }}</h4>
-              <p class="productivity-summary">{{ project.description }}</p>
-              <button type="button" class="portfolio-more-btn" data-gallery="{{ project.id }}">Show more</button>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-
-      <div class="portfolio-meta" aria-hidden="true">
-        <span class="portfolio-counter">01 / {{ site.data.portfolio.productivity_apps | size | prepend: '0' | slice: -2, 2 }}</span>
-        <div class="portfolio-dots"></div>
-      </div>
-    </div>
   </div>
 </div>

@@ -1,0 +1,61 @@
+---
+layout: default
+---
+{% include nav.html %}
+{% assign project = site.data.portfolio.projects | where: 'id', page.project_id | first %}
+<main class="case-study">
+  <div class="container">
+    {% if project %}
+    <header class="case-hero">
+      <div class="case-hero__media">
+        <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview">
+      </div>
+      <div class="case-hero__details">
+        {% if project.category %}
+        <span class="case-pill">{{ project.category }}</span>
+        {% endif %}
+        <h1 class="case-title">{{ project.title }}</h1>
+        {% if project.subtitle %}
+        <p class="case-subtitle">{{ project.subtitle }}</p>
+        {% endif %}
+        {% if project.tech %}
+        <p class="case-tech"><strong>Tech:</strong> {{ project.tech }}</p>
+        {% endif %}
+        {% if project.screencast %}
+        <p class="case-screencast">
+          <a href="{{ project.screencast }}" target="_blank" rel="noopener">Watch Screencast</a>
+        </p>
+        {% endif %}
+      </div>
+    </header>
+
+    <section class="case-body">
+      <div class="case-description">
+        {% if project.full_description %}
+          {% for p in project.full_description %}
+          <p>{{ p }}</p>
+          {% endfor %}
+        {% else %}
+          <p>{{ project.description }}</p>
+        {% endif %}
+      </div>
+
+      {% if project.gallery %}
+      <div class="case-gallery" aria-label="Gallery of {{ project.title }}" role="list">
+        {% for img in project.gallery %}
+        <a class="case-gallery__item" role="listitem" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img }}" target="_blank" rel="noopener">
+          <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img }}" alt="{{ project.title }} screen {{ forloop.index }}">
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+    {% else %}
+      <div class="case-missing">
+        <h1>Case study not found</h1>
+        <p>The project you are looking for does not exist.</p>
+      </div>
+    {% endif %}
+  </div>
+</main>
+{% include footer.html %}

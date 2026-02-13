@@ -1,17 +1,21 @@
-<div id="portfolio" class="portfolio-section" style="margin: 50px 0 60px;">
+---
+layout: default
+title: Portfolio Case Studies
+permalink: /portfolio/
+---
+{% include nav.html %}
+<section class="portfolio-archive">
   <div class="container">
     <div class="section-title center">
-      <h2>Portfolio</h2>
-      <p class="section-description">Portfolios and show cases.</p>
+      <h2>Case Studies</h2>
+      <p class="section-description">Deep dives into prototypes, personal products, and startup-friendly concepts.</p>
       <hr>
     </div>
 
-    {% assign featured_projects = site.data.portfolio.projects | where: "featured", true %}
-    {% assign featured_projects = featured_projects | slice: 0, 6 %}
-    {% assign project_count = featured_projects | size %}
-    {% if project_count > 0 %}
+    {% assign all_projects = site.data.portfolio.projects %}
+    {% if all_projects and all_projects.size > 0 %}
     <div class="portfolio-grid" role="list">
-      {% for project in featured_projects %}
+      {% for project in all_projects %}
       <article class="portfolio-card" role="listitem">
         <div class="portfolio-card__image">
           <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview" loading="lazy">
@@ -23,17 +27,15 @@
           <h3 class="portfolio-card__title">{{ project.title }}</h3>
           <p class="portfolio-card__description">{{ project.description }}</p>
           <div class="portfolio-card__actions">
-            <a class="portfolio-more-link" href="{{ site.baseurl }}/portfolio/{{ project.id }}/">View more</a>
+            <a class="portfolio-more-link" href="{{ site.baseurl }}/portfolio/{{ project.id }}/">View case</a>
           </div>
         </div>
       </article>
       {% endfor %}
     </div>
-    <div class="portfolio-actions">
-      <a class="portfolio-view-more" href="{{ site.baseurl }}/portfolio/">View more</a>
-    </div>
+    {% else %}
+    <p>No case studies available at the moment.</p>
     {% endif %}
-
-    {% include portfolio-modal.html %}
   </div>
-</div>
+</section>
+{% include footer.html %}

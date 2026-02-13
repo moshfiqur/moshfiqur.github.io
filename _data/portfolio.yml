@@ -21,6 +21,7 @@ projects:
   - 06_ClubChat.png
   - 07_UserProfile.png
   category: Mobile App
+  featured: true
 - id: beauticator
   title: Beauticator
   pill: Computer Vision &bull; On-device AI
@@ -42,6 +43,7 @@ projects:
   - 4.png
   - 5.png
   category: Mobile App
+  featured: true
 - id: cinemated
   title: Cinemated
   pill: Recommender Systems &bull; ML
@@ -76,6 +78,7 @@ projects:
   - 17_Menu.png
   - 18_Movie_Recommendation.png
   category: Mobile App
+  featured: true
 - id: gutenberg
   title: Gutenberg
   pill: Reading Experience &bull; Offline-first
@@ -96,6 +99,7 @@ projects:
   - 04_Menu.png
   - 05_Search.png
   category: Mobile App
+  featured: true
 - id: klara
   title: Klara
   pill: Language Learning &bull; ML
@@ -120,6 +124,7 @@ projects:
   - '08_Practice_Youtube_Videos_Add_Note.png'
   - '09_Practice_Video3.png'
   category: Mobile App
+  featured: true
 - id: yegdoo
   title: Yegdoo
   pill: Social Discovery &bull; Privacy-first
@@ -146,6 +151,7 @@ projects:
   - '08_Chat.png'
   - '09_Chat2.png'
   category: Mobile App
+  featured: true
 - id: creative-storyboard
   title: Creative Storyboard
   pill: Next.js 14 &bull; Express &bull; MySQL &bull; WebLLM
@@ -172,6 +178,7 @@ projects:
   - '09_AudioLibrary.png'
   - 10_MyProjects.png
   category: Web App
+  featured: true
 - id: creative-storyboard-api
   title: Creative Storyboard API
   pill: Node.js &bull; Express &bull; MySQL &bull; Multer
@@ -192,6 +199,7 @@ projects:
   - 04_APIDoc4.png
   - 05_APIDoc5.png
   category: Web App
+  featured: true
 - id: royalia
   title: Royalia
   pill: Meteor &bull; React 18 &bull; MongoDB &bull; Bunny.net
@@ -212,6 +220,7 @@ projects:
   - 02_UserProfile.png
   - 03_Album.png
   category: Web App
+  featured: true
 - id: booksmart
   title: BookSmart
   pill: TypeScript &bull; Chrome Extension APIs &bull; WebLLM
@@ -238,3 +247,4 @@ projects:
   - '09_Bookmark_Categories.png'
   - 10_Bookmark_Sessions.png
   category: Productivity App
+  featured: true

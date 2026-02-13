@@ -1,4 +1,4 @@
-<div id="portfolio" class="text-center portfolio-section" style="margin: 50px 0 60px;">
+<div id="portfolio" class="portfolio-section" style="margin: 50px 0 60px;">
   <div class="container">
     <div class="section-title center">
       <h2>Portfolio</h2>
@@ -6,39 +6,31 @@
       <hr>
     </div>
 
-    {% assign all_projects = site.data.portfolio.projects %}
-    {% assign project_count = all_projects | size %}
+    {% assign featured_projects = site.data.portfolio.projects | where: "featured", true %}
+    {% assign featured_projects = featured_projects | slice: 0, 6 %}
+    {% assign project_count = featured_projects | size %}
     {% if project_count > 0 %}
-    <div class="portfolio-carousel" role="region" aria-label="Portfolio projects carousel" tabindex="0">
-      <button class="portfolio-nav prev disabled" aria-label="Previous project">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="portfolio-nav next" aria-label="Next project">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-
-      <div class="portfolio-slides">
-        {% for project in all_projects %}
-        <div class="portfolio-slide{% if forloop.first %} is-active{% endif %}" data-title="{{ project.title }}">
-          <div class="portfolio-card{% if project.reverse %} reverse{% endif %}">
-            <div class="portfolio-visual">
-              <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview" class="portfolio-image img-responsive">
-            </div>
-            <div class="portfolio-details">
-              <span class="portfolio-pill">{{ project.pill }}</span>
-              <h4>{{ project.title }}</h4>
-              <p>{{ project.description }}</p>
-              <button type="button" class="portfolio-more-btn" data-gallery="{{ project.id }}">Show more</button>
-            </div>
+    <div class="portfolio-grid" role="list">
+      {% for project in featured_projects %}
+      <article class="portfolio-card" role="listitem">
+        <div class="portfolio-card__image">
+          <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview" loading="lazy">
+        </div>
+        <div class="portfolio-card__body">
+          {% if project.category %}
+          <span class="portfolio-card__category">{{ project.category }}</span>
+          {% endif %}
+          <h3 class="portfolio-card__title">{{ project.title }}</h3>
+          <p class="portfolio-card__description">{{ project.description }}</p>
+          <div class="portfolio-card__actions">
+            <button type="button" class="portfolio-more-btn" data-gallery="{{ project.id }}">View case</button>
           </div>
         </div>
-        {% endfor %}
-      </div>
-
-      <div class="portfolio-meta" aria-hidden="true">
-        <span class="portfolio-counter">01 / {{ project_count | prepend: '0' | slice: -2, 2 }}</span>
-        <div class="portfolio-dots"></div>
-      </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="portfolio-actions">
+      <button type="button" class="portfolio-view-more">View more</button>
     </div>
     {% endif %}
 

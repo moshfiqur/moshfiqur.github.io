@@ -2,7 +2,8 @@ id: klara
 title: Klara
 pill: Language Learning &bull; German Tutor
 description: Bite-sized German lessons with structured grammar practice and audio examples.
-image: portfolio/klara.png
+image: img/hero/klara@0.5x.jpg
+hero: img/hero/klara.jpg
 reverse: false
 subtitle: Your Personal German Learning Assistant
 tech: Flutter · MySQL · Firebase

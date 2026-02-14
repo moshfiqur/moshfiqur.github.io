@@ -2,7 +2,8 @@ id: cinemated
 title: Cinemated
 pill: AI Recommender &bull; Movie Discovery
 description: Mood-aware movie picks that go beyond the usual genres.
-image: portfolio/cinemated.png
+image: img/hero/cinemated@0.5x.jpg
+hero: img/hero/cinemated.jpg
 reverse: false
 subtitle: No One Understands Your Movie Taste Better Than Us
 tech: Flutter · TensorFlow · MySQL · Firebase

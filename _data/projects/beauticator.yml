@@ -2,7 +2,8 @@ id: beauticator
 title: Beauticator
 pill: On-device AI &bull; Selfie Scoring
 description: Private, instant selfie feedback that runs entirely on your phone.
-image: portfolio/beauticator.png
+image: img/hero/beauticator@0.5x.jpg
+hero: img/hero/beauticator.jpg
 reverse: true
 subtitle: Your AI Selfie Companion
 tech: Flutter · TensorFlow · MySQL · Firebase

@@ -2,7 +2,8 @@ id: royalia
 title: Royalia
 pill: Social Network &bull; Identity-first
 description: A social network concept built around curated profiles, themed spaces, and rich media.
-image: portfolio/royalia.png
+image: img/hero/royalia@0.5x.jpg
+hero: img/hero/royalia.jpg
 reverse: false
 subtitle: Social network for the mentally royal
 tech: Meteor · React 18 · MongoDB · Bunny.net

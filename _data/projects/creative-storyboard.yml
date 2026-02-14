@@ -2,7 +2,8 @@ id: creative-storyboard
 title: Creative Storyboard
 pill: Web App &bull; Pre-Production
 description: Plan stories with a clean Projects → Scenes → Shots workflow and rich media notes.
-image: portfolio/creative-storyboard.png
+image: img/hero/creative_story_board@0.5x.jpg
+hero: img/hero/creative_story_board.jpg
 reverse: false
 subtitle: Storyboard planning for modern crews
 tech: Next.js 14 · Express · MySQL · WebLLM

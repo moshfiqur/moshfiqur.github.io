@@ -2,7 +2,8 @@ id: yegdoo
 title: Yegdoo
 pill: Privacy-first Dating &bull; Conversation-first
 description: A dating app that prioritizes conversation before photos.
-image: portfolio/yegdoo.png
+image: img/hero/yegdoo@0.5x.jpg
+hero: img/hero/yegdoo.jpg
 reverse: true
 subtitle: Where Minds Meet Before Faces
 tech: Flutter · MySQL · Firebase

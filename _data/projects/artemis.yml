@@ -2,7 +2,8 @@ id: artemis
 title: Artemis
 pill: Flutter · Firebase · iOS & Android
 description: Find your people in spaces that feel real—Artemis recreates the vibe of your favorite clubs online.
-image: portfolio/artemis.png
+image: img/hero/artemis@0.5x.jpg
+hero: img/hero/artemis.jpg
 reverse: false
 subtitle: Your Virtual Club Experience, Anytime, Anywhere
 tech: Flutter · Firebase

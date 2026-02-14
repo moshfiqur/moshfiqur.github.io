@@ -2,7 +2,8 @@ id: booksmart
 title: BookSmart
 pill: Chrome Extension &bull; AI Bookmarking
 description: Turn tab chaos into smart, searchable bookmarks in one click.
-image: portfolio/booksmart.png
+image: img/hero/booksmart@0.5x.jpg
+hero: img/hero/booksmart.jpg
 reverse: false
 subtitle: Tabs to knowledge in one click
 tech: TypeScript · Chrome Extension APIs · WebLLM

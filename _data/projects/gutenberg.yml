@@ -2,7 +2,8 @@ id: gutenberg
 title: Gutenberg
 pill: Mobile Reader &bull; Offline-first
 description: Carry a library of classics with you and keep your place across sessions.
-image: portfolio/gutenberg.png
+image: img/hero/gutenberg@0.5x.jpg
+hero: img/hero/gutenberg.jpg
 reverse: true
 subtitle: Rediscover the Classics
 tech: Flutter · MySQL

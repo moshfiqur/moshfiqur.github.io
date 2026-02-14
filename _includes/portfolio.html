@@ -6,7 +6,7 @@
       <hr>
     </div>
 
-    {% assign featured_projects = site.data.portfolio.projects | where: "featured", true %}
+    {% assign featured_projects = site.data.projects | values | where: "featured", true %}
     {% assign featured_projects = featured_projects | slice: 0, 6 %}
     {% assign project_count = featured_projects | size %}
     {% if project_count > 0 %}

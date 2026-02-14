@@ -1,0 +1,27 @@
+id: booksmart
+title: BookSmart
+pill: TypeScript &bull; Chrome Extension APIs &bull; WebLLM
+description: Browser extension that transforms tab chaos into smart bookmarks with AI classification, offline-first privacy, and one-click session snapshots.
+image: portfolio/booksmart.png
+reverse: false
+subtitle: Tabs to knowledge in one click
+tech: TypeScript · Chrome Extension APIs · WebLLM
+screencast:
+full_description:
+- BookSmart is a Chrome extension that turns all open tabs into smart bookmarks, keeping titles, descriptions, visit history, and favicons in one organized dashboard.
+- It solves the tab overwhelm problem by classifying saved pages automatically, offering session snapshots, exports, and quick reopen actions so nothing important is lost.
+- Classification can run locally via WebLLM or route through online LLMs like DeepSeek and OpenAI, with a built-in safety gate that keeps sensitive content away from external APIs.
+- Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage.
+gallery:
+- 01_Cluttered_Browser_Long.png
+- 02_Cluttered_Browser.png
+- 03_Settings1.png
+- 04_Settings2.png
+- 05_Settings3.png
+- 06_Settings4.png
+- 07_Action_Window.png
+- '08_Bookmark_Tab_Groups.png'
+- '09_Bookmark_Categories.png'
+- 10_Bookmark_Sessions.png
+category: Productivity App
+featured: true

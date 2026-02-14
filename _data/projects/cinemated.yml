@@ -1,0 +1,35 @@
+id: cinemated
+title: Cinemated
+pill: Recommender Systems &bull; ML
+description: Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.
+image: portfolio/cinemated.png
+reverse: false
+subtitle: No One Understands Your Movie Taste Better Than Us
+tech: Flutter · TensorFlow · MySQL · Firebase
+screencast: https://youtu.be/J2_83rGoJPs
+full_description:
+- Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, it blends advanced machine learning with a friendly interface.
+- Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.
+- Cinemated goes beyond the usual genres, surfacing special categories like horror films in eerie castles or whodunits with charming detectives, so every movie night is a hit.
+gallery:
+- 01_Home.png
+- 02_Movies_of_the_Year.png
+- 03_Popular_Movies.png
+- 04_Recently_Released_Movies.png
+- 05_User_Preferences_Director.png
+- 06_User_Preferences_Favorite_Movies.png
+- 07_User_Preferences_Production_House.png
+- '08_User_Preferences_Set_Success.png'
+- '09_User_Preferences_Select_Actors.png'
+- 10_User_Preferences_Set_Genres.png
+- 10_User_Preferences_Set_Movies_Styles.png
+- 11_User_Preferences_Set_Genres.png
+- 12_Watchlist_Movies.png
+- 13_User_Profile.png
+- 14_Upload_Profile_Image.png
+- 15_Edit_Profile.png
+- 16_Liked_Movies.png
+- 17_Menu.png
+- 18_Movie_Recommendation.png
+category: Mobile App
+featured: true

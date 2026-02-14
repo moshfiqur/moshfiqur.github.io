@@ -1,0 +1,27 @@
+id: yegdoo
+title: Yegdoo
+pill: Social Discovery &bull; Privacy-first
+description: Sapiosexual dating space where conversations unlock profile reveals and build trust first.
+image: portfolio/yegdoo.png
+reverse: true
+subtitle: Where Minds Meet Before Faces
+tech: Flutter · MySQL · Firebase
+screencast: https://youtu.be/CVBDpgK33Kg
+full_description:
+- Yegdoo is a unique dating app designed for sapiosexuals--those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, it creates a safe and engaging space for meaningful connections.
+- In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.
+- Yegdoo is the perfect platform for those who believe that true attraction starts with the mind.
+gallery:
+- 00_SplashLogo.png
+- 01_Splash.png
+- 02_Registration.png
+- 03_Home.png
+- 04_Settings.png
+- 05_User_Profile.png
+- 05_User_Profile2.png
+- 06_Bookmarked_User.png
+- 07_Edit_Profile.png
+- '08_Chat.png'
+- '09_Chat2.png'
+category: Mobile App
+featured: true

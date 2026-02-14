@@ -1,0 +1,22 @@
+id: beauticator
+title: Beauticator
+pill: Computer Vision &bull; On-device AI
+description: Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.
+image: portfolio/beauticator.png
+reverse: true
+subtitle: Your AI Selfie Companion
+tech: Flutter · TensorFlow · MySQL · Firebase
+screencast: https://youtu.be/PR-nuKs5f1s
+full_description:
+- Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with a seamless user experience.
+- The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.
+- Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!
+gallery:
+- 0.png
+- 1.png
+- 2.png
+- 3.png
+- 4.png
+- 5.png
+category: Mobile App
+featured: true

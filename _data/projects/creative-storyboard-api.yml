@@ -1,0 +1,21 @@
+id: creative-storyboard-api
+title: Creative Storyboard API
+pill: Node.js &bull; Express &bull; MySQL &bull; Multer
+description: 'Secure backend powering storyboard workflows: authentication, analytics, project/scene/shot CRUD, and media uploads with fuzzy-search audio library.'
+image: portfolio/creative-storyboard-api.png
+reverse: true
+subtitle: Secure backend for storyboard workflows
+tech: Node.js · Express · MySQL · Multer
+screencast:
+full_description:
+- Creative Storyboard API powers the storyboard planning platform with a secure Node.js/Express backend, exposing endpoints for authentication, dashboard analytics, project -> scene -> shot hierarchies, and rich media management (uploads plus audio-library linking).
+- Key features include cookie-based sessions with bcrypt-hardened login, activity logging, aggregated stats, MySQL-backed CRUD for nested resources, multer-powered media uploads with file hygiene, and fuzzy-search across a local sound library.
+- The stack combines Express, mysql2, bcryptjs, multer, body-parser, cors, dotenv, and vanilla SPA docs, running on Node.js and MySQL--ready to drop behind any Next.js or React frontend.
+gallery:
+- 01_APIDoc1.png
+- 02_APIDoc2.png
+- 03_APIDoc3.png
+- 04_APIDoc4.png
+- 05_APIDoc5.png
+category: Web App
+featured: true

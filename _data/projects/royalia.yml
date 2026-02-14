@@ -1,0 +1,21 @@
+id: royalia
+title: Royalia
+pill: Meteor &bull; React 18 &bull; MongoDB &bull; Bunny.net
+description: Social network prototype where status and participation follow IQ-informed profiles, with themed layouts, rich media, and dark/light modes.
+image: portfolio/royalia.png
+reverse: false
+subtitle: Social network for the mentally royal
+tech: Meteor · React 18 · MongoDB · Bunny.net
+screencast:
+full_description:
+- Royalia is a social network where status and participation follow IQ-informed profiles, giving the mentally royal a shared place to compare notes and collaborate.
+- The in-progress build ships authentication, themed profile pages, and rich media layouts with cover photos and avatars across light and dark modes.
+- Uploads are validated for type and size before heading to Bunny.net storage, keeping profile imagery fast, reliable, and easy to manage.
+- 'Next on the roadmap: IQ-weighted feeds, friend graph, messaging, and reputation anchored to verified profile data.'
+- Built with Meteor for full-stack reactivity, React 18 with react-meteor-data, Node.js modules configured via dotenv, Mongo-backed data models, Bunny.net storage SDK helpers, and automated tests through meteortesting:mocha.
+gallery:
+- 01_Login.png
+- 02_UserProfile.png
+- 03_Album.png
+category: Web App
+featured: true

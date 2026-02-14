@@ -12,7 +12,7 @@ permalink: /portfolio/
       <hr>
     </div>
 
-    {% assign all_projects = site.data.portfolio.projects %}
+    {% assign all_projects = site.data.projects | values %}
     {% if all_projects and all_projects.size > 0 %}
     <div class="portfolio-grid" role="list">
       {% for project in all_projects %}

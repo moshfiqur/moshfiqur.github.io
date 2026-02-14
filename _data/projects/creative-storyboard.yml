@@ -1,0 +1,27 @@
+id: creative-storyboard
+title: Creative Storyboard
+pill: Next.js 14 &bull; Express &bull; MySQL &bull; WebLLM
+description: Full-stack storyboarding platform with Projects → Scenes → Shots hierarchy, rich media uploads, and AI-powered ideation notes.
+image: portfolio/creative-storyboard.png
+reverse: false
+subtitle: Storyboard planning for modern crews
+tech: Next.js 14 · Express · MySQL · WebLLM
+screencast:
+full_description:
+- Creative Storyboard is a full-stack storyboarding app that helps filmmakers and creators plan projects with a clear hierarchy of Projects -> Scenes -> Shots, rich media uploads (images, video, audio), and AI prompt notes for ideation.
+- It streamlines pre-production by centralizing assets, notes, and progress with dashboards, activity feeds, profile management, and a polished, responsive UI.
+- Features include user registration/login, project creation and editing with banners, scene and shot management, drag-and-drop uploads with progress, lightbox previews, audio playback, and an integrated searchable audio library.
+- 'It solves the common pain of scattered files and spreadsheets by keeping visual references, timing, and creative direction in one place—fast to set up and easy to iterate. Tech stack: Next.js 14 (React 18) for the frontend, Express/Node.js API, MySQL (mysql2) for persistence, multer for uploads, bcryptjs for auth, and dotenv/cors/body-parser for configuration and middleware, with custom components and global CSS for styling.'
+gallery:
+- 01_Landing.png
+- 02_Home.png
+- 03_Profile.png
+- 04_ProjectHome.png
+- 05_Scenes.png
+- 06_SceneHome.png
+- 07_ShotHome.png
+- '08_PreviewImage.png'
+- '09_AudioLibrary.png'
+- 10_MyProjects.png
+category: Web App
+featured: true

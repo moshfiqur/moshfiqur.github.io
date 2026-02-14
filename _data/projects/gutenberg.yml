@@ -1,0 +1,21 @@
+id: gutenberg
+title: Gutenberg
+pill: Reading Experience &bull; Offline-first
+description: Immersive reader for classics, syncing highlights and bookmarks across devices even offline.
+image: portfolio/gutenberg.png
+reverse: true
+subtitle: Rediscover the Classics
+tech: Flutter · MySQL
+screencast: https://youtu.be/o6-ahDpa-o4
+full_description:
+- Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.
+- Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.
+- Adjustable font sizes, intuitive search, and a distraction-free interface make Gutenberg a delightful way to rediscover literary masterpieces anywhere.
+gallery:
+- 01_SplashScreen.png
+- 02_Home.png
+- 03_Reading.png
+- 04_Menu.png
+- 05_Search.png
+category: Mobile App
+featured: true

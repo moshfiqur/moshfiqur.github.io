@@ -2,7 +2,7 @@
 layout: default
 ---
 {% include nav.html %}
-{% assign project = site.data.portfolio.projects | where: 'id', page.project_id | first %}
+{% assign project = site.data.projects | values | where: 'id', page.project_id | first %}
 <main class="case-study">
   <div class="container">
     {% if project %}

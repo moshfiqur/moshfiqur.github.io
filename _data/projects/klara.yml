@@ -1,0 +1,25 @@
+id: klara
+title: Klara
+pill: Language Learning &bull; ML
+description: Guided German tutor delivering bite-sized grammar drills with contextual speech practice.
+image: portfolio/klara.png
+reverse: false
+subtitle: Your Personal German Learning Assistant
+tech: Flutter · MySQL · Firebase
+screencast: https://youtu.be/4j9suXQ46SQ
+full_description:
+- Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL, and Firebase, it supports learners with a structured path through the language.
+- The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar.
+- Klara provides sample words, sentences, and pronunciation audio for every concept, so practicing vocabulary, sentence construction, and speaking feels natural at your own pace.
+gallery:
+- 01_Splash.png
+- 02_Practice_Sentences.png
+- 03_Parts_of_Speech.png
+- 04_Parts_of_Speech_with_Audio.png
+- 05_Parts_of_Speech_Examples.png
+- 06_Parts_of_Speech_Verbs.png
+- 07_Practice_Youtube_Videos.png
+- '08_Practice_Youtube_Videos_Add_Note.png'
+- '09_Practice_Video3.png'
+category: Mobile App
+featured: true

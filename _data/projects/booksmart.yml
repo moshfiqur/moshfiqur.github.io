@@ -1,12 +1,64 @@
 id: booksmart
 title: BookSmart
-pill: TypeScript &bull; Chrome Extension APIs &bull; WebLLM
-description: Browser extension that transforms tab chaos into smart bookmarks with AI classification, offline-first privacy, and one-click session snapshots.
+pill: Chrome Extension &bull; AI Bookmarking
+description: Turn tab chaos into smart, searchable bookmarks in one click.
 image: portfolio/booksmart.png
 reverse: false
 subtitle: Tabs to knowledge in one click
 tech: TypeScript · Chrome Extension APIs · WebLLM
 screencast:
+
+# Core messaging
+headline: Save every tab without the clutter
+tagline: BookSmart snapshots your session and sorts it with AI so you can find it later.
+
+# Target audience
+target_user: Researchers, developers, and heavy-tab users who open 30+ tabs per session and lose track of what matters [ASSUMED]
+
+# Problem statement
+the_problem: |
+  People open dozens of tabs while working, then close the browser and lose the context. Traditional bookmarks are manual and static, so most tabs never get saved. Tab managers often feel like cluttered dashboards with no intelligence. Users want a way to capture a session quickly and retrieve it by meaning, not by memory.
+
+# Solution statement
+the_solution: |
+  BookSmart lets heavy-tab users save a full session with one click and auto-classifies each page so they can rediscover it by topic or intent.
+
+# Market context
+market_opportunity: |
+  Knowledge work is increasingly web-based, and tab overload is a daily pain point. AI can now summarize and classify pages locally, which reduces privacy risk and cloud dependency. Extensions that turn browsing history into reusable knowledge are a growing niche. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: One-Click Session Snapshot
+    description: Capture all open tabs at once with titles, favicons, and metadata. It turns a chaotic session into a saved artifact.
+
+  - name: AI Topic Classification
+    description: Uses WebLLM to label pages by topic or task. Makes retrieval faster than manual folders.
+
+  - name: Privacy Gate for Cloud AI
+    description: Sensitive tabs can be excluded from external API calls. Users stay in control of what leaves their device. [ASSUMED]
+
+  - name: Smart Reopen and Export
+    description: Restore a session or export it for later review. Keeps research portable across devices. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: TypeScript, Chrome Extension APIs
+  ai_ml: WebLLM (local inference) [ASSUMED]
+  storage: chrome.storage (local) [ASSUMED]
+  other: Webpack [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd architect a clear plug-in interface for new classifiers so adding models wouldn't require UI changes. I'd also design the storage schema around cross-device sync earlier to avoid migration pain later. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta users, productivity-focused angels, and partners with browser-extension distribution experience [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - BookSmart is a Chrome extension that turns all open tabs into smart bookmarks, keeping titles, descriptions, visit history, and favicons in one organized dashboard.
 - It solves the tab overwhelm problem by classifying saved pages automatically, offering session snapshots, exports, and quick reopen actions so nothing important is lost.

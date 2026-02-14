@@ -1,12 +1,64 @@
 id: klara
 title: Klara
-pill: Language Learning &bull; ML
-description: Guided German tutor delivering bite-sized grammar drills with contextual speech practice.
+pill: Language Learning &bull; German Tutor
+description: Bite-sized German lessons with structured grammar practice and audio examples.
 image: portfolio/klara.png
 reverse: false
 subtitle: Your Personal German Learning Assistant
 tech: Flutter · MySQL · Firebase
 screencast: https://youtu.be/4j9suXQ46SQ
+
+# Core messaging
+headline: Learn German without getting overwhelmed
+tagline: Klara guides you through grammar, vocabulary, and speaking in short daily sessions.
+
+# Target audience
+target_user: Beginner-to-intermediate German learners who want structure without long, intimidating lessons [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Most language apps either gamify too much or dump users into unstructured practice. Grammar topics feel scattered, and learners forget how concepts connect. Audio practice is often missing or repetitive. Students want a guided path that makes German feel learnable step by step.
+
+# Solution statement
+the_solution: |
+  Klara lets learners follow a structured German curriculum with bite-sized drills and audio examples so they can build confidence and speak with accuracy.
+
+# Market context
+market_opportunity: |
+  More people are learning German for education, relocation, and work. Learners want mobile-first tools that feel like a tutor, not a game. A focused, grammar-forward app can stand out in a crowded market. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Part-of-Speech Modules
+    description: Dedicated lessons for nouns, verbs, adjectives, and more. Makes grammar feel organized rather than random.
+
+  - name: Practice Sentences
+    description: Context-rich examples help learners understand how grammar works in real use. Reinforces retention.
+
+  - name: Pronunciation Audio
+    description: Hear words and sentences read aloud. Builds speaking confidence and listening skills. [ASSUMED]
+
+  - name: Video Learning Add-ons
+    description: Curated videos support each topic. Gives learners extra context without leaving the app. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  backend: Firebase [ASSUMED]
+  storage: MySQL
+  other: Firebase Auth [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd build spaced-repetition logic earlier to improve long-term retention. I'd also separate content authoring from the app so new lessons can ship without redeploys. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta learners, language educators, and advisors in edtech growth [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Klara is a mobile app designed to make learning German simple, engaging, and effective. Built using Flutter, MySQL, and Firebase, it supports learners with a structured path through the language.
 - The app features dedicated sections for each part of speech, offering tailored lessons and exercises to help users understand the nuances of German grammar.

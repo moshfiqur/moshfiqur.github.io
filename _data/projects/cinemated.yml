@@ -1,12 +1,65 @@
 id: cinemated
 title: Cinemated
-pill: Recommender Systems &bull; ML
-description: Hyper-personal movie companion that curates mood-aware watchlists beyond the usual genres.
+pill: AI Recommender &bull; Movie Discovery
+description: Mood-aware movie picks that go beyond the usual genres.
 image: portfolio/cinemated.png
 reverse: false
 subtitle: No One Understands Your Movie Taste Better Than Us
 tech: Flutter · TensorFlow · MySQL · Firebase
 screencast: https://youtu.be/J2_83rGoJPs
+
+# Core messaging
+headline: Find movies that actually match your mood
+tagline: Cinemated learns your taste and serves watchlists you will actually finish.
+
+# Target audience
+target_user: Movie lovers who scroll for 20 minutes before choosing and want recommendations that feel personal [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Streaming platforms push the same trending titles to everyone. Genre filters are too broad and ignore what people actually love about a film. Recommendation engines often repeat the same actors or franchises, creating decision fatigue. Users want suggestions that feel tailored to their vibe in the moment.
+
+# Solution statement
+the_solution: |
+  Cinemated lets movie fans build a taste profile and get mood-aware lists so they can pick a film quickly and feel confident it fits the night.
+
+# Market context
+market_opportunity: |
+  Streaming options keep expanding, and so does choice paralysis. Personalized discovery is now a key differentiator for media platforms. A standalone companion app can serve cross-platform viewers who want smarter picks than any single service provides. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Taste Profile Builder
+    description: Like movies, actors, directors, and studios to seed recommendations. The model learns fast from explicit signals.
+
+  - name: Mood-Based Watchlists
+    description: Curated lists based on themes like cozy mystery or atmospheric horror. Helps match a movie to the moment. [ASSUMED]
+
+  - name: Smart Watchlist and History
+    description: Save picks and track what you watched. Prevents repetition and improves future suggestions. [ASSUMED]
+
+  - name: Personalized Home Feed
+    description: Daily mix of new releases and deep cuts based on your profile. Keeps discovery fresh.
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  ai_ml: TensorFlow (recommendation model) [ASSUMED]
+  backend: Firebase [ASSUMED]
+  storage: MySQL
+  other: Firebase Auth [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd add evaluation metrics early to compare recommendation quality across cohorts. I'd also separate taste vectors from UI preferences so tuning the model doesn't break personalization features. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta users, film-community partners, and advisors in consumer discovery products [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Cinemated is an AI-powered movie recommendation app designed to cater to your unique cinematic preferences. Built using Flutter, TensorFlow, MySQL, and Firebase, it blends advanced machine learning with a friendly interface.
 - Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.

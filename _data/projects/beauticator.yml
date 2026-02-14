@@ -1,12 +1,65 @@
 id: beauticator
 title: Beauticator
-pill: Computer Vision &bull; On-device AI
-description: Instant selfie critique that runs fully on-device, blending TensorFlow magic with playful UX.
+pill: On-device AI &bull; Selfie Scoring
+description: Private, instant selfie feedback that runs entirely on your phone.
 image: portfolio/beauticator.png
 reverse: true
 subtitle: Your AI Selfie Companion
 tech: Flutter · TensorFlow · MySQL · Firebase
 screencast: https://youtu.be/PR-nuKs5f1s
+
+# Core messaging
+headline: Get confident about every selfie you take
+tagline: Beauticator scores your selfie on-device so you can fix it before you post.
+
+# Target audience
+target_user: Creators, students, and social users who care about how they look on camera and want quick, private feedback [ASSUMED]
+
+# Problem statement
+the_problem: |
+  People take dozens of selfies to get one they like, but feedback usually comes late and public. Photo-editing apps improve pictures, not confidence. Social media rewards polished images but gives no guidance on how to get there. Users want fast, private input without uploading their face to a server.
+
+# Solution statement
+the_solution: |
+  Beauticator lets selfie-focused users capture or upload a photo and get an instant, on-device aesthetic score so they can adjust lighting, pose, or framing before sharing.
+
+# Market context
+market_opportunity: |
+  Selfie culture is mainstream, but privacy concerns around biometric data are rising. On-device AI makes it possible to deliver feedback without cloud storage. Tools that pair camera UX with privacy-first AI can stand out in a crowded photo app market. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: On-Device Scoring
+    description: Runs a TensorFlow CNN locally for instant feedback. Keeps photos private and reduces latency.
+
+  - name: Camera and Gallery Modes
+    description: Analyze a new selfie or pick one from your gallery. Makes the app useful in the moment and after the fact.
+
+  - name: Actionable Feedback Cues
+    description: Highlights why a shot scored the way it did, such as lighting or framing. Helps users improve, not just rate them. [ASSUMED]
+
+  - name: History and Retakes
+    description: Compare recent shots and iterate until the score feels right. Encourages quick learning loops. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  ai_ml: TensorFlow (on-device CNN)
+  backend: Firebase [ASSUMED]
+  storage: MySQL (training metadata or analytics) [ASSUMED]
+  other: Firebase Auth [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd invest earlier in dataset normalization to reduce bias across lighting and skin tones. I'd also build a clearer calibration flow so users can tune scoring to their personal style. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta users, privacy-first consumer app angels, and advisors in mobile growth [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Beauticator is an AI-powered mobile app designed to enhance your selfie experience. Built using Flutter, TensorFlow, MySQL, and Firebase, it combines cutting-edge technology with a seamless user experience.
 - The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.

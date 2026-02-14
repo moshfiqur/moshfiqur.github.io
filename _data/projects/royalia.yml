@@ -1,12 +1,64 @@
 id: royalia
 title: Royalia
-pill: Meteor &bull; React 18 &bull; MongoDB &bull; Bunny.net
-description: Social network prototype where status and participation follow IQ-informed profiles, with themed layouts, rich media, and dark/light modes.
+pill: Social Network &bull; Identity-first
+description: A social network concept built around curated profiles, themed spaces, and rich media.
 image: portfolio/royalia.png
 reverse: false
 subtitle: Social network for the mentally royal
 tech: Meteor · React 18 · MongoDB · Bunny.net
 screencast:
+
+# Core messaging
+headline: A social network built on profile depth
+tagline: Royalia explores a world where identity and intent matter more than viral feeds.
+
+# Target audience
+target_user: High-engagement community members who want slower, more thoughtful social spaces [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Mainstream social networks optimize for reach, not depth. Profiles are shallow, and content is designed for clicks. Community discovery is noisy, and meaningful participation gets buried. Users want spaces that prioritize thoughtful interaction over endless scrolling.
+
+# Solution statement
+the_solution: |
+  Royalia lets members build rich profiles and participate in themed spaces so they can connect around ideas, not just virality.
+
+# Market context
+market_opportunity: |
+  Interest in smaller, purpose-built communities is rising as users push back against noisy feeds. New platforms are exploring identity, verification, and intentional participation. A concept that emphasizes depth offers a fresh alternative. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Themed Profile Pages
+    description: Rich layouts with cover photos and avatars. Gives users room to express identity beyond a bio.
+
+  - name: Curated Community Spaces
+    description: Topic-focused areas with distinct visual themes. Encourages slower, higher-quality participation. [ASSUMED]
+
+  - name: Media-First Posts
+    description: Upload validation and fast media delivery via Bunny.net. Keeps the experience polished and reliable.
+
+  - name: Roadmap for Reputation Signals
+    description: Planned reputation and trust signals to elevate meaningful contributions. Positions the platform for healthier discourse. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: React 18
+  backend: Meteor (Node.js)
+  storage: MongoDB
+  other: Bunny.net, react-meteor-data, meteortesting:mocha [ASSUMED]
+
+# Project status
+status_label: Prototype stage — seeking first beta users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd formalize the content moderation pipeline earlier to protect community quality. I'd also decouple media uploads from profile updates to avoid blocking the UI on large files. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to community strategists, early beta users, and advisors in social product design [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Royalia is a social network where status and participation follow IQ-informed profiles, giving the mentally royal a shared place to compare notes and collaborate.
 - The in-progress build ships authentication, themed profile pages, and rich media layouts with cover photos and avatars across light and dark modes.

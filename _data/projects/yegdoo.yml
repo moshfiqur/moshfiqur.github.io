@@ -1,12 +1,64 @@
 id: yegdoo
 title: Yegdoo
-pill: Social Discovery &bull; Privacy-first
-description: Sapiosexual dating space where conversations unlock profile reveals and build trust first.
+pill: Privacy-first Dating &bull; Conversation-first
+description: A dating app that prioritizes conversation before photos.
 image: portfolio/yegdoo.png
 reverse: true
 subtitle: Where Minds Meet Before Faces
 tech: Flutter · MySQL · Firebase
 screencast: https://youtu.be/CVBDpgK33Kg
+
+# Core messaging
+headline: Build real connection before the reveal
+tagline: Yegdoo keeps photos hidden at first so people connect through conversation.
+
+# Target audience
+target_user: Singles who value personality and intellect over swipe-first dating experiences [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Dating apps are optimized for quick judgments based on photos. That pressure discourages meaningful conversation and can feel unsafe or shallow. Users who want deeper connection often get buried by swipe mechanics. There is no mainstream space that rewards getting to know someone before appearance.
+
+# Solution statement
+the_solution: |
+  Yegdoo lets people chat without photos and reveal them only when there is mutual interest so they can build trust before attraction.
+
+# Market context
+market_opportunity: |
+  Users are increasingly frustrated with swipe fatigue and superficial matches. Privacy-first social products are gaining momentum as trust becomes a differentiator. A conversation-first dating model can attract users seeking more serious connections. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Photo Reveal Gate
+    description: Photos stay hidden until both users choose to reveal. Encourages conversation before judgment.
+
+  - name: Interest-Based Discovery
+    description: Profiles highlight interests and personality cues. Makes matches feel more intentional. [ASSUMED]
+
+  - name: Safe Chat Experience
+    description: Conversation-first flow reduces pressure and enables better rapport. Builds trust early. [ASSUMED]
+
+  - name: Profile Privacy Controls
+    description: Users control what is visible and when. Supports a safer dating environment. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  backend: Firebase [ASSUMED]
+  storage: MySQL
+  other: Firebase Auth [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd design anti-harassment tooling earlier to protect vulnerable users. I'd also build a clearer moderation queue so trust and safety can scale with growth. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta users, advisors in trust and safety, and early-stage consumer angels [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Yegdoo is a unique dating app designed for sapiosexuals--those who value intellect and personality above all else. Built using Flutter, MySQL, and Firebase, it creates a safe and engaging space for meaningful connections.
 - In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.

@@ -28,5 +28,6 @@ _site/
 Gemfile.lock
 vendor/
 PLANS.md
-img/post/edits
+img/post/edits/
+img/hero/edits/
 ai_prompts/

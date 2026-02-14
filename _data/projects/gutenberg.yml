@@ -1,12 +1,63 @@
 id: gutenberg
 title: Gutenberg
-pill: Reading Experience &bull; Offline-first
-description: Immersive reader for classics, syncing highlights and bookmarks across devices even offline.
+pill: Mobile Reader &bull; Offline-first
+description: Carry a library of classics with you and keep your place across sessions.
 image: portfolio/gutenberg.png
 reverse: true
 subtitle: Rediscover the Classics
 tech: Flutter · MySQL
 screencast: https://youtu.be/o6-ahDpa-o4
+
+# Core messaging
+headline: Read timeless books without the friction
+tagline: Gutenberg makes classic literature fast to find, easy to read, and simple to continue.
+
+# Target audience
+target_user: Readers who love public-domain classics and want an offline-friendly, distraction-free mobile experience [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Classic literature is often locked behind clunky websites or cluttered PDF readers. Many reading apps focus on purchasing new books rather than discovering free classics. Offline reading is inconsistent, and bookmarks are easy to lose. Readers want a clean, reliable way to access great books anywhere.
+
+# Solution statement
+the_solution: |
+  Gutenberg lets readers browse and read public-domain classics on mobile so they can enjoy books offline and always resume where they left off.
+
+# Market context
+market_opportunity: |
+  Mobile reading continues to grow, especially among commuters and casual readers. Free public-domain libraries are expanding, but UX lags behind. A modern, offline-first reader for classics fills that gap. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Instant Classic Library
+    description: Browse the Project Gutenberg catalog with fast search. Discover books without leaving the app.
+
+  - name: Resume-Where-You-Left
+    description: Automatic bookmarking keeps your last position. Makes short reading sessions viable.
+
+  - name: Readability Controls
+    description: Adjust font size and layout for comfort. Reduces eye strain on long reads.
+
+  - name: Offline Access
+    description: Cache books for reading without a connection. Ideal for travel and commutes. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  storage: MySQL
+  other: Local caching layer [ASSUMED]
+
+# Project status
+status_label: MVP complete — seeking first 100 users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd build a richer metadata pipeline to improve search relevance. I'd also separate book content from UI state to speed up rendering for long chapters. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to beta readers, publishing advisors, and partners in education or libraries [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Gutenberg is a simple yet powerful reading app that brings timeless classics to your fingertips. Built using Flutter and MySQL, it offers instant access to free books from the Project Gutenberg catalog.
 - Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.

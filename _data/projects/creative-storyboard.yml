@@ -1,12 +1,65 @@
 id: creative-storyboard
 title: Creative Storyboard
-pill: Next.js 14 &bull; Express &bull; MySQL &bull; WebLLM
-description: Full-stack storyboarding platform with Projects → Scenes → Shots hierarchy, rich media uploads, and AI-powered ideation notes.
+pill: Web App &bull; Pre-Production
+description: Plan stories with a clean Projects → Scenes → Shots workflow and rich media notes.
 image: portfolio/creative-storyboard.png
 reverse: false
 subtitle: Storyboard planning for modern crews
 tech: Next.js 14 · Express · MySQL · WebLLM
 screencast:
+
+# Core messaging
+headline: Turn chaotic pre-production into a clear plan
+tagline: Creative Storyboard organizes your project into scenes and shots so crews can align fast.
+
+# Target audience
+target_user: Indie filmmakers, video teams, and agencies that juggle multiple shoots and need a single source of truth [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Storyboards live across drives, PDFs, spreadsheets, and chat threads. Teams lose track of which shot references are final and which notes matter. Collaboration happens in too many tools, creating version drift. Pre-production slows down when assets and decisions are scattered.
+
+# Solution statement
+the_solution: |
+  Creative Storyboard lets production teams structure projects into scenes and shots with rich media so they can collaborate in one place and move into filming with confidence.
+
+# Market context
+market_opportunity: |
+  The creator economy is producing more shoots with smaller teams and tighter timelines. Lightweight, purpose-built tools are replacing bloated studio software. A modern, web-based storyboard system fits this shift. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Projects → Scenes → Shots Hierarchy
+    description: Organizes every asset under a clear production structure. Keeps the team aligned on what is being filmed.
+
+  - name: Rich Media Uploads
+    description: Attach images, video, and audio references directly to shots. Reduces context switching during planning.
+
+  - name: AI Ideation Notes
+    description: Generate prompt-driven ideas for visual direction. Helps teams iterate quickly in early planning. [ASSUMED]
+
+  - name: Activity Feed and Progress Views
+    description: Track what changed and what is ready. Keeps stakeholders in sync. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Next.js 14 (React 18)
+  backend: Express (Node.js)
+  ai_ml: WebLLM [ASSUMED]
+  storage: MySQL
+  other: Multer, bcryptjs, dotenv, cors, body-parser [ASSUMED]
+
+# Project status
+status_label: Early users — actively iterating [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd design media handling around a CDN earlier to keep upload latency down. I'd also build role-based permissions from day one to support client reviews without exposing internal notes. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to production teams for pilots, advisors in creative tooling, and early-stage angels [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
 - Creative Storyboard is a full-stack storyboarding app that helps filmmakers and creators plan projects with a clear hierarchy of Projects -> Scenes -> Shots, rich media uploads (images, video, audio), and AI prompt notes for ideation.
 - It streamlines pre-production by centralizing assets, notes, and progress with dashboards, activity feeds, profile management, and a polished, responsive UI.

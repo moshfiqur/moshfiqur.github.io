@@ -67,8 +67,11 @@ full_description:
 - 'Next on the roadmap: IQ-weighted feeds, friend graph, messaging, and reputation anchored to verified profile data.'
 - Built with Meteor for full-stack reactivity, React 18 with react-meteor-data, Node.js modules configured via dotenv, Mongo-backed data models, Bunny.net storage SDK helpers, and automated tests through meteortesting:mocha.
 gallery:
-- 01_Login.png
-- 02_UserProfile.png
-- 03_Album.png
+- file: 01_Login.png
+  orientation: landscape
+- file: 02_UserProfile.png
+  orientation: landscape
+- file: 03_Album.png
+  orientation: landscape
 category: Web App
 featured: true

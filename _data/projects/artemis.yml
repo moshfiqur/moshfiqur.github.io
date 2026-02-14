@@ -70,12 +70,19 @@ full_description:
 - Whether you are sharing a passion, meeting like-minded individuals, or simply unwinding, Artemis creates an immersive club experience anywhere.
 
 gallery:
-- 01_SplashScreen.png
-- 02_Registration.png
-- 03_Home.png
-- 04_Home2.png
-- 05_ClubHome.png
-- 06_ClubChat.png
-- 07_UserProfile.png
+- file: 01_SplashScreen.png
+  orientation: portrait
+- file: 02_Registration.png
+  orientation: portrait
+- file: 03_Home.png
+  orientation: portrait
+- file: 04_Home2.png
+  orientation: portrait
+- file: 05_ClubHome.png
+  orientation: portrait
+- file: 06_ClubChat.png
+  orientation: portrait
+- file: 07_UserProfile.png
+  orientation: portrait
 category: Mobile App
 featured: true

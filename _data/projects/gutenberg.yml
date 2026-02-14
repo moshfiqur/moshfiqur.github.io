@@ -64,10 +64,15 @@ full_description:
 - Readers can explore and enjoy multiple books with their last position automatically bookmarked for a seamless experience.
 - Adjustable font sizes, intuitive search, and a distraction-free interface make Gutenberg a delightful way to rediscover literary masterpieces anywhere.
 gallery:
-- 01_SplashScreen.png
-- 02_Home.png
-- 03_Reading.png
-- 04_Menu.png
-- 05_Search.png
+- file: 01_SplashScreen.png
+  orientation: portrait
+- file: 02_Home.png
+  orientation: portrait
+- file: 03_Reading.png
+  orientation: portrait
+- file: 04_Menu.png
+  orientation: portrait
+- file: 05_Search.png
+  orientation: portrait
 category: Mobile App
 featured: true

@@ -66,11 +66,17 @@ full_description:
 - The app runs a locally hosted TensorFlow CNN model to process images directly on your device, ensuring privacy and speed. Users can take pictures using the camera or select images from the gallery, and the app evaluates the aesthetic appeal with advanced machine learning.
 - Whether you're capturing moments or perfecting your selfies, Beauticator is your trusted AI companion for instant feedback and fun!
 gallery:
-- 0.png
-- 1.png
-- 2.png
-- 3.png
-- 4.png
-- 5.png
+- file: 0.png
+  orientation: portrait
+- file: 1.png
+  orientation: portrait
+- file: 2.png
+  orientation: portrait
+- file: 3.png
+  orientation: portrait
+- file: 4.png
+  orientation: portrait
+- file: 5.png
+  orientation: portrait
 category: Mobile App
 featured: true

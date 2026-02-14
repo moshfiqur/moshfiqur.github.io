@@ -65,16 +65,27 @@ full_description:
 - In Yegdoo, users can chat and get to know each other without seeing profile pictures. Once they feel a genuine connection, they can choose to reveal their photos, ensuring relationships are built on personality and shared interests first.
 - Yegdoo is the perfect platform for those who believe that true attraction starts with the mind.
 gallery:
-- 00_SplashLogo.png
-- 01_Splash.png
-- 02_Registration.png
-- 03_Home.png
-- 04_Settings.png
-- 05_User_Profile.png
-- 05_User_Profile2.png
-- 06_Bookmarked_User.png
-- 07_Edit_Profile.png
-- '08_Chat.png'
-- '09_Chat2.png'
+- file: 00_SplashLogo.png
+  orientation: portrait
+- file: 01_Splash.png
+  orientation: portrait
+- file: 02_Registration.png
+  orientation: portrait
+- file: 03_Home.png
+  orientation: portrait
+- file: 04_Settings.png
+  orientation: portrait
+- file: 05_User_Profile.png
+  orientation: portrait
+- file: 05_User_Profile2.png
+  orientation: portrait
+- file: 06_Bookmarked_User.png
+  orientation: portrait
+- file: 07_Edit_Profile.png
+  orientation: portrait
+- file: 08_Chat.png
+  orientation: portrait
+- file: 09_Chat2.png
+  orientation: portrait
 category: Mobile App
 featured: true

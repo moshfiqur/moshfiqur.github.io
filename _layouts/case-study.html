@@ -42,9 +42,16 @@ layout: default
 
       {% if project.gallery %}
       <div class="case-gallery" aria-label="Gallery of {{ project.title }}" role="list">
-        {% for img in project.gallery %}
-        <a class="case-gallery__item" role="listitem" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img }}" target="_blank" rel="noopener">
-          <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img }}" alt="{{ project.title }} screen {{ forloop.index }}">
+        {% for item in project.gallery %}
+          {% if item.file %}
+            {% assign img_file = item.file %}
+            {% assign img_orientation = item.orientation | default: 'landscape' %}
+          {% else %}
+            {% assign img_file = item %}
+            {% assign img_orientation = 'landscape' %}
+          {% endif %}
+        <a class="case-gallery__item case-gallery__item--{{ img_orientation }}" role="listitem" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" target="_blank" rel="noopener">
+          <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" alt="{{ project.title }} screen {{ forloop.index }}">
         </a>
         {% endfor %}
       </div>

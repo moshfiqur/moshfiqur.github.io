@@ -66,24 +66,43 @@ full_description:
 - Users can set up their profiles by liking movies, genres, actors, directors, and even production houses. The AI analyzes these preferences to recommend films tailored to their tastes.
 - Cinemated goes beyond the usual genres, surfacing special categories like horror films in eerie castles or whodunits with charming detectives, so every movie night is a hit.
 gallery:
-- 01_Home.png
-- 02_Movies_of_the_Year.png
-- 03_Popular_Movies.png
-- 04_Recently_Released_Movies.png
-- 05_User_Preferences_Director.png
-- 06_User_Preferences_Favorite_Movies.png
-- 07_User_Preferences_Production_House.png
-- '08_User_Preferences_Set_Success.png'
-- '09_User_Preferences_Select_Actors.png'
-- 10_User_Preferences_Set_Genres.png
-- 10_User_Preferences_Set_Movies_Styles.png
-- 11_User_Preferences_Set_Genres.png
-- 12_Watchlist_Movies.png
-- 13_User_Profile.png
-- 14_Upload_Profile_Image.png
-- 15_Edit_Profile.png
-- 16_Liked_Movies.png
-- 17_Menu.png
-- 18_Movie_Recommendation.png
+- file: 01_Home.png
+  orientation: portrait
+- file: 02_Movies_of_the_Year.png
+  orientation: portrait
+- file: 03_Popular_Movies.png
+  orientation: portrait
+- file: 04_Recently_Released_Movies.png
+  orientation: portrait
+- file: 05_User_Preferences_Director.png
+  orientation: portrait
+- file: 06_User_Preferences_Favorite_Movies.png
+  orientation: portrait
+- file: 07_User_Preferences_Production_House.png
+  orientation: portrait
+- file: 08_User_Preferences_Set_Success.png
+  orientation: portrait
+- file: 09_User_Preferences_Select_Actors.png
+  orientation: portrait
+- file: 10_User_Preferences_Set_Genres.png
+  orientation: portrait
+- file: 10_User_Preferences_Set_Movies_Styles.png
+  orientation: portrait
+- file: 11_User_Preferences_Set_Genres.png
+  orientation: portrait
+- file: 12_Watchlist_Movies.png
+  orientation: portrait
+- file: 13_User_Profile.png
+  orientation: portrait
+- file: 14_Upload_Profile_Image.png
+  orientation: portrait
+- file: 15_Edit_Profile.png
+  orientation: portrait
+- file: 16_Liked_Movies.png
+  orientation: portrait
+- file: 17_Menu.png
+  orientation: portrait
+- file: 18_Movie_Recommendation.png
+  orientation: portrait
 category: Mobile App
 featured: true

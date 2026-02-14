@@ -926,9 +926,15 @@ html[data-theme="dark"] .portfolio-view-more:focus {
 .case-body { }
 .case-description p { font-size: 1.6rem; line-height: 1.9; margin-bottom: 14px; }
 
-.case-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
-.case-gallery__item { border-radius: 16px; overflow: hidden; display: block; background: transparent; }
-.case-gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 28px; grid-auto-flow: dense; }
+.case-gallery__item { border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: transparent; }
+.case-gallery__item img { width: 100%; height: auto; object-fit: contain; display: block; }
+.case-gallery__item--portrait { grid-column: span 1; }
+.case-gallery__item--landscape { grid-column: span 2; }
+@media (max-width: 768px) {
+	.case-gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+	.case-gallery__item--landscape { grid-column: span 1; }
+}
 
 html[data-theme="dark"] .case-hero__media { box-shadow: 0 30px 60px rgba(2,6,23,0.6); }
 html[data-theme="dark"] .case-hero__details .case-pill { background: rgba(125, 211, 252, 0.18); color: #7dd3fc; }

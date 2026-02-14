@@ -67,15 +67,25 @@ full_description:
 - Features include user registration/login, project creation and editing with banners, scene and shot management, drag-and-drop uploads with progress, lightbox previews, audio playback, and an integrated searchable audio library.
 - 'It solves the common pain of scattered files and spreadsheets by keeping visual references, timing, and creative direction in one place—fast to set up and easy to iterate. Tech stack: Next.js 14 (React 18) for the frontend, Express/Node.js API, MySQL (mysql2) for persistence, multer for uploads, bcryptjs for auth, and dotenv/cors/body-parser for configuration and middleware, with custom components and global CSS for styling.'
 gallery:
-- 01_Landing.png
-- 02_Home.png
-- 03_Profile.png
-- 04_ProjectHome.png
-- 05_Scenes.png
-- 06_SceneHome.png
-- 07_ShotHome.png
-- '08_PreviewImage.png'
-- '09_AudioLibrary.png'
-- 10_MyProjects.png
+- file: 01_Landing.png
+  orientation: landscape
+- file: 02_Home.png
+  orientation: landscape
+- file: 03_Profile.png
+  orientation: landscape
+- file: 04_ProjectHome.png
+  orientation: landscape
+- file: 05_Scenes.png
+  orientation: landscape
+- file: 06_SceneHome.png
+  orientation: landscape
+- file: 07_ShotHome.png
+  orientation: landscape
+- file: 08_PreviewImage.png
+  orientation: landscape
+- file: 09_AudioLibrary.png
+  orientation: landscape
+- file: 10_MyProjects.png
+  orientation: landscape
 category: Web App
 featured: true

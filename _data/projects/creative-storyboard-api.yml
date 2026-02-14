@@ -66,10 +66,15 @@ full_description:
 - Key features include cookie-based sessions with bcrypt-hardened login, activity logging, aggregated stats, MySQL-backed CRUD for nested resources, multer-powered media uploads with file hygiene, and fuzzy-search across a local sound library.
 - The stack combines Express, mysql2, bcryptjs, multer, body-parser, cors, dotenv, and vanilla SPA docs, running on Node.js and MySQL--ready to drop behind any Next.js or React frontend.
 gallery:
-- 01_APIDoc1.png
-- 02_APIDoc2.png
-- 03_APIDoc3.png
-- 04_APIDoc4.png
-- 05_APIDoc5.png
+- file: 01_APIDoc1.png
+  orientation: landscape
+- file: 02_APIDoc2.png
+  orientation: landscape
+- file: 03_APIDoc3.png
+  orientation: landscape
+- file: 04_APIDoc4.png
+  orientation: landscape
+- file: 05_APIDoc5.png
+  orientation: landscape
 category: Web App
 featured: false

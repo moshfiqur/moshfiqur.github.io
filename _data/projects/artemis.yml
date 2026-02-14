@@ -1,16 +1,73 @@
 id: artemis
 title: Artemis
-pill: Flutter, Firebase
-description: Building the "Digital Third Space" - Scaling Artemis with Flutter and Firebase.
+pill: Flutter · Firebase · iOS & Android
+description: Find your people in spaces that feel real—Artemis recreates the vibe of your favorite clubs online.
 image: portfolio/artemis.png
 reverse: false
-subtitle: Your Virtual Club Experience, Anytime, Anywhere.
+subtitle: Your Virtual Club Experience, Anytime, Anywhere
 tech: Flutter · Firebase
 screencast: https://youtu.be/_ApXFTfjofw
+
+# Core messaging
+headline: Find your people in spaces that feel real
+tagline: Artemis recreates the vibe of your favorite clubs online, where you can meet like-minded people without the overwhelm.
+
+# Target audience
+target_user: Social adults aged 25-40 who miss the focused, curated energy of real-world clubs but can't always show up in person [ASSUMED]
+
+# Problem statement
+the_problem: |
+  Social media tries to be everything to everyone, turning genuine connection into noise. Discord servers grow too fast and lose intimacy. Dating apps force romantic intent. Meetup.com requires you to commit to events you might not attend. There's no digital equivalent of walking into a cozy book club, a film discussion lounge, or a local soccer fans' hangout—spaces where the vibe stays balanced, entry is intentional, and conversations flow naturally.
+
+# Solution statement
+the_solution: |
+  Artemis lets people join passion-based clubs with thoughtful member limits, buy virtual drinks to break the ice, and move into private chats when there's real chemistry—so connection feels warm, not transactional.
+
+# Market context
+market_opportunity: |
+  Post-pandemic, people crave structured social spaces that aren't work Slack, family WhatsApp, or infinite-scroll feeds. Virtual "third places" are an emerging category—spaces that sit between home and work, mimicking the local café or club. Niche community apps are proving people will pay for curated, low-noise environments. [ASSUMED]
+
+# Feature highlights
+key_features:
+  - name: Club Discovery by Passion
+    description: Browse clubs for sports, film, literature, comedy, or hyperlocal meetups. Each club has a clear theme and vibe.
+  
+  - name: Balanced Entry Limits
+    description: Clubs cap membership to preserve intimacy and quality. You're not shouting into a thousand-person void. [ASSUMED]
+  
+  - name: Virtual Drink Icebreakers
+    description: Send a virtual drink to someone interesting. It's playful, low-pressure, and sparks real one-on-one conversations.
+  
+  - name: Natural Chat Flow
+    description: Move from club-wide chat to private DMs when you click. Feels organic, not forced.
+  
+  - name: Real-time Community Feel
+    description: Firebase-powered live updates make clubs feel active and present, like a real space you just walked into. [ASSUMED]
+
+# Technical architecture
+tech_stack_groups:
+  frontend: Flutter
+  backend: Firebase (Realtime Database or Firestore) [ASSUMED]
+  authentication: Firebase Auth [ASSUMED]
+  storage: Firebase Storage [ASSUMED]
+  hosting: Firebase Hosting [ASSUMED]
+
+# Project status
+status_label: Prototype stage — seeking first beta users [ASSUMED]
+
+# Engineering reflection
+what_id_do_differently: |
+  If starting over, I'd design the club membership data model to support tiered roles (moderators, regulars, newcomers) from day one—adding hierarchy later required migration logic. I'd also implement rate limiting on virtual drink sends earlier to prevent spammy behavior during beta testing. [ASSUMED — replace with your real reflection]
+
+# Call to action
+investor_cta: Open to early beta users, social-app angels, advisors with community-building experience [ASSUMED]
+
+# Legacy description (keep for backward compatibility)
 full_description:
-- Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter, and Firebase, it helps people discover communities around their passions.
+- Artemis is a virtual club app that brings the essence of real-world clubs to the digital space. Built using Flutter and Firebase, it helps people discover communities around their passions.
 - Users can join clubs for sports, literature, movies, comedy, or location-based meetups, with thoughtful entry limits to keep the vibe balanced. They can buy virtual drinks for others and spark one-to-one chats that feel natural and personal.
 - Whether you are sharing a passion, meeting like-minded individuals, or simply unwinding, Artemis creates an immersive club experience anywhere.
+
 gallery:
 - 01_SplashScreen.png
 - 02_Registration.png

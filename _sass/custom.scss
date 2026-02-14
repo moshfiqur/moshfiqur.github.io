@@ -240,9 +240,9 @@ html[data-theme="dark"] {
 
   .case-hero {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 36px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
     margin-bottom: 36px;
   }
 
@@ -289,9 +289,6 @@ html[data-theme="dark"] {
   }
 
   .case-body {
-    max-width: 980px;
-    margin: 0 auto;
-
     .case-description p {
       font-size: 1.6rem;
       line-height: 1.9;
@@ -322,7 +319,7 @@ html[data-theme="dark"] {
 
   @media (max-width: 991px) {
     .case-hero {
-      grid-template-columns: 1fr;
+      gap: 22px;
     }
   }
 }

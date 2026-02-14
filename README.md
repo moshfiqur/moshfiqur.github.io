@@ -120,5 +120,4 @@ To add or modify sections, edit the corresponding include files in `_includes/` 
 
 ## Credits
 
-- Design template by [TemplateWire](http://www.templatewire.com)
 - Background photo by [NASA](https://unsplash.com/@nasa) on Unsplash

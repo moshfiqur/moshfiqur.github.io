@@ -66,15 +66,15 @@ full_description:
 - Classification can run locally via WebLLM or route through online LLMs like DeepSeek and OpenAI, with a built-in safety gate that keeps sensitive content away from external APIs.
 - Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage.
 gallery:
-- 01_Cluttered_Browser_Long.png
-- 02_Cluttered_Browser.png
+# - 01_Cluttered_Browser_Long.png
+# - 02_Cluttered_Browser.png
 - 03_Settings1.png
 - 04_Settings2.png
 - 05_Settings3.png
 - 06_Settings4.png
 - 07_Action_Window.png
-- '08_Bookmark_Tab_Groups.png'
-- '09_Bookmark_Categories.png'
+- 08_Bookmark_Tab_Groups.png
+- 09_Bookmark_Categories.png
 - 10_Bookmark_Sessions.png
 category: Productivity App
 featured: true

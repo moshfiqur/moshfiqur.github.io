@@ -7,8 +7,8 @@ layout: default
   <div class="container">
     {% if project %}
     <header class="case-hero">
-      <div class="case-hero__media">
-        <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview">
+      <div class="case-hero__media case-hero__media--full">
+        <img src="{{ site.baseurl }}/{{ project.hero | default: project.image }}" alt="{{ project.title }} hero">
       </div>
       <div class="case-hero__details">
         {% if project.category %}

@@ -4,18 +4,20 @@ title: Startup Project Showcase
 permalink: /portfolio/
 ---
 {% include nav.html %}
-<section class="portfolio-archive">
+<div id="portfolio" class="portfolio-section" style="margin: 50px 0 60px;">
   <div class="container">
     <div class="section-title center">
-      <h2>Startup Project Showcase</h2>
-      <p class="section-description">Explore innovative products designed for real-world problems, built with modern tech stacks, and ready for growth. Each project includes market insights, technical details, and opportunities for collaboration.</p>
+      <h2>Startup Projects</h2>
+      <p class="section-description">Product showcases with market insights, technical architecture, and growth potential.</p>
       <hr>
     </div>
 
-    {% assign all_projects = site.data.projects | values %}
-    {% if all_projects and all_projects.size > 0 %}
+    {% comment %}List all project files - add new projects here{% endcomment %}
+    {% assign project_names = "artemis,beauticator,booksmart,cinemated,creative-storyboard,creative-storyboard-api,gutenberg,klara,royalia,yegdoo" | split: "," %}
     <div class="portfolio-grid" role="list">
-      {% for project in all_projects %}
+      {% for project_name in project_names %}
+        {% assign project = site.data.projects[project_name] %}
+        {% if project %}
       <article class="portfolio-card" role="listitem">
         <div class="portfolio-card__image">
           <img src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }} preview" loading="lazy">
@@ -27,15 +29,15 @@ permalink: /portfolio/
           <h3 class="portfolio-card__title">{{ project.title }}</h3>
           <p class="portfolio-card__description">{{ project.description }}</p>
           <div class="portfolio-card__actions">
-            <a class="portfolio-more-link" href="{{ site.baseurl }}/portfolio/{{ project.id }}/">View project</a>
+            <a class="portfolio-more-link" href="{{ site.baseurl }}/portfolio/{{ project.id }}/">View more</a>
           </div>
         </div>
       </article>
+        {% endif %}
       {% endfor %}
     </div>
-    {% else %}
-    <p>No case studies available at the moment.</p>
-    {% endif %}
+
+    {% include portfolio-modal.html %}
   </div>
-</section>
+</div>
 {% include footer.html %}

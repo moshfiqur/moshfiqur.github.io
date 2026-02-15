@@ -3,5 +3,8 @@
     ".vscode/schemas/jekyll-data.schema.json": [
       "_data/site.yml"
     ]
+  },
+  "chat.tools.terminal.autoApprove": {
+    "bundle": true
   }
 }

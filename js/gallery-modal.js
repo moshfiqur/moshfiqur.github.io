@@ -107,22 +107,25 @@
     prevBtn.addEventListener('click', showPrev);
     nextBtn.addEventListener('click', showNext);
     
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('is-active')) return;
-      
-      switch(e.key) {
-        case 'Escape':
-          hideModal();
-          break;
-        case 'ArrowLeft':
-          showPrev();
-          break;
-        case 'ArrowRight':
-          showNext();
-          break;
-      }
-    });
+    // Keyboard navigation (add only once using a flag)
+    if (!modal.dataset.keyboardListenerAdded) {
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('is-active')) return;
+        
+        switch(e.key) {
+          case 'Escape':
+            hideModal();
+            break;
+          case 'ArrowLeft':
+            showPrev();
+            break;
+          case 'ArrowRight':
+            showNext();
+            break;
+        }
+      });
+      modal.dataset.keyboardListenerAdded = 'true';
+    }
   }
   
   // Initialize when DOM is ready

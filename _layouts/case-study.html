@@ -50,7 +50,7 @@ layout: default
             {% assign img_file = item %}
             {% assign img_orientation = 'landscape' %}
           {% endif %}
-        <a class="case-gallery__item case-gallery__item--{{ img_orientation }}" role="listitem" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" target="_blank" rel="noopener">
+        <a class="case-gallery__item case-gallery__item--{{ img_orientation }}" role="button" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" aria-label="Open {{ project.title }} screen {{ forloop.index }} in gallery modal">
           <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" alt="{{ project.title }} screen {{ forloop.index }}">
         </a>
         {% endfor %}

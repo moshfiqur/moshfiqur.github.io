@@ -14,7 +14,7 @@ headline: A social network built on profile depth
 tagline: Royalia explores a world where identity and intent matter more than viral feeds.
 
 # Target audience
-target_user: High-engagement community members who want slower, more thoughtful social spaces [ASSUMED]
+target_user: High-engagement community members who want slower, more thoughtful social spaces
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  Interest in smaller, purpose-built communities is rising as users push back against noisy feeds. New platforms are exploring identity, verification, and intentional participation. A concept that emphasizes depth offers a fresh alternative. [ASSUMED]
+  Interest in smaller, purpose-built communities is rising as users push back against noisy feeds. New platforms are exploring identity, verification, and intentional participation. A concept that emphasizes depth offers a fresh alternative.
 
 # Feature highlights
 key_features:
@@ -34,30 +34,30 @@ key_features:
     description: Rich layouts with cover photos and avatars. Gives users room to express identity beyond a bio.
 
   - name: Curated Community Spaces
-    description: Topic-focused areas with distinct visual themes. Encourages slower, higher-quality participation. [ASSUMED]
+    description: Topic-focused areas with distinct visual themes. Encourages slower, higher-quality participation.
 
   - name: Media-First Posts
     description: Upload validation and fast media delivery via Bunny.net. Keeps the experience polished and reliable.
 
   - name: Roadmap for Reputation Signals
-    description: Planned reputation and trust signals to elevate meaningful contributions. Positions the platform for healthier discourse. [ASSUMED]
+    description: Planned reputation and trust signals to elevate meaningful contributions. Positions the platform for healthier discourse.
 
 # Technical architecture
 tech_stack_groups:
   frontend: React 18
   backend: Meteor (Node.js)
   storage: MongoDB
-  other: Bunny.net, react-meteor-data, meteortesting:mocha [ASSUMED]
+  other: Bunny.net, react-meteor-data, meteortesting:mocha
 
 # Project status
-status_label: Prototype stage — seeking first beta users [ASSUMED]
+status_label: Prototype stage — seeking first beta users
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd formalize the content moderation pipeline earlier to protect community quality. I'd also decouple media uploads from profile updates to avoid blocking the UI on large files. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to community strategists, early beta users, and advisors in social product design [ASSUMED]
+investor_cta: Open to community strategists, early beta users, and advisors in social product design
 
 # Legacy description (keep for backward compatibility)
 full_description:

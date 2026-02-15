@@ -14,7 +14,7 @@ headline: Get confident about every selfie you take
 tagline: Beauticator scores your selfie on-device so you can fix it before you post.
 
 # Target audience
-target_user: Creators, students, and social users who care about how they look on camera and want quick, private feedback [ASSUMED]
+target_user: Creators, students, and social users who care about how they look on camera and want quick, private feedback
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  Selfie culture is mainstream, but privacy concerns around biometric data are rising. On-device AI makes it possible to deliver feedback without cloud storage. Tools that pair camera UX with privacy-first AI can stand out in a crowded photo app market. [ASSUMED]
+  Selfie culture is mainstream, but privacy concerns around biometric data are rising. On-device AI makes it possible to deliver feedback without cloud storage. Tools that pair camera UX with privacy-first AI can stand out in a crowded photo app market.
 
 # Feature highlights
 key_features:
@@ -37,28 +37,28 @@ key_features:
     description: Analyze a new selfie or pick one from your gallery. Makes the app useful in the moment and after the fact.
 
   - name: Actionable Feedback Cues
-    description: Highlights why a shot scored the way it did, such as lighting or framing. Helps users improve, not just rate them. [ASSUMED]
+    description: Highlights why a shot scored the way it did, such as lighting or framing. Helps users improve, not just rate them.
 
   - name: History and Retakes
-    description: Compare recent shots and iterate until the score feels right. Encourages quick learning loops. [ASSUMED]
+    description: Compare recent shots and iterate until the score feels right. Encourages quick learning loops.
 
 # Technical architecture
 tech_stack_groups:
   frontend: Flutter
   ai_ml: TensorFlow (on-device CNN)
-  backend: Firebase [ASSUMED]
-  storage: MySQL (training metadata or analytics) [ASSUMED]
-  other: Firebase Auth [ASSUMED]
+  backend: Firebase
+  storage: MySQL (training metadata or analytics)
+  other: Firebase Auth
 
 # Project status
-status_label: MVP complete — seeking first 100 users [ASSUMED]
+status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd invest earlier in dataset normalization to reduce bias across lighting and skin tones. I'd also build a clearer calibration flow so users can tune scoring to their personal style. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to beta users, privacy-first consumer app angels, and advisors in mobile growth [ASSUMED]
+investor_cta: Open to beta users, privacy-first consumer app angels, and advisors in mobile growth
 
 # Legacy description (keep for backward compatibility)
 full_description:

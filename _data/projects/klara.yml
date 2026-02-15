@@ -14,7 +14,7 @@ headline: Learn German without getting overwhelmed
 tagline: Klara guides you through grammar, vocabulary, and speaking in short daily sessions.
 
 # Target audience
-target_user: Beginner-to-intermediate German learners who want structure without long, intimidating lessons [ASSUMED]
+target_user: Beginner-to-intermediate German learners who want structure without long, intimidating lessons
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  More people are learning German for education, relocation, and work. Learners want mobile-first tools that feel like a tutor, not a game. A focused, grammar-forward app can stand out in a crowded market. [ASSUMED]
+  More people are learning German for education, relocation, and work. Learners want mobile-first tools that feel like a tutor, not a game. A focused, grammar-forward app can stand out in a crowded market.
 
 # Feature highlights
 key_features:
@@ -37,27 +37,27 @@ key_features:
     description: Context-rich examples help learners understand how grammar works in real use. Reinforces retention.
 
   - name: Pronunciation Audio
-    description: Hear words and sentences read aloud. Builds speaking confidence and listening skills. [ASSUMED]
+    description: Hear words and sentences read aloud. Builds speaking confidence and listening skills.
 
   - name: Video Learning Add-ons
-    description: Curated videos support each topic. Gives learners extra context without leaving the app. [ASSUMED]
+    description: Curated videos support each topic. Gives learners extra context without leaving the app.
 
 # Technical architecture
 tech_stack_groups:
   frontend: Flutter
-  backend: Firebase [ASSUMED]
+  backend: Firebase
   storage: MySQL
-  other: Firebase Auth [ASSUMED]
+  other: Firebase Auth
 
 # Project status
-status_label: MVP complete — seeking first 100 users [ASSUMED]
+status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd build spaced-repetition logic earlier to improve long-term retention. I'd also separate content authoring from the app so new lessons can ship without redeploys. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to beta learners, language educators, and advisors in edtech growth [ASSUMED]
+investor_cta: Open to beta learners, language educators, and advisors in edtech growth
 
 # Legacy description (keep for backward compatibility)
 full_description:

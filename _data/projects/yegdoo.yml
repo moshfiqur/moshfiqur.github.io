@@ -14,7 +14,7 @@ headline: Build real connection before the reveal
 tagline: Yegdoo keeps photos hidden at first so people connect through conversation.
 
 # Target audience
-target_user: Singles who value personality and intellect over swipe-first dating experiences [ASSUMED]
+target_user: Singles who value personality and intellect over swipe-first dating experiences
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  Users are increasingly frustrated with swipe fatigue and superficial matches. Privacy-first social products are gaining momentum as trust becomes a differentiator. A conversation-first dating model can attract users seeking more serious connections. [ASSUMED]
+  Users are increasingly frustrated with swipe fatigue and superficial matches. Privacy-first social products are gaining momentum as trust becomes a differentiator. A conversation-first dating model can attract users seeking more serious connections.
 
 # Feature highlights
 key_features:
@@ -34,30 +34,30 @@ key_features:
     description: Photos stay hidden until both users choose to reveal. Encourages conversation before judgment.
 
   - name: Interest-Based Discovery
-    description: Profiles highlight interests and personality cues. Makes matches feel more intentional. [ASSUMED]
+    description: Profiles highlight interests and personality cues. Makes matches feel more intentional.
 
   - name: Safe Chat Experience
-    description: Conversation-first flow reduces pressure and enables better rapport. Builds trust early. [ASSUMED]
+    description: Conversation-first flow reduces pressure and enables better rapport. Builds trust early.
 
   - name: Profile Privacy Controls
-    description: Users control what is visible and when. Supports a safer dating environment. [ASSUMED]
+    description: Users control what is visible and when. Supports a safer dating environment.
 
 # Technical architecture
 tech_stack_groups:
   frontend: Flutter
-  backend: Firebase [ASSUMED]
+  backend: Firebase
   storage: MySQL
-  other: Firebase Auth [ASSUMED]
+  other: Firebase Auth
 
 # Project status
-status_label: MVP complete — seeking first 100 users [ASSUMED]
+status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd design anti-harassment tooling earlier to protect vulnerable users. I'd also build a clearer moderation queue so trust and safety can scale with growth. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to beta users, advisors in trust and safety, and early-stage consumer angels [ASSUMED]
+investor_cta: Open to beta users, advisors in trust and safety, and early-stage consumer angels
 
 # Legacy description (keep for backward compatibility)
 full_description:

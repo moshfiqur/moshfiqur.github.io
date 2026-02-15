@@ -14,7 +14,7 @@ headline: Turn chaotic pre-production into a clear plan
 tagline: Creative Storyboard organizes your project into scenes and shots so crews can align fast.
 
 # Target audience
-target_user: Indie filmmakers, video teams, and agencies that juggle multiple shoots and need a single source of truth [ASSUMED]
+target_user: Indie filmmakers, video teams, and agencies that juggle multiple shoots and need a single source of truth
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  The creator economy is producing more shoots with smaller teams and tighter timelines. Lightweight, purpose-built tools are replacing bloated studio software. A modern, web-based storyboard system fits this shift. [ASSUMED]
+  The creator economy is producing more shoots with smaller teams and tighter timelines. Lightweight, purpose-built tools are replacing bloated studio software. A modern, web-based storyboard system fits this shift.
 
 # Feature highlights
 key_features:
@@ -37,28 +37,28 @@ key_features:
     description: Attach images, video, and audio references directly to shots. Reduces context switching during planning.
 
   - name: AI Ideation Notes
-    description: Generate prompt-driven ideas for visual direction. Helps teams iterate quickly in early planning. [ASSUMED]
+    description: Generate prompt-driven ideas for visual direction. Helps teams iterate quickly in early planning.
 
   - name: Activity Feed and Progress Views
-    description: Track what changed and what is ready. Keeps stakeholders in sync. [ASSUMED]
+    description: Track what changed and what is ready. Keeps stakeholders in sync.
 
 # Technical architecture
 tech_stack_groups:
   frontend: Next.js 14 (React 18)
   backend: Express (Node.js)
-  ai_ml: WebLLM [ASSUMED]
+  ai_ml: WebLLM
   storage: MySQL
-  other: Multer, bcryptjs, dotenv, cors, body-parser [ASSUMED]
+  other: Multer, bcryptjs, dotenv, cors, body-parser
 
 # Project status
-status_label: Early users — actively iterating [ASSUMED]
+status_label: Early users — actively iterating
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd design media handling around a CDN earlier to keep upload latency down. I'd also build role-based permissions from day one to support client reviews without exposing internal notes. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to production teams for pilots, advisors in creative tooling, and early-stage angels [ASSUMED]
+investor_cta: Open to production teams for pilots, advisors in creative tooling, and early-stage angels
 
 # Legacy description (keep for backward compatibility)
 full_description:

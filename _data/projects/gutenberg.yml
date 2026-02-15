@@ -14,7 +14,7 @@ headline: Read timeless books without the friction
 tagline: Gutenberg makes classic literature fast to find, easy to read, and simple to continue.
 
 # Target audience
-target_user: Readers who love public-domain classics and want an offline-friendly, distraction-free mobile experience [ASSUMED]
+target_user: Readers who love public-domain classics and want an offline-friendly, distraction-free mobile experience
 
 # Problem statement
 the_problem: |
@@ -26,7 +26,7 @@ the_solution: |
 
 # Market context
 market_opportunity: |
-  Mobile reading continues to grow, especially among commuters and casual readers. Free public-domain libraries are expanding, but UX lags behind. A modern, offline-first reader for classics fills that gap. [ASSUMED]
+  Mobile reading continues to grow, especially among commuters and casual readers. Free public-domain libraries are expanding, but UX lags behind. A modern, offline-first reader for classics fills that gap.
 
 # Feature highlights
 key_features:
@@ -40,23 +40,23 @@ key_features:
     description: Adjust font size and layout for comfort. Reduces eye strain on long reads.
 
   - name: Offline Access
-    description: Cache books for reading without a connection. Ideal for travel and commutes. [ASSUMED]
+    description: Cache books for reading without a connection. Ideal for travel and commutes.
 
 # Technical architecture
 tech_stack_groups:
   frontend: Flutter
   storage: MySQL
-  other: Local caching layer [ASSUMED]
+  other: Local caching layer
 
 # Project status
-status_label: MVP complete — seeking first 100 users [ASSUMED]
+status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
   If starting over, I'd build a richer metadata pipeline to improve search relevance. I'd also separate book content from UI state to speed up rendering for long chapters. [ASSUMED — replace with your real reflection]
 
 # Call to action
-investor_cta: Open to beta readers, publishing advisors, and partners in education or libraries [ASSUMED]
+investor_cta: Open to beta readers, publishing advisors, and partners in education or libraries
 
 # Legacy description (keep for backward compatibility)
 full_description:

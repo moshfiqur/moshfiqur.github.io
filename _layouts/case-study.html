@@ -30,30 +30,130 @@ layout: default
     </header>
 
     <section class="case-body">
-      <div class="case-description">
-        {% if project.full_description %}
-          {% for p in project.full_description %}
-          <p>{{ p }}</p>
-          {% endfor %}
-        {% else %}
-          <p>{{ project.description }}</p>
+      {% if project.headline or project.tagline %}
+      <div class="case-section case-overview">
+        {% if project.headline %}
+        <h2 class="case-section__title">{{ project.headline }}</h2>
+        {% endif %}
+        {% if project.tagline %}
+        <p class="case-section__tagline">{{ project.tagline }}</p>
         {% endif %}
       </div>
+      {% endif %}
+
+      {% if project.the_problem or project.the_solution %}
+      <div class="case-section case-problem-solution">
+        <div class="problem-solution-grid">
+          {% if project.the_problem %}
+          <div class="problem-solution-card">
+            <h3 class="card-title">The Problem</h3>
+            <div class="card-content">{{ project.the_problem | markdownify }}</div>
+          </div>
+          {% endif %}
+          
+          {% if project.the_solution %}
+          <div class="problem-solution-card">
+            <h3 class="card-title">The Solution</h3>
+            <div class="card-content">{{ project.the_solution | markdownify }}</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.target_user %}
+      <div class="case-section case-target">
+        <h3 class="case-section__subtitle">Target Audience</h3>
+        <p class="case-section__text">{{ project.target_user }}</p>
+      </div>
+      {% endif %}
+
+      {% if project.market_opportunity %}
+      <div class="case-section case-market">
+        <h3 class="case-section__subtitle">Market Opportunity</h3>
+        <div class="case-section__text">{{ project.market_opportunity | markdownify }}</div>
+      </div>
+      {% endif %}
+
+      {% if project.key_features %}
+      <div class="case-section case-features">
+        <h3 class="case-section__subtitle">Key Features</h3>
+        <div class="features-grid">
+          {% for feature in project.key_features %}
+          <div class="feature-card">
+            <h4 class="feature-card__title">{{ feature.name }}</h4>
+            <p class="feature-card__description">{{ feature.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.tech_stack_groups %}
+      <div class="case-section case-tech-stack">
+        <h3 class="case-section__subtitle">Technology Stack</h3>
+        <div class="tech-stack-grid">
+          {% for stack in project.tech_stack_groups %}
+          <div class="tech-stack-item">
+            <span class="tech-stack-label">{{ stack[0] | replace: '_', ' ' | capitalize }}:</span>
+            <span class="tech-stack-value">{{ stack[1] }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
 
       {% if project.gallery %}
-      <div class="case-gallery" aria-label="Gallery of {{ project.title }}" role="list">
-        {% for item in project.gallery %}
-          {% if item.file %}
-            {% assign img_file = item.file %}
-            {% assign img_orientation = item.orientation | default: 'landscape' %}
-          {% else %}
-            {% assign img_file = item %}
-            {% assign img_orientation = 'landscape' %}
-          {% endif %}
-        <a class="case-gallery__item case-gallery__item--{{ img_orientation }}" role="button" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" aria-label="Open {{ project.title }} screen {{ forloop.index }} in gallery modal">
-          <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" alt="{{ project.title }} screen {{ forloop.index }}">
-        </a>
-        {% endfor %}
+      <div class="case-section case-gallery-section">
+        <h3 class="case-section__subtitle">Product Gallery</h3>
+        <div class="case-gallery" aria-label="Gallery of {{ project.title }}" role="list">
+          {% for item in project.gallery %}
+            {% if item.file %}
+              {% assign img_file = item.file %}
+              {% assign img_orientation = item.orientation | default: 'landscape' %}
+            {% else %}
+              {% assign img_file = item %}
+              {% assign img_orientation = 'landscape' %}
+            {% endif %}
+          <a class="case-gallery__item case-gallery__item--{{ img_orientation }}" role="button" href="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" aria-label="Open {{ project.title }} screen {{ forloop.index }} in gallery modal">
+            <img src="{{ site.baseurl }}/portfolio/{{ project.id }}/{{ img_file }}" alt="{{ project.title }} screen {{ forloop.index }}">
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.status_label %}
+      <div class="case-section case-status">
+        <h3 class="case-section__subtitle">Project Status</h3>
+        <p class="case-section__text status-badge">{{ project.status_label }}</p>
+      </div>
+      {% endif %}
+
+      {% if project.what_id_do_differently %}
+      <div class="case-section case-reflection">
+        <h3 class="case-section__subtitle">Engineering Reflection</h3>
+        <div class="case-section__text">{{ project.what_id_do_differently | markdownify }}</div>
+      </div>
+      {% endif %}
+
+      {% if project.investor_cta %}
+      <div class="case-section case-cta">
+        <h3 class="case-section__subtitle">Looking For</h3>
+        <p class="case-section__text cta-text">{{ project.investor_cta }}</p>
+      </div>
+      {% endif %}
+
+      {% if project.full_description %}
+      <div class="case-section case-legacy">
+        <details>
+          <summary class="legacy-toggle">View Technical Overview</summary>
+          <div class="case-description">
+            {% for p in project.full_description %}
+            <p>{{ p }}</p>
+            {% endfor %}
+          </div>
+        </details>
       </div>
       {% endif %}
     </section>

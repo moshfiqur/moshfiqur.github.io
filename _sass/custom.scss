@@ -491,7 +491,7 @@ html[data-theme="dark"] {
     gap: 6px;
 
     .tech-stack-label {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: #6b7280;
       text-transform: uppercase;
@@ -529,6 +529,26 @@ html[data-theme="dark"] {
     border-top: 2px dashed #e5e7eb;
 
     details {
+      .legacy-toggle {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #6b7280;
+        cursor: pointer;
+        padding: 12px;
+        background: #f9fafb;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+        list-style: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &:hover {
+          background: #f3f4f6;
+        }
+      }
+
       summary {
         font-size: 1.6rem;
         font-weight: 600;

@@ -95,7 +95,7 @@ layout: default
         <div class="tech-stack-grid">
           {% for stack in project.tech_stack_groups %}
           <div class="tech-stack-item">
-            <span class="tech-stack-label">{{ stack[0] | replace: '_', ' ' | capitalize }}:</span>
+            <span class="tech-stack-label">{{ stack[0] | replace: '_', ' ' | split: ' ' | join: ' ' | capitalize }}:</span>
             <span class="tech-stack-value">{{ stack[1] }}</span>
           </div>
           {% endfor %}

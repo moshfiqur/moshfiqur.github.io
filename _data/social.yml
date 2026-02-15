@@ -1,6 +1,6 @@
-- name: "Twitter"
-  icon: "fa-twitter"
-  url: "https://x.com/evenflair"
+# - name: "Twitter"
+#   icon: "fa-twitter"
+#   url: "https://x.com/evenflair"
 
 - name: "GitHub"
   icon: "fa-github"

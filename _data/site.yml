@@ -12,9 +12,9 @@ about:
 
 navigation:
   - name: "About"
-    url: "#about"
+    url: "/#about"
   - name: "Portfolio"
-    url: "#portfolio"
+    url: "/#portfolio"
   - name: "Blog"
     url: "/blog/"
 

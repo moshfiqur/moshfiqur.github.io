@@ -14,7 +14,8 @@ headline: Find movies that actually match your mood
 tagline: Cinemated learns your taste and serves watchlists you will actually finish.
 
 # Target audience
-target_user: Movie lovers who scroll for 20 minutes before choosing and want recommendations that feel personal
+target_user: |
+  Movie lovers who've experienced the ultimate defeat: scrolling through endless options only to give up and watch TikTok. They want recommendations that feel personal, not algorithmic. For the people tired of decision fatigue, and now want a service that understands "I want something like my favorite film, but for tonight's specific vibe."
 
 # Problem statement
 the_problem: |

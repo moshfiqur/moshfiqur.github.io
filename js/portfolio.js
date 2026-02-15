@@ -628,17 +628,6 @@
           "Built with TypeScript, Webpack, Chrome Extension APIs, and @mlc-ai/web-llm; integrates commercial LLM REST endpoints while storing all preferences locally in chrome.storage."
         ]
       },
-      'creative-storyboard-api': {
-        title: "Creative Storyboard API",
-        subtitle: "Secure backend for storyboard workflows",
-        tech: "Node.js · Express · MySQL · Multer",
-        screencast: null,
-        description: [
-          "Creative Storyboard API powers the storyboard planning platform with a secure Node.js/Express backend, exposing endpoints for authentication, dashboard analytics, project -> scene -> shot hierarchies, and rich media management (uploads plus audio-library linking).",
-          "Key features include cookie-based sessions with bcrypt-hardened login, activity logging, aggregated stats, MySQL-backed CRUD for nested resources, multer-powered media uploads with file hygiene, and fuzzy-search across a local sound library.",
-          "The stack combines Express, mysql2, bcryptjs, multer, body-parser, cors, dotenv, and vanilla SPA docs, running on Node.js and MySQL--ready to drop behind any Next.js or React frontend."
-        ]
-      },
       royalia: {
         title: "Royalia",
         subtitle: "Social network for the mentally royal",

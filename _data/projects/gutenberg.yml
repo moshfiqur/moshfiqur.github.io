@@ -53,7 +53,7 @@ status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd build a richer metadata pipeline to improve search relevance. I'd also separate book content from UI state to speed up rendering for long chapters. [ASSUMED — replace with your real reflection]
+  If starting over, I'd build a richer metadata pipeline to improve search relevance. I'd also separate book content from UI state to speed up rendering for long chapters.
 
 # Call to action
 investor_cta: Open to beta readers, publishing advisors, and partners in education or libraries

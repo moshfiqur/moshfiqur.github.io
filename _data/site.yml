@@ -5,7 +5,7 @@ about:
   image: "img/about_me.jpg"
   paragraphs:
     - "In an era of automated code, I focus on 'Organic Intelligence': applying two decades of human intuition, architectural foresight, and deep problem-solving to build systems that don't just work, but scale."
-    - "Across 19+ years of experience, I have moved beyond traditional development into a philosophy of Organic Intelligence: applying two decades of architectural intuition to solve the industry's most complex technical challenges."
+    # - "Across 19+ years of experience, I have moved beyond traditional development into a philosophy of Organic Intelligence: applying two decades of architectural intuition to solve the industry's most complex technical challenges."
     - "From mentoring engineering teams to designing AI-powered architectures for startups and global enterprises, I focus on building resilient, user-centric software. I hold an MS in Computer Science and bring a research-backed, analytical approach to every project I lead."
     - "Available for: Fractional Leadership, Strategic Consulting, and Senior Engineering roles."
   resume_url: "resume/MoshfiqurRahman_CV.pdf"

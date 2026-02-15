@@ -54,7 +54,7 @@ status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd build spaced-repetition logic earlier to improve long-term retention. I'd also separate content authoring from the app so new lessons can ship without redeploys. [ASSUMED — replace with your real reflection]
+  If starting over, I'd build spaced-repetition logic earlier to improve long-term retention. I'd also separate content authoring from the app so new lessons can ship without redeploys.
 
 # Call to action
 investor_cta: Open to beta learners, language educators, and advisors in edtech growth

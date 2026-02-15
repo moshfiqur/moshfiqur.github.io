@@ -55,7 +55,7 @@ status_label: Early users — actively iterating
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd design media handling around a CDN earlier to keep upload latency down. I'd also build role-based permissions from day one to support client reviews without exposing internal notes. [ASSUMED — replace with your real reflection]
+  If starting over, I'd design media handling around a CDN earlier to keep upload latency down. I'd also build role-based permissions from day one to support client reviews without exposing internal notes.
 
 # Call to action
 investor_cta: Open to production teams for pilots, advisors in creative tooling, and early-stage angels

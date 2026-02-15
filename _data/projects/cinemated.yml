@@ -55,7 +55,7 @@ status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd add evaluation metrics early to compare recommendation quality across cohorts. I'd also separate taste vectors from UI preferences so tuning the model doesn't break personalization features. [ASSUMED — replace with your real reflection]
+  If starting over, I'd add evaluation metrics early to compare recommendation quality across cohorts. I'd also separate taste vectors from UI preferences so tuning the model doesn't break personalization features.
 
 # Call to action
 investor_cta: Open to beta users, film-community partners, and advisors in consumer discovery products

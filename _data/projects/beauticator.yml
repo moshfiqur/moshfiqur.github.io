@@ -55,7 +55,7 @@ status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd invest earlier in dataset normalization to reduce bias across lighting and skin tones. I'd also build a clearer calibration flow so users can tune scoring to their personal style. [ASSUMED — replace with your real reflection]
+  If starting over, I'd invest earlier in dataset normalization to reduce bias across lighting and skin tones. I'd also build a clearer calibration flow so users can tune scoring to their personal style.
 
 # Call to action
 investor_cta: Open to beta users, privacy-first consumer app angels, and advisors in mobile growth

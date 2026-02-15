@@ -54,7 +54,7 @@ status_label: Prototype stage — seeking first beta users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd formalize the content moderation pipeline earlier to protect community quality. I'd also decouple media uploads from profile updates to avoid blocking the UI on large files. [ASSUMED — replace with your real reflection]
+  If starting over, I'd formalize the content moderation pipeline earlier to protect community quality. I'd also decouple media uploads from profile updates to avoid blocking the UI on large files.
 
 # Call to action
 investor_cta: Open to community strategists, early beta users, and advisors in social product design

@@ -54,7 +54,7 @@ status_label: MVP complete — seeking first 100 users
 
 # Engineering reflection
 what_id_do_differently: |
-  If starting over, I'd architect a clear plug-in interface for new classifiers so adding models wouldn't require UI changes. I'd also design the storage schema around cross-device sync earlier to avoid migration pain later. [ASSUMED — replace with your real reflection]
+  If starting over, I'd architect a clear plug-in interface for new classifiers so adding models wouldn't require UI changes. I'd also design the storage schema around cross-device sync earlier to avoid migration pain later.
 
 # Call to action
 investor_cta: Open to beta users, productivity-focused angels, and partners with browser-extension distribution experience

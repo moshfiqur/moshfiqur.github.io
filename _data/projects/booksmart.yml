@@ -71,9 +71,9 @@ gallery:
 # - file: 02_Cluttered_Browser.png
 #   orientation: landscape
 - file: 03_Settings1.png
-  orientation: portrait
+  orientation: landscape
 - file: 04_Settings2.png
-  orientation: portrait
+  orientation: landscape
 - file: 05_Settings3.png
   orientation: landscape
 - file: 06_Settings4.png
@@ -81,7 +81,9 @@ gallery:
 - file: 07_Action_Window.png
   orientation: landscape
 - file: 08_Bookmark_Tab_Groups.png
-  orientation: portrait
+  orientation: landscape
+- file: 08_Bookmark_Tab_Groups_2.png
+  orientation: landscape
 - file: 09_Bookmark_Categories.png
   orientation: landscape
 - file: 10_Bookmark_Sessions.png

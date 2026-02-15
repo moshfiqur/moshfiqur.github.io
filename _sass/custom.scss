@@ -342,6 +342,22 @@ html[data-theme="dark"] {
     .case-tech {
       color: #374151;
     }
+
+    .case-screencast {
+      margin-top: 12px;
+
+      a {
+        color: #6d4cbf;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #5b3fa0;
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   .case-body {
@@ -686,6 +702,16 @@ html[data-theme="dark"] .case-study {
 
     .case-tech {
       color: #cbd5f5;
+    }
+
+    .case-screencast {
+      a {
+        color: #7dd3fc;
+
+        &:hover {
+          color: #93e0ff;
+        }
+      }
     }
   }
 

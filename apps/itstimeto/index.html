@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Its Time To</title>
+	<style>
+		:root {
+			--bg-0: #070b12;
+			--bg-1: #0b1220;
+			--bg-2: #111827;
+			--card: rgba(15, 23, 42, 0.66);
+			--line: rgba(148, 163, 184, 0.25);
+			--text: #e2e8f0;
+			--muted: #9aa8c7;
+			--accent: #00d4ff;
+			--accent-2: #3df6b8;
+			--danger: #ff6b81;
+			--shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			color: var(--text);
+			font-family: "Space Grotesk", "Segoe UI", sans-serif;
+			background:
+				radial-gradient(circle at 20% -10%, rgba(0, 212, 255, 0.25), transparent 35%),
+				radial-gradient(circle at 85% 10%, rgba(61, 246, 184, 0.18), transparent 35%),
+				radial-gradient(circle at 50% 120%, rgba(20, 184, 166, 0.25), transparent 45%),
+				linear-gradient(125deg, var(--bg-0), var(--bg-1) 55%, var(--bg-2));
+			overflow-x: hidden;
+			display: grid;
+			place-items: center;
+			padding: 20px;
+		}
+
+		body::before,
+		body::after {
+			content: "";
+			position: fixed;
+			inset: auto;
+			width: 420px;
+			height: 420px;
+			filter: blur(80px);
+			border-radius: 50%;
+			opacity: 0.35;
+			pointer-events: none;
+			animation: floatBlob 16s ease-in-out infinite;
+			z-index: 0;
+		}
+
+		body::before {
+			background: #22d3ee;
+			top: -100px;
+			left: -80px;
+		}
+
+		body::after {
+			background: #34d399;
+			right: -120px;
+			bottom: -90px;
+			animation-delay: -6s;
+		}
+
+		.app {
+			position: relative;
+			width: min(760px, 100%);
+			z-index: 1;
+			border: 1px solid var(--line);
+			background: linear-gradient(140deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.55));
+			border-radius: 28px;
+			box-shadow: var(--shadow);
+			backdrop-filter: blur(10px);
+			padding: 30px;
+			animation: liftIn 700ms ease-out;
+		}
+
+		.eyebrow {
+			color: var(--accent-2);
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			font-weight: 700;
+			font-size: 0.74rem;
+			margin-bottom: 10px;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(1.7rem, 5vw, 2.6rem);
+			line-height: 1.05;
+			letter-spacing: 0.02em;
+		}
+
+		.lead {
+			color: var(--muted);
+			margin-top: 10px;
+			margin-bottom: 26px;
+			font-size: 0.95rem;
+		}
+
+		.controls {
+			display: grid;
+			grid-template-columns: 1fr 1fr auto;
+			gap: 14px;
+			align-items: end;
+		}
+
+		.field {
+			display: grid;
+			gap: 8px;
+		}
+
+		.field label {
+			color: var(--muted);
+			font-size: 0.82rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+		select,
+		button {
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			background: rgba(15, 23, 42, 0.9);
+			color: var(--text);
+			height: 52px;
+			padding: 0 14px;
+			font-size: 1rem;
+			font-weight: 600;
+			transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+			outline: none;
+		}
+
+		select {
+			appearance: none;
+			background-image:
+				linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+				linear-gradient(135deg, var(--accent) 50%, transparent 50%),
+				linear-gradient(to right, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.2));
+			background-position:
+				calc(100% - 20px) 24px,
+				calc(100% - 14px) 24px,
+				calc(100% - 44px) 0.9em;
+			background-size: 6px 6px, 6px 6px, 1px 1.8em;
+			background-repeat: no-repeat;
+			padding-right: 48px;
+		}
+
+		select:focus,
+		button:focus,
+		select:hover,
+		button:hover {
+			border-color: rgba(0, 212, 255, 0.7);
+			box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.14);
+		}
+
+		button {
+			cursor: pointer;
+			min-width: 130px;
+			background: linear-gradient(120deg, var(--accent), var(--accent-2));
+			color: #02131d;
+			text-transform: uppercase;
+			letter-spacing: 0.09em;
+			font-weight: 800;
+		}
+
+		button:active {
+			transform: translateY(1px) scale(0.99);
+		}
+
+		.timer-card {
+			margin-top: 24px;
+			border: 1px solid rgba(148, 163, 184, 0.2);
+			border-radius: 18px;
+			padding: 22px;
+			background: rgba(2, 8, 23, 0.5);
+		}
+
+		.timer-label {
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+			font-size: 0.72rem;
+			color: var(--muted);
+			margin-bottom: 12px;
+		}
+
+		.countdown {
+			font-size: clamp(2rem, 8vw, 4rem);
+			font-weight: 800;
+			letter-spacing: 0.03em;
+			margin: 0;
+			color: #f8fafc;
+			text-shadow: 0 4px 30px rgba(0, 212, 255, 0.2);
+			font-variant-numeric: tabular-nums;
+		}
+
+		.meta {
+			margin-top: 12px;
+			font-size: 0.92rem;
+			color: var(--muted);
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		.meta strong {
+			color: #c7d2fe;
+			font-weight: 700;
+		}
+
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			border: 1px solid rgba(148, 163, 184, 0.26);
+			border-radius: 999px;
+			padding: 5px 10px;
+			background: rgba(15, 23, 42, 0.7);
+		}
+
+		.status {
+			margin-top: 14px;
+			min-height: 24px;
+			color: var(--muted);
+			font-size: 0.9rem;
+		}
+
+		.status.error {
+			color: var(--danger);
+		}
+
+		.status.success {
+			color: var(--accent-2);
+		}
+
+		@keyframes liftIn {
+			from {
+				opacity: 0;
+				transform: translateY(16px) scale(0.98);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		@keyframes floatBlob {
+			0%,
+			100% {
+				transform: translate(0, 0) scale(1);
+			}
+			50% {
+				transform: translate(30px, 20px) scale(1.05);
+			}
+		}
+
+		@media (max-width: 760px) {
+			.app {
+				border-radius: 22px;
+				padding: 22px;
+			}
+
+			.controls {
+				grid-template-columns: 1fr;
+			}
+
+			button {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="app">
+		<p class="eyebrow">Focus Session</p>
+		<h1>Countdown That Survives Refresh</h1>
+		<p class="lead">Pick a daily start time and duration, then let the timer track the real remaining time.</p>
+
+		<section class="controls" aria-label="Timer controls">
+			<div class="field">
+				<label for="startTime">Start at</label>
+				<select id="startTime" aria-label="Start at"></select>
+			</div>
+
+			<div class="field">
+				<label for="hours">Hours</label>
+				<select id="hours" aria-label="Duration in hours"></select>
+			</div>
+
+			<button id="startBtn" type="button">Start</button>
+		</section>
+
+		<section class="timer-card" aria-live="polite">
+			<p class="timer-label">Time Left</p>
+			<p id="countdown" class="countdown">00:00:00</p>
+			<div class="meta">
+				<span class="pill">Ends <strong id="endsAt">--:--</strong></span>
+				<span class="pill">Timezone <strong id="timeZone">--</strong></span>
+			</div>
+			<p id="status" class="status">Choose a start time and hours, then press Start.</p>
+		</section>
+	</main>
+
+	<script>
+		(function () {
+			var STORAGE_KEY = "itstimeto-timer-v1";
+			var startTimeSelect = document.getElementById("startTime");
+			var hoursSelect = document.getElementById("hours");
+			var startBtn = document.getElementById("startBtn");
+			var countdownEl = document.getElementById("countdown");
+			var endsAtEl = document.getElementById("endsAt");
+			var timeZoneEl = document.getElementById("timeZone");
+			var statusEl = document.getElementById("status");
+			var timerId = null;
+			var activeTimer = null;
+
+			function getTimeZone() {
+				return Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
+			}
+
+			function pad2(value) {
+				return String(value).padStart(2, "0");
+			}
+
+			function createOption(value, label) {
+				var option = document.createElement("option");
+				option.value = value;
+				option.textContent = label;
+				return option;
+			}
+
+			function buildTimeOptions() {
+				for (var hour = 0; hour < 24; hour += 1) {
+					for (var minute = 0; minute < 60; minute += 1) {
+						var value = pad2(hour) + ":" + pad2(minute);
+						startTimeSelect.appendChild(createOption(value, value));
+					}
+				}
+			}
+
+			function buildHoursOptions() {
+				for (var hour = 1; hour <= 24; hour += 1) {
+					hoursSelect.appendChild(createOption(String(hour), String(hour)));
+				}
+			}
+
+			function setStatus(text, type) {
+				statusEl.textContent = text;
+				statusEl.classList.remove("error", "success");
+				if (type) {
+					statusEl.classList.add(type);
+				}
+			}
+
+			function formatRemaining(totalSeconds) {
+				var safe = Math.max(0, totalSeconds);
+				var hours = Math.floor(safe / 3600);
+				var minutes = Math.floor((safe % 3600) / 60);
+				var seconds = safe % 60;
+				return pad2(hours) + ":" + pad2(minutes) + ":" + pad2(seconds);
+			}
+
+			function formatTime(dateMs) {
+				var date = new Date(dateMs);
+				return date.toLocaleTimeString([], {
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: false
+				});
+			}
+
+			function getStartDateTimeMs(selectedTime) {
+				var parts = selectedTime.split(":");
+				var hour = Number(parts[0]);
+				var minute = Number(parts[1]);
+				var now = new Date();
+				var start = new Date(now);
+				start.setHours(hour, minute, 0, 0);
+				return start.getTime();
+			}
+
+			function saveTimer(timer) {
+				localStorage.setItem(STORAGE_KEY, JSON.stringify(timer));
+			}
+
+			function clearTimer() {
+				localStorage.removeItem(STORAGE_KEY);
+				activeTimer = null;
+				endsAtEl.textContent = "--:--";
+			}
+
+			function renderCountdown() {
+				if (!activeTimer) {
+					countdownEl.textContent = "00:00:00";
+					return;
+				}
+
+				var nowMs = Date.now();
+				var remainingSeconds = Math.floor((activeTimer.endAtMs - nowMs) / 1000);
+
+				if (remainingSeconds <= 0) {
+					countdownEl.textContent = "00:00:00";
+					setStatus("Session completed.", "success");
+					clearTimer();
+					if (timerId) {
+						clearInterval(timerId);
+						timerId = null;
+					}
+					return;
+				}
+
+				countdownEl.textContent = formatRemaining(remainingSeconds);
+				endsAtEl.textContent = formatTime(activeTimer.endAtMs);
+			}
+
+			function startTicker() {
+				if (timerId) {
+					clearInterval(timerId);
+				}
+				renderCountdown();
+				timerId = setInterval(renderCountdown, 1000);
+			}
+
+			function startTimerFromSelection() {
+				var selectedTime = startTimeSelect.value;
+				var selectedHours = Number(hoursSelect.value);
+				var startAtMs = getStartDateTimeMs(selectedTime);
+				var endAtMs = startAtMs + selectedHours * 60 * 60 * 1000;
+
+				// If computed end time is already in the past, schedule for the next day.
+				if (endAtMs <= Date.now()) {
+					startAtMs += 24 * 60 * 60 * 1000;
+					endAtMs += 24 * 60 * 60 * 1000;
+				}
+
+				activeTimer = {
+					selectedTime: selectedTime,
+					selectedHours: selectedHours,
+					startAtMs: startAtMs,
+					endAtMs: endAtMs,
+					timezone: getTimeZone(),
+					createdAtMs: Date.now()
+				};
+
+				saveTimer(activeTimer);
+				setStatus("Timer started and saved locally.", "success");
+				startTicker();
+			}
+
+			function restoreTimer() {
+				var raw = localStorage.getItem(STORAGE_KEY);
+				if (!raw) {
+					return;
+				}
+
+				try {
+					var parsed = JSON.parse(raw);
+					if (!parsed || !parsed.endAtMs || !parsed.selectedTime || !parsed.selectedHours) {
+						clearTimer();
+						return;
+					}
+
+					startTimeSelect.value = parsed.selectedTime;
+					hoursSelect.value = String(parsed.selectedHours);
+					activeTimer = parsed;
+
+					if (parsed.endAtMs <= Date.now()) {
+						clearTimer();
+						setStatus("Saved timer had already finished.");
+						return;
+					}
+
+					var timezoneChanged = parsed.timezone && parsed.timezone !== getTimeZone();
+					if (timezoneChanged) {
+						setStatus("Timer restored. Timezone changed since creation, countdown uses absolute local time.");
+					} else {
+						setStatus("Timer restored from local storage.", "success");
+					}
+
+					startTicker();
+				} catch (error) {
+					clearTimer();
+					setStatus("Saved timer data was invalid and has been reset.", "error");
+				}
+			}
+
+			buildTimeOptions();
+			buildHoursOptions();
+			timeZoneEl.textContent = getTimeZone();
+			startBtn.addEventListener("click", startTimerFromSelection);
+			restoreTimer();
+		})();
+	</script>
+</body>
+</html>

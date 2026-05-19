@@ -123,6 +123,7 @@
 			font-weight: 700;
 		}
 
+		input,
 		select,
 		button {
 			border: 1px solid var(--line);
@@ -152,8 +153,15 @@
 			padding-right: 48px;
 		}
 
+		input::placeholder {
+			color: #9ca3af;
+			opacity: 1;
+		}
+
+		input:focus,
 		select:focus,
 		button:focus,
+		input:hover,
 		select:hover,
 		button:hover {
 			border-color: rgba(0, 212, 255, 0.7);
@@ -284,7 +292,7 @@
 		<section class="controls" aria-label="Timer controls">
 			<div class="field">
 				<label for="startTime">Start at</label>
-				<select id="startTime" aria-label="Start at"></select>
+				<input id="startTime" type="text" aria-label="Start at" placeholder="hh:mm" inputmode="numeric" maxlength="5" autocomplete="off" spellcheck="false" />
 			</div>
 
 			<div class="field">
@@ -309,7 +317,7 @@
 	<script>
 		(function () {
 			var STORAGE_KEY = "itstimeto-timer-v1";
-			var startTimeSelect = document.getElementById("startTime");
+			var startTimeInput = document.getElementById("startTime");
 			var hoursSelect = document.getElementById("hours");
 			var startBtn = document.getElementById("startBtn");
 			var countdownEl = document.getElementById("countdown");
@@ -332,15 +340,6 @@
 				option.value = value;
 				option.textContent = label;
 				return option;
-			}
-
-			function buildTimeOptions() {
-				for (var hour = 0; hour < 24; hour += 1) {
-					for (var minute = 0; minute < 60; minute += 1) {
-						var value = pad2(hour) + ":" + pad2(minute);
-						startTimeSelect.appendChild(createOption(value, value));
-					}
-				}
 			}
 
 			function buildHoursOptions() {
@@ -374,13 +373,82 @@
 				});
 			}
 
-			function getStartDateTimeMs(selectedTime) {
-				var parts = selectedTime.split(":");
+			function normalizeTimeInput(rawValue) {
+				var digits = rawValue.replace(/\D/g, "").slice(0, 4);
+				if (digits.length <= 2) {
+					return digits;
+				}
+				return digits.slice(0, 2) + ":" + digits.slice(2);
+			}
+
+			function isValidTimePrefix(value) {
+				if (!/^\d{0,2}(:\d{0,2})?$/.test(value)) {
+					return false;
+				}
+
+				var parts = value.split(":");
+				var hourPart = parts[0] || "";
+				var minutePart = parts[1] || "";
+
+				if (hourPart.length >= 1 && Number(hourPart.charAt(0)) > 2) {
+					return false;
+				}
+
+				if (hourPart.length === 2 && Number(hourPart) > 23) {
+					return false;
+				}
+
+				if (minutePart.length >= 1 && Number(minutePart.charAt(0)) > 5) {
+					return false;
+				}
+
+				if (minutePart.length === 2 && Number(minutePart) > 59) {
+					return false;
+				}
+
+				return true;
+			}
+
+			function parse24HourTime(value) {
+				if (!/^\d{2}:\d{2}$/.test(value)) {
+					return null;
+				}
+
+				var parts = value.split(":");
 				var hour = Number(parts[0]);
 				var minute = Number(parts[1]);
+
+				if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+					return null;
+				}
+
+				return {
+					hour: hour,
+					minute: minute
+				};
+			}
+
+			function handleStartTimeInput() {
+				var normalized = normalizeTimeInput(startTimeInput.value);
+
+				if (isValidTimePrefix(normalized)) {
+					startTimeInput.value = normalized;
+					startTimeInput.dataset.lastValid = normalized;
+					return;
+				}
+
+				startTimeInput.value = startTimeInput.dataset.lastValid || "";
+			}
+
+			function getStartDateTimeMs(selectedTime) {
+				var parsedTime = parse24HourTime(selectedTime);
+				if (!parsedTime) {
+					return null;
+				}
+
 				var now = new Date();
 				var start = new Date(now);
-				start.setHours(hour, minute, 0, 0);
+				start.setHours(parsedTime.hour, parsedTime.minute, 0, 0);
 				return start.getTime();
 			}
 
@@ -427,9 +495,21 @@
 			}
 
 			function startTimerFromSelection() {
-				var selectedTime = startTimeSelect.value;
+				var selectedTime = startTimeInput.value.trim();
+				if (!parse24HourTime(selectedTime)) {
+					setStatus("Enter start time as HH:MM in 24-hour format (for example 09:00 or 23:54).", "error");
+					startTimeInput.focus();
+					return;
+				}
+
 				var selectedHours = Number(hoursSelect.value);
 				var startAtMs = getStartDateTimeMs(selectedTime);
+				if (startAtMs === null) {
+					setStatus("Invalid start time. Use HH:MM in 24-hour format.", "error");
+					startTimeInput.focus();
+					return;
+				}
+
 				var endAtMs = startAtMs + selectedHours * 60 * 60 * 1000;
 
 				// If computed end time is already in the past, schedule for the next day.
@@ -465,7 +545,14 @@
 						return;
 					}
 
-					startTimeSelect.value = parsed.selectedTime;
+					if (!parse24HourTime(parsed.selectedTime)) {
+						clearTimer();
+						setStatus("Saved timer used an invalid start time and has been reset.", "error");
+						return;
+					}
+
+					startTimeInput.value = parsed.selectedTime;
+					startTimeInput.dataset.lastValid = parsed.selectedTime;
 					hoursSelect.value = String(parsed.selectedHours);
 					activeTimer = parsed;
 
@@ -489,8 +576,9 @@
 				}
 			}
 
-			buildTimeOptions();
 			buildHoursOptions();
+			startTimeInput.dataset.lastValid = "";
+			startTimeInput.addEventListener("input", handleStartTimeInput);
 			timeZoneEl.textContent = getTimeZone();
 			startBtn.addEventListener("click", startTimerFromSelection);
 			restoreTimer();

@@ -297,7 +297,7 @@
 
 			<div class="field">
 				<label for="hours">Hours</label>
-				<select id="hours" aria-label="Duration in hours"></select>
+				<input id="hours" type="text" aria-label="Duration in decimal hours" placeholder="1.50" inputmode="decimal" autocomplete="off" spellcheck="false" />
 			</div>
 
 			<button id="startBtn" type="button">Start</button>
@@ -317,8 +317,10 @@
 	<script>
 		(function () {
 			var STORAGE_KEY = "itstimeto-timer-v1";
+			var MIN_DURATION_VALUE = 0.1;
+			var MAX_DURATION_VALUE = 24 * 365;
 			var startTimeInput = document.getElementById("startTime");
-			var hoursSelect = document.getElementById("hours");
+			var hoursInput = document.getElementById("hours");
 			var startBtn = document.getElementById("startBtn");
 			var countdownEl = document.getElementById("countdown");
 			var endsAtEl = document.getElementById("endsAt");
@@ -333,19 +335,6 @@
 
 			function pad2(value) {
 				return String(value).padStart(2, "0");
-			}
-
-			function createOption(value, label) {
-				var option = document.createElement("option");
-				option.value = value;
-				option.textContent = label;
-				return option;
-			}
-
-			function buildHoursOptions() {
-				for (var hour = 1; hour <= 24; hour += 1) {
-					hoursSelect.appendChild(createOption(String(hour), String(hour)));
-				}
 			}
 
 			function setStatus(text, type) {
@@ -428,6 +417,66 @@
 				};
 			}
 
+			function normalizeDurationInput(rawValue) {
+				var sanitized = rawValue.replace(/,/g, ".").replace(/[^\d.]/g, "");
+				var dotIndex = sanitized.indexOf(".");
+
+				if (dotIndex !== -1) {
+					var integerPart = sanitized.slice(0, dotIndex).replace(/\./g, "");
+					var decimalPart = sanitized.slice(dotIndex + 1).replace(/\./g, "").slice(0, 2);
+					return integerPart + "." + decimalPart;
+				}
+
+				return sanitized;
+			}
+
+			function isValidDurationPrefix(value) {
+				if (value === "") {
+					return true;
+				}
+
+				if (!/^\d+(\.\d{0,2})?$/.test(value)) {
+					return false;
+				}
+
+				var numericValue = Number(value);
+				if (!Number.isFinite(numericValue)) {
+					return false;
+				}
+
+				if (numericValue > MAX_DURATION_VALUE) {
+					return false;
+				}
+
+				return true;
+			}
+
+			function parseDuration(value) {
+				if (!/^\d+(\.\d{1,2})?$/.test(value)) {
+					return null;
+				}
+
+				var numericValue = Number(value);
+				if (!Number.isFinite(numericValue) || numericValue < MIN_DURATION_VALUE || numericValue > MAX_DURATION_VALUE) {
+					return null;
+				}
+
+				var parts = value.split(".");
+				var hoursPart = Number(parts[0]);
+				var decimalPart = parts[1] ? Number(parts[1].padEnd(2, "0")) : 0;
+				var minutesPart = Math.round((decimalPart * 60) / 100);
+				var totalMinutes = hoursPart * 60 + minutesPart;
+
+				if (totalMinutes < 6 || totalMinutes > MAX_DURATION_VALUE * 60) {
+					return null;
+				}
+
+				return {
+					displayValue: value,
+					totalMinutes: totalMinutes
+				};
+			}
+
 			function handleStartTimeInput() {
 				var normalized = normalizeTimeInput(startTimeInput.value);
 
@@ -438,6 +487,18 @@
 				}
 
 				startTimeInput.value = startTimeInput.dataset.lastValid || "";
+			}
+
+			function handleDurationInput() {
+				var normalized = normalizeDurationInput(hoursInput.value);
+
+				if (isValidDurationPrefix(normalized)) {
+					hoursInput.value = normalized;
+					hoursInput.dataset.lastValid = normalized;
+					return;
+				}
+
+				hoursInput.value = hoursInput.dataset.lastValid || "";
 			}
 
 			function getStartDateTimeMs(selectedTime) {
@@ -502,7 +563,13 @@
 					return;
 				}
 
-				var selectedHours = Number(hoursSelect.value);
+				var selectedDuration = parseDuration(hoursInput.value.trim());
+				if (!selectedDuration) {
+					setStatus("Enter a duration from 0.10 to 8760.00 with up to 2 decimals. Example: 1.50 means 1 hour 30 minutes.", "error");
+					hoursInput.focus();
+					return;
+				}
+
 				var startAtMs = getStartDateTimeMs(selectedTime);
 				if (startAtMs === null) {
 					setStatus("Invalid start time. Use HH:MM in 24-hour format.", "error");
@@ -510,7 +577,7 @@
 					return;
 				}
 
-				var endAtMs = startAtMs + selectedHours * 60 * 60 * 1000;
+				var endAtMs = startAtMs + selectedDuration.totalMinutes * 60 * 1000;
 
 				// If computed end time is already in the past, schedule for the next day.
 				if (endAtMs <= Date.now()) {
@@ -520,7 +587,8 @@
 
 				activeTimer = {
 					selectedTime: selectedTime,
-					selectedHours: selectedHours,
+					selectedDuration: selectedDuration.displayValue,
+					selectedDurationMinutes: selectedDuration.totalMinutes,
 					startAtMs: startAtMs,
 					endAtMs: endAtMs,
 					timezone: getTimeZone(),
@@ -540,7 +608,7 @@
 
 				try {
 					var parsed = JSON.parse(raw);
-					if (!parsed || !parsed.endAtMs || !parsed.selectedTime || !parsed.selectedHours) {
+					if (!parsed || !parsed.endAtMs || !parsed.selectedTime) {
 						clearTimer();
 						return;
 					}
@@ -551,10 +619,43 @@
 						return;
 					}
 
+					var restoredDurationValue = null;
+					if (typeof parsed.selectedDuration === "string") {
+						restoredDurationValue = parsed.selectedDuration;
+					} else if (typeof parsed.selectedHours === "number") {
+						restoredDurationValue = String(parsed.selectedHours);
+					}
+
+					var restoredDuration = restoredDurationValue ? parseDuration(restoredDurationValue) : null;
+					if (!restoredDuration && typeof parsed.selectedDurationMinutes === "number") {
+						var minutes = parsed.selectedDurationMinutes;
+						if (minutes >= 6 && minutes <= MAX_DURATION_VALUE * 60) {
+							restoredDuration = {
+								displayValue: (minutes / 60).toFixed(2),
+								totalMinutes: minutes
+							};
+						}
+					}
+
+					if (!restoredDuration) {
+						clearTimer();
+						setStatus("Saved timer used an invalid duration and has been reset.", "error");
+						return;
+					}
+
 					startTimeInput.value = parsed.selectedTime;
 					startTimeInput.dataset.lastValid = parsed.selectedTime;
-					hoursSelect.value = String(parsed.selectedHours);
-					activeTimer = parsed;
+					hoursInput.value = restoredDuration.displayValue;
+					hoursInput.dataset.lastValid = restoredDuration.displayValue;
+					activeTimer = {
+						selectedTime: parsed.selectedTime,
+						selectedDuration: restoredDuration.displayValue,
+						selectedDurationMinutes: restoredDuration.totalMinutes,
+						startAtMs: parsed.startAtMs,
+						endAtMs: parsed.endAtMs,
+						timezone: parsed.timezone,
+						createdAtMs: parsed.createdAtMs
+					};
 
 					if (parsed.endAtMs <= Date.now()) {
 						clearTimer();
@@ -576,9 +677,11 @@
 				}
 			}
 
-			buildHoursOptions();
 			startTimeInput.dataset.lastValid = "";
+			hoursInput.value = "1.00";
+			hoursInput.dataset.lastValid = "1.00";
 			startTimeInput.addEventListener("input", handleStartTimeInput);
+			hoursInput.addEventListener("input", handleDurationInput);
 			timeZoneEl.textContent = getTimeZone();
 			startBtn.addEventListener("click", startTimerFromSelection);
 			restoreTimer();

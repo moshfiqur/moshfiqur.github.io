@@ -286,7 +286,7 @@
 <body>
 	<main class="app">
 		<p class="eyebrow">Focus Session</p>
-		<h1>Countdown That Survives Refresh</h1>
+		<h1>CTime's Up, Buttercup</h1>
 		<p class="lead">Pick a daily start time and duration, then let the timer track the real remaining time.</p>
 
 		<section class="controls" aria-label="Timer controls">
@@ -557,13 +557,23 @@
 
 			function startTimerFromSelection() {
 				var selectedTime = startTimeInput.value.trim();
+				var selectedDuration = parseDuration(hoursInput.value.trim());
+
+				// If start time is empty but hours is valid, set current time as start time
+				if (!selectedTime && selectedDuration) {
+					var now = new Date();
+					var hh = String(now.getHours()).padStart(2, '0');
+					var mm = String(now.getMinutes()).padStart(2, '0');
+					selectedTime = hh + ":" + mm;
+					startTimeInput.value = selectedTime;
+				}
+
 				if (!parse24HourTime(selectedTime)) {
 					setStatus("Enter start time as HH:MM in 24-hour format (for example 09:00 or 23:54).", "error");
 					startTimeInput.focus();
 					return;
 				}
 
-				var selectedDuration = parseDuration(hoursInput.value.trim());
 				if (!selectedDuration) {
 					setStatus("Enter a duration from 0.10 to 8760.00 with up to 2 decimals. Example: 1.50 means 1 hour 30 minutes.", "error");
 					hoursInput.focus();

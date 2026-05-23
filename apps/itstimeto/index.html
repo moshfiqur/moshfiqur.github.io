@@ -3,698 +3,1215 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Its Time To</title>
+	<title>Time's Up, Buttercup</title>
 	<style>
+		/* ── Variables ── */
 		:root {
 			--bg-0: #070b12;
 			--bg-1: #0b1220;
 			--bg-2: #111827;
-			--card: rgba(15, 23, 42, 0.66);
-			--line: rgba(148, 163, 184, 0.25);
+			--line: rgba(148, 163, 184, 0.14);
 			--text: #e2e8f0;
 			--muted: #9aa8c7;
 			--accent: #00d4ff;
 			--accent-2: #3df6b8;
 			--danger: #ff6b81;
-			--shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
 		}
 
-		* {
-			box-sizing: border-box;
-		}
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+		/* ── Background ── */
 		body {
-			margin: 0;
 			min-height: 100vh;
 			color: var(--text);
-			font-family: "Space Grotesk", "Segoe UI", sans-serif;
+			font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
 			background:
 				radial-gradient(circle at 20% -10%, rgba(0, 212, 255, 0.25), transparent 35%),
 				radial-gradient(circle at 85% 10%, rgba(61, 246, 184, 0.18), transparent 35%),
 				radial-gradient(circle at 50% 120%, rgba(20, 184, 166, 0.25), transparent 45%),
 				linear-gradient(125deg, var(--bg-0), var(--bg-1) 55%, var(--bg-2));
 			overflow-x: hidden;
-			display: grid;
-			place-items: center;
-			padding: 20px;
 		}
 
-		body::before,
-		body::after {
+		body::before, body::after {
 			content: "";
 			position: fixed;
-			inset: auto;
 			width: 420px;
 			height: 420px;
 			filter: blur(80px);
 			border-radius: 50%;
-			opacity: 0.35;
+			opacity: 0.3;
 			pointer-events: none;
 			animation: floatBlob 16s ease-in-out infinite;
 			z-index: 0;
 		}
 
-		body::before {
-			background: #22d3ee;
-			top: -100px;
-			left: -80px;
+		body::before { background: #22d3ee; top: -100px; left: -80px; }
+		body::after  { background: #34d399; right: -120px; bottom: -90px; animation-delay: -6s; }
+
+		#app { min-height: 100vh; position: relative; z-index: 1; }
+
+		/* ── Navigation ── */
+		.app-nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px 40px 16px;
+			border-bottom: 1px solid var(--line);
 		}
 
-		body::after {
-			background: #34d399;
-			right: -120px;
-			bottom: -90px;
-			animation-delay: -6s;
-		}
+		.nav-left { display: flex; align-items: center; gap: 10px; }
 
-		.app {
-			position: relative;
-			width: min(760px, 100%);
-			z-index: 1;
-			border: 1px solid var(--line);
-			background: linear-gradient(140deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.55));
-			border-radius: 28px;
-			box-shadow: var(--shadow);
-			backdrop-filter: blur(10px);
-			padding: 30px;
-			animation: liftIn 700ms ease-out;
-		}
-
-		.eyebrow {
-			color: var(--accent-2);
-			text-transform: uppercase;
-			letter-spacing: 0.2em;
+		.nav-home-link {
+			color: var(--accent);
+			text-decoration: none;
+			font-size: 0.8rem;
 			font-weight: 700;
-			font-size: 0.74rem;
+			letter-spacing: 0.13em;
+			text-transform: uppercase;
+			position: relative;
+			padding-bottom: 6px;
+		}
+
+		.nav-home-link::after {
+			content: "";
+			position: absolute;
+			left: 0; right: 0; bottom: 0;
+			height: 2px;
+			background: var(--accent);
+			border-radius: 2px;
+		}
+
+		.nav-active-dot {
+			width: 7px; height: 7px;
+			border-radius: 50%;
+			background: var(--accent-2);
+			flex-shrink: 0;
+			animation: pulseDot 2s ease-in-out infinite;
+		}
+
+		.icon-btn {
+			background: transparent;
+			border: 1px solid var(--line);
+			border-radius: 50%;
+			width: 38px; height: 38px;
+			display: flex; align-items: center; justify-content: center;
+			cursor: pointer;
+			color: var(--muted);
+			padding: 0;
+			transition: border-color 200ms, color 200ms;
+		}
+
+		.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+		/* ── Home view ── */
+		.home-main { padding: 48px 40px 60px; }
+
+		.home-header { margin-bottom: 34px; }
+
+		h1 {
+			font-size: clamp(1.8rem, 4vw, 2.8rem);
+			font-weight: 800;
+			letter-spacing: 0.01em;
+			line-height: 1.1;
 			margin-bottom: 10px;
 		}
 
-		h1 {
-			margin: 0;
-			font-size: clamp(1.7rem, 5vw, 2.6rem);
-			line-height: 1.05;
-			letter-spacing: 0.02em;
-		}
+		.lead { color: var(--muted); font-size: 0.93rem; }
 
-		.lead {
-			color: var(--muted);
-			margin-top: 10px;
-			margin-bottom: 26px;
-			font-size: 0.95rem;
-		}
-
-		.controls {
+		/* ── Create form ── */
+		.form-row {
 			display: grid;
-			grid-template-columns: 1fr 1fr auto;
+			grid-template-columns: 2fr 1.3fr 1.3fr auto;
 			gap: 14px;
 			align-items: end;
 		}
 
-		.field {
-			display: grid;
-			gap: 8px;
-		}
+		.field { display: flex; flex-direction: column; gap: 8px; }
 
 		.field label {
-			color: var(--muted);
-			font-size: 0.82rem;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
+			font-size: 0.72rem;
 			font-weight: 700;
+			letter-spacing: 0.13em;
+			text-transform: uppercase;
+			color: var(--accent);
 		}
 
-		input,
-		select,
-		button {
-			border: 1px solid var(--line);
-			border-radius: 14px;
-			background: rgba(15, 23, 42, 0.9);
+		input {
+			background: rgba(15, 23, 42, 0.7);
+			border: 1px solid rgba(148, 163, 184, 0.2);
+			border-radius: 12px;
 			color: var(--text);
 			height: 52px;
-			padding: 0 14px;
-			font-size: 1rem;
-			font-weight: 600;
-			transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+			padding: 0 16px;
+			font-size: 0.97rem;
+			font-weight: 500;
+			font-family: inherit;
+			outline: none;
+			width: 100%;
+			transition: border-color 200ms, box-shadow 200ms;
+		}
+
+		input:focus, input:hover {
+			border-color: rgba(0, 212, 255, 0.5);
+			box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+		}
+
+		input::placeholder { color: rgba(154, 168, 199, 0.45); }
+
+		.btn-field { align-self: end; }
+
+		.btn-start {
+			height: 52px;
+			width: 100%;
+			min-width: 110px;
+			background: linear-gradient(120deg, var(--accent), var(--accent-2));
+			border: none;
+			border-radius: 12px;
+			color: #02131d;
+			font-size: 0.88rem;
+			font-weight: 800;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			cursor: pointer;
+			font-family: inherit;
+			transition: opacity 200ms, transform 200ms;
+		}
+
+		.btn-start:hover  { opacity: 0.9; }
+		.btn-start:active { transform: translateY(1px) scale(0.99); }
+
+		.form-status {
+			min-height: 20px;
+			font-size: 0.83rem;
+			color: var(--muted);
+			margin-top: 10px;
+		}
+
+		.form-status.error { color: var(--danger); }
+
+		/* ── Divider ── */
+		.section-divider {
+			border: none;
+			border-top: 1px solid var(--line);
+			margin: 34px 0 20px;
+		}
+
+		/* ── Running timers list ── */
+		.timers-list-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 14px;
+		}
+
+		.timers-lbl {
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+
+		.timers-cnt { font-size: 0.83rem; color: var(--muted); }
+
+		.timer-row {
+			display: grid;
+			grid-template-columns: 48px 1fr 160px 200px 22px;
+			align-items: center;
+			gap: 18px;
+			padding: 16px 18px;
+			background: rgba(15, 23, 42, 0.45);
+			border: 1px solid rgba(148, 163, 184, 0.12);
+			border-radius: 14px;
+			cursor: pointer;
+			margin-bottom: 10px;
+			transition: background 200ms, border-color 200ms;
 			outline: none;
 		}
 
-		select {
-			appearance: none;
-			background-image:
-				linear-gradient(45deg, transparent 50%, var(--accent) 50%),
-				linear-gradient(135deg, var(--accent) 50%, transparent 50%),
-				linear-gradient(to right, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.2));
-			background-position:
-				calc(100% - 20px) 24px,
-				calc(100% - 14px) 24px,
-				calc(100% - 44px) 0.9em;
-			background-size: 6px 6px, 6px 6px, 1px 1.8em;
-			background-repeat: no-repeat;
-			padding-right: 48px;
+		.timer-row:hover, .timer-row:focus-visible {
+			background: rgba(15, 23, 42, 0.75);
+			border-color: rgba(0, 212, 255, 0.3);
 		}
 
-		input::placeholder {
-			color: #9ca3af;
-			opacity: 1;
+		.timer-row-icon {
+			width: 44px; height: 44px;
+			border-radius: 11px;
+			border: 1px solid;
+			display: flex; align-items: center; justify-content: center;
+			flex-shrink: 0;
 		}
 
-		input:focus,
-		select:focus,
-		button:focus,
-		input:hover,
-		select:hover,
-		button:hover {
-			border-color: rgba(0, 212, 255, 0.7);
-			box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.14);
-		}
+		.timer-row-title { font-size: 0.97rem; font-weight: 600; color: var(--text); }
 
-		button {
-			cursor: pointer;
-			min-width: 130px;
-			background: linear-gradient(120deg, var(--accent), var(--accent-2));
-			color: #02131d;
-			text-transform: uppercase;
-			letter-spacing: 0.09em;
-			font-weight: 800;
-		}
+		.timer-row-dur { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
 
-		button:active {
-			transform: translateY(1px) scale(0.99);
-		}
+		.timer-row-cd { text-align: center; }
 
-		.timer-card {
-			margin-top: 24px;
-			border: 1px solid rgba(148, 163, 184, 0.2);
-			border-radius: 18px;
-			padding: 22px;
-			background: rgba(2, 8, 23, 0.5);
-		}
-
-		.timer-label {
-			text-transform: uppercase;
-			letter-spacing: 0.16em;
-			font-size: 0.72rem;
-			color: var(--muted);
-			margin-bottom: 12px;
-		}
-
-		.countdown {
-			font-size: clamp(2rem, 8vw, 4rem);
-			font-weight: 800;
-			letter-spacing: 0.03em;
-			margin: 0;
-			color: #f8fafc;
-			text-shadow: 0 4px 30px rgba(0, 212, 255, 0.2);
-			font-variant-numeric: tabular-nums;
-		}
-
-		.meta {
-			margin-top: 12px;
-			font-size: 0.92rem;
-			color: var(--muted);
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-
-		.meta strong {
-			color: #c7d2fe;
+		.timer-row-cd-val {
+			font-size: 1.55rem;
 			font-weight: 700;
+			font-variant-numeric: tabular-nums;
+			letter-spacing: 0.03em;
+			color: #f8fafc;
 		}
 
-		.pill {
+		.timer-row-cd-lbl { font-size: 0.71rem; color: var(--muted); margin-top: 2px; }
+
+		.timer-row-times { font-size: 0.8rem; color: var(--muted); text-align: right; line-height: 1.8; }
+
+		.timer-row-times strong { color: var(--text); font-weight: 600; }
+
+		/* ── Timer Detail view ── */
+		.timer-detail { padding: 28px 40px 90px; }
+
+		.back-link {
 			display: inline-flex;
 			align-items: center;
-			border: 1px solid rgba(148, 163, 184, 0.26);
-			border-radius: 999px;
-			padding: 5px 10px;
-			background: rgba(15, 23, 42, 0.7);
+			gap: 8px;
+			color: var(--accent);
+			text-decoration: none;
+			font-size: 0.85rem;
+			font-weight: 600;
+			margin-bottom: 28px;
+			transition: opacity 200ms;
 		}
 
-		.status {
-			margin-top: 14px;
-			min-height: 24px;
-			color: var(--muted);
-			font-size: 0.9rem;
+		.back-link:hover { opacity: 0.75; }
+
+		.detail-top {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			margin-bottom: 22px;
 		}
 
-		.status.error {
-			color: var(--danger);
-		}
-
-		.status.success {
+		.eyebrow {
+			font-size: 0.71rem;
+			font-weight: 700;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
 			color: var(--accent-2);
+			margin-bottom: 8px;
 		}
 
-		@keyframes liftIn {
-			from {
-				opacity: 0;
-				transform: translateY(16px) scale(0.98);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0) scale(1);
-			}
+		.detail-title-row { display: flex; align-items: center; gap: 12px; }
+
+		.detail-title-row h1 { font-size: clamp(1.4rem, 3.5vw, 2.1rem); }
+
+		.edit-btn { width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0; }
+
+		.status-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			border: 1px solid rgba(0, 212, 255, 0.35);
+			border-radius: 999px;
+			padding: 6px 14px;
+			font-size: 0.77rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			color: var(--accent);
+			background: rgba(0, 212, 255, 0.07);
+			white-space: nowrap;
+			margin-top: 6px;
 		}
 
+		.status-pill.completed {
+			border-color: rgba(61, 246, 184, 0.35);
+			color: var(--accent-2);
+			background: rgba(61, 246, 184, 0.07);
+		}
+
+		.status-dot {
+			width: 7px; height: 7px;
+			border-radius: 50%;
+			background: var(--accent-2);
+			flex-shrink: 0;
+			animation: pulseDot 2s ease-in-out infinite;
+		}
+
+		.status-pill.completed .status-dot { animation: none; }
+
+		.detail-meta { display: flex; gap: 48px; margin-bottom: 2px; }
+
+		.meta-label {
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.13em;
+			text-transform: uppercase;
+			color: var(--muted);
+			margin-bottom: 4px;
+		}
+
+		.meta-value { font-size: 1rem; font-weight: 600; color: var(--text); }
+
+		/* ── Clock ── */
+		.clock-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 44px 0 36px;
+		}
+
+		.clock-label {
+			font-size: 0.71rem;
+			font-weight: 700;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: var(--muted);
+			margin-bottom: 14px;
+		}
+
+		.clock-display {
+			font-size: clamp(4rem, 13vw, 8.5rem);
+			font-weight: 800;
+			font-variant-numeric: tabular-nums;
+			letter-spacing: 0.02em;
+			color: #fff;
+			line-height: 1;
+			margin-bottom: 22px;
+		}
+
+		.ends-at-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			background: rgba(10, 20, 40, 0.85);
+			border: 1px solid rgba(148, 163, 184, 0.18);
+			border-radius: 999px;
+			padding: 8px 20px;
+			font-size: 0.81rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			color: var(--accent);
+		}
+
+		/* ── Detail controls ── */
+		.detail-controls {
+			display: flex;
+			justify-content: center;
+			gap: 14px;
+			margin-top: 26px;
+		}
+
+		.btn-pause, .btn-stop {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			height: 54px;
+			padding: 0 36px;
+			border-radius: 14px;
+			font-size: 0.85rem;
+			font-weight: 800;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			cursor: pointer;
+			font-family: inherit;
+			transition: opacity 200ms, border-color 200ms, color 200ms;
+		}
+
+		.btn-pause {
+			background: linear-gradient(120deg, var(--accent), var(--accent-2));
+			border: none;
+			color: #02131d;
+		}
+
+		.btn-pause:hover { opacity: 0.9; }
+
+		.btn-stop {
+			background: rgba(15, 23, 42, 0.8);
+			border: 1px solid rgba(148, 163, 184, 0.2);
+			color: var(--text);
+		}
+
+		.btn-stop:hover { border-color: rgba(255, 107, 129, 0.6); color: var(--danger); }
+
+		/* ── Floating action button ── */
+		.fab {
+			position: fixed;
+			bottom: 30px; right: 30px;
+			width: 56px; height: 56px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--accent), var(--accent-2));
+			border: none;
+			color: #02131d;
+			display: flex; align-items: center; justify-content: center;
+			cursor: pointer;
+			box-shadow: 0 6px 24px rgba(0, 212, 255, 0.45);
+			transition: transform 200ms, box-shadow 200ms;
+			z-index: 50;
+		}
+
+		.fab:hover  { transform: scale(1.08); box-shadow: 0 8px 32px rgba(0, 212, 255, 0.55); }
+		.fab:active { transform: scale(0.96); }
+
+		/* ── Animations ── */
 		@keyframes floatBlob {
-			0%,
-			100% {
-				transform: translate(0, 0) scale(1);
-			}
-			50% {
-				transform: translate(30px, 20px) scale(1.05);
-			}
+			0%, 100% { transform: translate(0, 0) scale(1); }
+			50%       { transform: translate(30px, 20px) scale(1.05); }
 		}
 
-		@media (max-width: 760px) {
-			.app {
-				border-radius: 22px;
-				padding: 22px;
-			}
+		@keyframes pulseDot {
+			0%, 100% { opacity: 1; transform: scale(1); }
+			50%       { opacity: 0.55; transform: scale(0.85); }
+		}
 
-			.controls {
-				grid-template-columns: 1fr;
-			}
+		/* ── Responsive ── */
+		@media (max-width: 860px) {
+			.app-nav, .home-main, .timer-detail { padding-left: 20px; padding-right: 20px; }
 
-			button {
-				width: 100%;
-			}
+			.form-row { grid-template-columns: 1fr 1fr; }
+			.btn-field { grid-column: 1 / -1; }
+			.btn-start { min-width: unset; }
+
+			.timer-row { grid-template-columns: 44px 1fr auto 22px; }
+			.timer-row-times { display: none; }
+
+			.detail-meta { gap: 28px; }
+		}
+
+		@media (max-width: 520px) {
+			.form-row { grid-template-columns: 1fr; }
+			.timer-row { grid-template-columns: 44px 1fr 22px; }
+			.timer-row-cd { display: none; }
 		}
 	</style>
 </head>
 <body>
-	<main class="app">
-		<h1>Time's Up, Buttercup</h1>
-		<p class="lead">Pick a daily start time and duration, then let the timer track the real remaining time.</p>
-
-		<section class="controls" aria-label="Timer controls">
-			<div class="field">
-				<label for="startTime">Start at</label>
-				<input id="startTime" type="text" aria-label="Start at" placeholder="hh:mm" inputmode="numeric" maxlength="5" autocomplete="off" spellcheck="false" />
-			</div>
-
-			<div class="field">
-				<label for="hours">Hours</label>
-				<input id="hours" type="text" aria-label="Duration in decimal hours" placeholder="1.50" inputmode="decimal" autocomplete="off" spellcheck="false" />
-			</div>
-
-			<button id="startBtn" type="button">Start</button>
-		</section>
-
-		<section class="timer-card" aria-live="polite">
-			<p class="timer-label">Time Left</p>
-			<p id="countdown" class="countdown">00:00:00</p>
-			<div class="meta">
-				<span class="pill">Ends <strong id="endsAt">--:--</strong></span>
-				<span class="pill">Timezone <strong id="timeZone">--</strong></span>
-			</div>
-			<p id="status" class="status">Choose a start time and hours, then press Start.</p>
-		</section>
-	</main>
+	<div id="app"></div>
 
 	<script>
-		(function () {
-			var STORAGE_KEY = "itstimeto-timer-v1";
-			var MIN_DURATION_VALUE = 0.1;
-			var MAX_DURATION_VALUE = 24 * 365;
-			var startTimeInput = document.getElementById("startTime");
-			var hoursInput = document.getElementById("hours");
-			var startBtn = document.getElementById("startBtn");
-			var countdownEl = document.getElementById("countdown");
-			var endsAtEl = document.getElementById("endsAt");
-			var timeZoneEl = document.getElementById("timeZone");
-			var statusEl = document.getElementById("status");
-			var timerId = null;
-			var activeTimer = null;
+	(function () {
+		'use strict';
 
-			function getTimeZone() {
-				return Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
+		/* ════════════════════════════════════════
+		   Constants
+		════════════════════════════════════════ */
+		var STORAGE_KEY_V2 = 'itstimeto-timers-v2';
+		var STORAGE_KEY_V1 = 'itstimeto-timer-v1';
+		var MIN_DURATION_VALUE = 0.1;
+		var MAX_DURATION_VALUE = 24 * 365;
+
+		/* ════════════════════════════════════════
+		   State
+		════════════════════════════════════════ */
+		var timers = [];
+		var tickerInterval = null;
+
+		/* ════════════════════════════════════════
+		   Utilities
+		════════════════════════════════════════ */
+		function generateId() {
+			return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+		}
+
+		function pad2(v) { return String(v).padStart(2, '0'); }
+
+		function formatHMS(totalSeconds) {
+			var s = Math.max(0, Math.floor(totalSeconds));
+			return pad2(Math.floor(s / 3600)) + ':' + pad2(Math.floor((s % 3600) / 60)) + ':' + pad2(s % 60);
+		}
+
+		function formatTime12(ms) {
+			return new Date(ms).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+		}
+
+		function formatStartedAt(ms) {
+			var d = new Date(ms);
+			var isToday = d.toDateString() === new Date().toDateString();
+			var t = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+			return (isToday ? 'Today, ' : '') + t;
+		}
+
+		function getTimeZone() {
+			return Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local';
+		}
+
+		function hexToRgb(hex) {
+			var r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			return r ? parseInt(r[1], 16) + ',' + parseInt(r[2], 16) + ',' + parseInt(r[3], 16) : '0,212,255';
+		}
+
+		/* ════════════════════════════════════════
+		   Input parsing (preserved from v1)
+		════════════════════════════════════════ */
+		function normalizeTimeInput(rawValue) {
+			var digits = rawValue.replace(/\D/g, '').slice(0, 4);
+			if (digits.length <= 2) return digits;
+			return digits.slice(0, 2) + ':' + digits.slice(2);
+		}
+
+		function isValidTimePrefix(value) {
+			if (!/^\d{0,2}(:\d{0,2})?$/.test(value)) return false;
+			var parts = value.split(':');
+			var h = parts[0] || '', m = parts[1] || '';
+			if (h.length >= 1 && Number(h.charAt(0)) > 2) return false;
+			if (h.length === 2 && Number(h) > 23) return false;
+			if (m.length >= 1 && Number(m.charAt(0)) > 5) return false;
+			if (m.length === 2 && Number(m) > 59) return false;
+			return true;
+		}
+
+		function parse24HourTime(value) {
+			if (!/^\d{2}:\d{2}$/.test(value)) return null;
+			var parts = value.split(':'), h = Number(parts[0]), m = Number(parts[1]);
+			if (h < 0 || h > 23 || m < 0 || m > 59) return null;
+			return { hour: h, minute: m };
+		}
+
+		function normalizeDurationInput(rawValue) {
+			var s = rawValue.replace(/,/g, '.').replace(/[^\d.]/g, '');
+			var dot = s.indexOf('.');
+			if (dot !== -1) {
+				return s.slice(0, dot).replace(/\./g, '') + '.' + s.slice(dot + 1).replace(/\./g, '').slice(0, 2);
 			}
+			return s;
+		}
 
-			function pad2(value) {
-				return String(value).padStart(2, "0");
+		function isValidDurationPrefix(value) {
+			if (value === '') return true;
+			if (!/^\d+(\.\d{0,2})?$/.test(value)) return false;
+			var n = Number(value);
+			return Number.isFinite(n) && n <= MAX_DURATION_VALUE;
+		}
+
+		function parseDuration(value) {
+			if (!/^\d+(\.\d{1,2})?$/.test(value)) return null;
+			var n = Number(value);
+			if (!Number.isFinite(n) || n < MIN_DURATION_VALUE || n > MAX_DURATION_VALUE) return null;
+			var parts = value.split('.');
+			var hours = Number(parts[0]);
+			var dec = parts[1] ? Number(parts[1].padEnd(2, '0')) : 0;
+			var mins = Math.round((dec * 60) / 100);
+			var total = hours * 60 + mins;
+			if (total < 6 || total > MAX_DURATION_VALUE * 60) return null;
+			return { displayValue: value, totalMinutes: total };
+		}
+
+		function getStartDateTimeMs(selectedTime) {
+			var p = parse24HourTime(selectedTime);
+			if (!p) return null;
+			var start = new Date();
+			start.setHours(p.hour, p.minute, 0, 0);
+			return start.getTime();
+		}
+
+		/* ════════════════════════════════════════
+		   Storage
+		════════════════════════════════════════ */
+		function saveTimers() {
+			localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(timers));
+		}
+
+		function loadTimers() {
+			try {
+				var raw = localStorage.getItem(STORAGE_KEY_V2);
+				timers = raw ? JSON.parse(raw) : [];
+				if (!Array.isArray(timers)) timers = [];
+			} catch (e) {
+				timers = [];
 			}
+			migrateV1();
+		}
 
-			function setStatus(text, type) {
-				statusEl.textContent = text;
-				statusEl.classList.remove("error", "success");
-				if (type) {
-					statusEl.classList.add(type);
-				}
-			}
-
-			function formatRemaining(totalSeconds) {
-				var safe = Math.max(0, totalSeconds);
-				var hours = Math.floor(safe / 3600);
-				var minutes = Math.floor((safe % 3600) / 60);
-				var seconds = safe % 60;
-				return pad2(hours) + ":" + pad2(minutes) + ":" + pad2(seconds);
-			}
-
-			function formatTime(dateMs) {
-				var date = new Date(dateMs);
-				return date.toLocaleTimeString([], {
-					hour: "2-digit",
-					minute: "2-digit",
-					hour12: false
+		function migrateV1() {
+			try {
+				var raw = localStorage.getItem(STORAGE_KEY_V1);
+				if (!raw) return;
+				var old = JSON.parse(raw);
+				if (!old || !old.endAtMs || old.endAtMs <= Date.now() || !old.selectedTime) return;
+				var alreadyMigrated = timers.some(function (t) { return t.migratedFromV1; });
+				if (alreadyMigrated) return;
+				timers.push({
+					id: generateId(),
+					title: "Time's Up, Buttercup",
+					selectedTime: old.selectedTime,
+					selectedDuration: old.selectedDuration || '1.00',
+					selectedDurationMinutes: old.selectedDurationMinutes || 60,
+					startAtMs: old.startAtMs,
+					endAtMs: old.endAtMs,
+					timezone: old.timezone || getTimeZone(),
+					createdAtMs: old.createdAtMs || Date.now(),
+					status: 'running',
+					migratedFromV1: true
 				});
+				saveTimers();
+				localStorage.removeItem(STORAGE_KEY_V1);
+			} catch (e) { /* ignore */ }
+		}
+
+		function cleanupExpiredTimers() {
+			var now = Date.now(), before = timers.length;
+			timers = timers.filter(function (t) { return t.endAtMs > now && t.status !== 'stopped'; });
+			if (timers.length !== before) saveTimers();
+		}
+
+		function getActiveTimers() {
+			return timers.filter(function (t) { return t.status !== 'stopped'; });
+		}
+
+		function createTimer(title, selectedTime, duration, startAtMs, endAtMs) {
+			var t = {
+				id: generateId(),
+				title: title || "Time's Up, Buttercup",
+				selectedTime: selectedTime,
+				selectedDuration: duration.displayValue,
+				selectedDurationMinutes: duration.totalMinutes,
+				startAtMs: startAtMs,
+				endAtMs: endAtMs,
+				timezone: getTimeZone(),
+				createdAtMs: Date.now(),
+				status: 'running'
+			};
+			timers.push(t);
+			saveTimers();
+			return t;
+		}
+
+		function removeTimer(id) {
+			timers = timers.filter(function (t) { return t.id !== id; });
+			saveTimers();
+		}
+
+		function getTimerById(id) {
+			return timers.find(function (t) { return t.id === id; }) || null;
+		}
+
+		/* ════════════════════════════════════════
+		   Routing
+		════════════════════════════════════════ */
+		function getRoute() {
+			var hash = window.location.hash.slice(1);
+			if (hash.indexOf('timer-') === 0) return { view: 'timer', id: hash.slice(6) };
+			return { view: 'home' };
+		}
+
+		function navigate(hash) {
+			window.location.hash = hash || '';
+		}
+
+		/* ════════════════════════════════════════
+		   Ticker
+		════════════════════════════════════════ */
+		function clearTicker() {
+			if (tickerInterval) { clearInterval(tickerInterval); tickerInterval = null; }
+		}
+
+		/* ════════════════════════════════════════
+		   SVG helpers
+		════════════════════════════════════════ */
+		function makeSvg(path, size) {
+			var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+			svg.setAttribute('width', size || 20);
+			svg.setAttribute('height', size || 20);
+			svg.setAttribute('viewBox', '0 0 24 24');
+			svg.setAttribute('fill', 'none');
+			svg.setAttribute('stroke', 'currentColor');
+			svg.setAttribute('stroke-width', '2');
+			svg.setAttribute('stroke-linecap', 'round');
+			svg.setAttribute('stroke-linejoin', 'round');
+			svg.innerHTML = path;
+			return svg;
+		}
+
+		var SVG = {
+			clock:   '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+			gear:    '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+			chevron: '<polyline points="9 18 15 12 9 6"/>',
+			arrow:   '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+			plus:    '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+			pause:   '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>',
+			stop:    '<rect x="3" y="3" width="18" height="18" rx="2"/>',
+			pencil:  '<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>'
+		};
+
+		var ICON_COLORS = ['#00d4ff', '#a78bfa', '#fb923c', '#34d399', '#f472b6'];
+		function iconColor(i) { return ICON_COLORS[i % ICON_COLORS.length]; }
+
+		/* ════════════════════════════════════════
+		   Render dispatcher
+		════════════════════════════════════════ */
+		function renderView() {
+			clearTicker();
+			cleanupExpiredTimers();
+			var route = getRoute();
+			var app = document.getElementById('app');
+			app.innerHTML = '';
+
+			if (route.view === 'timer') {
+				var timer = getTimerById(route.id);
+				if (!timer) { navigate(''); return; }
+				renderTimerDetail(app, timer);
+			} else {
+				renderHome(app);
+			}
+		}
+
+		/* ════════════════════════════════════════
+		   Home view
+		════════════════════════════════════════ */
+		function renderHome(container) {
+			var active = getActiveTimers();
+			container.appendChild(buildNav(active.length > 0));
+
+			var main = document.createElement('div');
+			main.className = 'home-main';
+
+			var hdr = document.createElement('header');
+			hdr.className = 'home-header';
+
+			var h1 = document.createElement('h1');
+			h1.textContent = "Time's Up, Buttercup";
+			var lead = document.createElement('p');
+			lead.className = 'lead';
+			lead.textContent = 'Pick a start time and duration, then let the timer track the real remaining time.';
+			hdr.appendChild(h1);
+			hdr.appendChild(lead);
+			main.appendChild(hdr);
+
+			main.appendChild(buildForm());
+
+			if (active.length > 0) {
+				main.appendChild(buildTimerList(active));
+				startHomeTicker(active);
 			}
 
-			function normalizeTimeInput(rawValue) {
-				var digits = rawValue.replace(/\D/g, "").slice(0, 4);
-				if (digits.length <= 2) {
-					return digits;
-				}
-				return digits.slice(0, 2) + ":" + digits.slice(2);
+			container.appendChild(main);
+		}
+
+		function buildNav(hasActive) {
+			var nav = document.createElement('nav');
+			nav.className = 'app-nav';
+
+			var left = document.createElement('div');
+			left.className = 'nav-left';
+			var homeA = document.createElement('a');
+			homeA.href = '#';
+			homeA.className = 'nav-home-link';
+			homeA.textContent = 'HOME';
+			left.appendChild(homeA);
+			if (hasActive) {
+				var dot = document.createElement('span');
+				dot.className = 'nav-active-dot';
+				left.appendChild(dot);
 			}
 
-			function isValidTimePrefix(value) {
-				if (!/^\d{0,2}(:\d{0,2})?$/.test(value)) {
-					return false;
+			var right = document.createElement('div');
+			right.className = 'nav-right';
+			var settingsBtn = document.createElement('button');
+			settingsBtn.className = 'icon-btn';
+			settingsBtn.setAttribute('aria-label', 'Settings');
+			settingsBtn.appendChild(makeSvg(SVG.gear, 17));
+			right.appendChild(settingsBtn);
+
+			nav.appendChild(left);
+			nav.appendChild(right);
+			return nav;
+		}
+
+		function buildForm() {
+			var section = document.createElement('section');
+			section.setAttribute('aria-label', 'Create timer');
+
+			var row = document.createElement('div');
+			row.className = 'form-row';
+
+			/* Title field */
+			var titleField = makeField('TITLE', 'f-title', 'text', 'e.g. Refactor auth module');
+
+			/* Start At field */
+			var startField = makeField('START AT', 'f-start', 'text', 'hh:mm');
+			var startInput = startField.querySelector('input');
+			startInput.setAttribute('inputmode', 'numeric');
+			startInput.setAttribute('maxlength', '5');
+			startInput.setAttribute('autocomplete', 'off');
+			startInput.setAttribute('spellcheck', 'false');
+			startInput.dataset.lastValid = '';
+			startInput.addEventListener('input', function () {
+				var norm = normalizeTimeInput(startInput.value);
+				if (isValidTimePrefix(norm)) {
+					startInput.value = norm;
+					startInput.dataset.lastValid = norm;
+				} else {
+					startInput.value = startInput.dataset.lastValid || '';
 				}
+			});
 
-				var parts = value.split(":");
-				var hourPart = parts[0] || "";
-				var minutePart = parts[1] || "";
-
-				if (hourPart.length >= 1 && Number(hourPart.charAt(0)) > 2) {
-					return false;
+			/* Hours field */
+			var hoursField = makeField('HOURS', 'f-hours', 'text', '1.00');
+			var hoursInput = hoursField.querySelector('input');
+			hoursInput.setAttribute('inputmode', 'decimal');
+			hoursInput.setAttribute('autocomplete', 'off');
+			hoursInput.setAttribute('spellcheck', 'false');
+			hoursInput.value = '1.00';
+			hoursInput.dataset.lastValid = '1.00';
+			hoursInput.addEventListener('input', function () {
+				var norm = normalizeDurationInput(hoursInput.value);
+				if (isValidDurationPrefix(norm)) {
+					hoursInput.value = norm;
+					hoursInput.dataset.lastValid = norm;
+				} else {
+					hoursInput.value = hoursInput.dataset.lastValid || '';
 				}
+			});
 
-				if (hourPart.length === 2 && Number(hourPart) > 23) {
-					return false;
-				}
+			/* Start button */
+			var btnWrap = document.createElement('div');
+			btnWrap.className = 'field btn-field';
+			var startBtn = document.createElement('button');
+			startBtn.type = 'button';
+			startBtn.className = 'btn-start';
+			startBtn.textContent = 'START';
+			btnWrap.appendChild(startBtn);
 
-				if (minutePart.length >= 1 && Number(minutePart.charAt(0)) > 5) {
-					return false;
-				}
+			row.appendChild(titleField);
+			row.appendChild(startField);
+			row.appendChild(hoursField);
+			row.appendChild(btnWrap);
 
-				if (minutePart.length === 2 && Number(minutePart) > 59) {
-					return false;
-				}
+			var statusEl = document.createElement('p');
+			statusEl.className = 'form-status';
+			statusEl.setAttribute('aria-live', 'polite');
 
-				return true;
-			}
+			section.appendChild(row);
+			section.appendChild(statusEl);
 
-			function parse24HourTime(value) {
-				if (!/^\d{2}:\d{2}$/.test(value)) {
-					return null;
-				}
+			startBtn.addEventListener('click', function () {
+				handleStart(
+					document.getElementById('f-title').value.trim(),
+					startInput, hoursInput, statusEl
+				);
+			});
 
-				var parts = value.split(":");
-				var hour = Number(parts[0]);
-				var minute = Number(parts[1]);
+			return section;
+		}
 
-				if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
-					return null;
-				}
+		function makeField(labelText, id, type, placeholder) {
+			var wrap = document.createElement('div');
+			wrap.className = 'field';
+			var lbl = document.createElement('label');
+			lbl.setAttribute('for', id);
+			lbl.textContent = labelText;
+			var inp = document.createElement('input');
+			inp.id = id;
+			inp.type = type;
+			inp.placeholder = placeholder;
+			wrap.appendChild(lbl);
+			wrap.appendChild(inp);
+			return wrap;
+		}
 
-				return {
-					hour: hour,
-					minute: minute
-				};
-			}
+		function handleStart(title, startInput, hoursInput, statusEl) {
+			var selectedTime = startInput.value.trim();
+			var selectedDuration = parseDuration(hoursInput.value.trim());
 
-			function normalizeDurationInput(rawValue) {
-				var sanitized = rawValue.replace(/,/g, ".").replace(/[^\d.]/g, "");
-				var dotIndex = sanitized.indexOf(".");
-
-				if (dotIndex !== -1) {
-					var integerPart = sanitized.slice(0, dotIndex).replace(/\./g, "");
-					var decimalPart = sanitized.slice(dotIndex + 1).replace(/\./g, "").slice(0, 2);
-					return integerPart + "." + decimalPart;
-				}
-
-				return sanitized;
-			}
-
-			function isValidDurationPrefix(value) {
-				if (value === "") {
-					return true;
-				}
-
-				if (!/^\d+(\.\d{0,2})?$/.test(value)) {
-					return false;
-				}
-
-				var numericValue = Number(value);
-				if (!Number.isFinite(numericValue)) {
-					return false;
-				}
-
-				if (numericValue > MAX_DURATION_VALUE) {
-					return false;
-				}
-
-				return true;
-			}
-
-			function parseDuration(value) {
-				if (!/^\d+(\.\d{1,2})?$/.test(value)) {
-					return null;
-				}
-
-				var numericValue = Number(value);
-				if (!Number.isFinite(numericValue) || numericValue < MIN_DURATION_VALUE || numericValue > MAX_DURATION_VALUE) {
-					return null;
-				}
-
-				var parts = value.split(".");
-				var hoursPart = Number(parts[0]);
-				var decimalPart = parts[1] ? Number(parts[1].padEnd(2, "0")) : 0;
-				var minutesPart = Math.round((decimalPart * 60) / 100);
-				var totalMinutes = hoursPart * 60 + minutesPart;
-
-				if (totalMinutes < 6 || totalMinutes > MAX_DURATION_VALUE * 60) {
-					return null;
-				}
-
-				return {
-					displayValue: value,
-					totalMinutes: totalMinutes
-				};
-			}
-
-			function handleStartTimeInput() {
-				var normalized = normalizeTimeInput(startTimeInput.value);
-
-				if (isValidTimePrefix(normalized)) {
-					startTimeInput.value = normalized;
-					startTimeInput.dataset.lastValid = normalized;
-					return;
-				}
-
-				startTimeInput.value = startTimeInput.dataset.lastValid || "";
-			}
-
-			function handleDurationInput() {
-				var normalized = normalizeDurationInput(hoursInput.value);
-
-				if (isValidDurationPrefix(normalized)) {
-					hoursInput.value = normalized;
-					hoursInput.dataset.lastValid = normalized;
-					return;
-				}
-
-				hoursInput.value = hoursInput.dataset.lastValid || "";
-			}
-
-			function getStartDateTimeMs(selectedTime) {
-				var parsedTime = parse24HourTime(selectedTime);
-				if (!parsedTime) {
-					return null;
-				}
-
+			/* If start time is empty but duration is valid, use current time */
+			if (!selectedTime && selectedDuration) {
 				var now = new Date();
-				var start = new Date(now);
-				start.setHours(parsedTime.hour, parsedTime.minute, 0, 0);
-				return start.getTime();
+				selectedTime = pad2(now.getHours()) + ':' + pad2(now.getMinutes());
+				startInput.value = selectedTime;
+				startInput.dataset.lastValid = selectedTime;
 			}
 
-			function saveTimer(timer) {
-				localStorage.setItem(STORAGE_KEY, JSON.stringify(timer));
+			if (!parse24HourTime(selectedTime)) {
+				statusEl.textContent = 'Enter start time as HH:MM in 24-hour format (e.g. 09:00 or 23:54).';
+				statusEl.className = 'form-status error';
+				startInput.focus();
+				return;
 			}
 
-			function clearTimer() {
-				localStorage.removeItem(STORAGE_KEY);
-				activeTimer = null;
-				endsAtEl.textContent = "--:--";
+			if (!selectedDuration) {
+				statusEl.textContent = 'Enter a duration from 0.10 to 8760.00 with up to 2 decimals. Example: 1.50 means 1 h 30 min.';
+				statusEl.className = 'form-status error';
+				hoursInput.focus();
+				return;
 			}
 
-			function renderCountdown() {
-				if (!activeTimer) {
-					countdownEl.textContent = "00:00:00";
-					return;
-				}
-
-				var nowMs = Date.now();
-				var remainingSeconds = Math.floor((activeTimer.endAtMs - nowMs) / 1000);
-
-				if (remainingSeconds <= 0) {
-					countdownEl.textContent = "00:00:00";
-					setStatus("Session completed.", "success");
-					clearTimer();
-					if (timerId) {
-						clearInterval(timerId);
-						timerId = null;
-					}
-					return;
-				}
-
-				countdownEl.textContent = formatRemaining(remainingSeconds);
-				endsAtEl.textContent = formatTime(activeTimer.endAtMs);
+			var startAtMs = getStartDateTimeMs(selectedTime);
+			if (!startAtMs) {
+				statusEl.textContent = 'Invalid start time. Use HH:MM in 24-hour format.';
+				statusEl.className = 'form-status error';
+				return;
 			}
 
-			function startTicker() {
-				if (timerId) {
-					clearInterval(timerId);
-				}
-				renderCountdown();
-				timerId = setInterval(renderCountdown, 1000);
+			var endAtMs = startAtMs + selectedDuration.totalMinutes * 60 * 1000;
+
+			/* If the end time is already in the past, roll forward one day */
+			if (endAtMs <= Date.now()) {
+				startAtMs += 86400000;
+				endAtMs   += 86400000;
 			}
 
-			function startTimerFromSelection() {
-				var selectedTime = startTimeInput.value.trim();
-				var selectedDuration = parseDuration(hoursInput.value.trim());
+			var timer = createTimer(
+				title || "Time's Up, Buttercup",
+				selectedTime, selectedDuration, startAtMs, endAtMs
+			);
+			navigate('timer-' + timer.id);
+		}
 
-				// If start time is empty but hours is valid, set current time as start time
-				if (!selectedTime && selectedDuration) {
-					var now = new Date();
-					var hh = String(now.getHours()).padStart(2, '0');
-					var mm = String(now.getMinutes()).padStart(2, '0');
-					selectedTime = hh + ":" + mm;
-					startTimeInput.value = selectedTime;
-				}
+		/* ── Running timers list ── */
+		function buildTimerList(active) {
+			var sec = document.createElement('section');
+			sec.setAttribute('aria-label', 'Running timers');
 
-				if (!parse24HourTime(selectedTime)) {
-					setStatus("Enter start time as HH:MM in 24-hour format (for example 09:00 or 23:54).", "error");
-					startTimeInput.focus();
-					return;
-				}
+			var hr = document.createElement('hr');
+			hr.className = 'section-divider';
+			sec.appendChild(hr);
 
-				if (!selectedDuration) {
-					setStatus("Enter a duration from 0.10 to 8760.00 with up to 2 decimals. Example: 1.50 means 1 hour 30 minutes.", "error");
-					hoursInput.focus();
-					return;
-				}
+			var hdr = document.createElement('div');
+			hdr.className = 'timers-list-header';
+			var lbl = document.createElement('span');
+			lbl.className = 'timers-lbl';
+			lbl.textContent = 'RUNNING TIMERS';
+			var cnt = document.createElement('span');
+			cnt.className = 'timers-cnt';
+			cnt.textContent = active.length + ' active timer' + (active.length !== 1 ? 's' : '');
+			hdr.appendChild(lbl);
+			hdr.appendChild(cnt);
+			sec.appendChild(hdr);
 
-				var startAtMs = getStartDateTimeMs(selectedTime);
-				if (startAtMs === null) {
-					setStatus("Invalid start time. Use HH:MM in 24-hour format.", "error");
-					startTimeInput.focus();
-					return;
-				}
+			active.forEach(function (timer, i) { sec.appendChild(buildTimerRow(timer, i)); });
 
-				var endAtMs = startAtMs + selectedDuration.totalMinutes * 60 * 1000;
+			return sec;
+		}
 
-				// If computed end time is already in the past, schedule for the next day.
-				if (endAtMs <= Date.now()) {
-					startAtMs += 24 * 60 * 60 * 1000;
-					endAtMs += 24 * 60 * 60 * 1000;
-				}
+		function buildTimerRow(timer, index) {
+			var row = document.createElement('div');
+			row.className = 'timer-row';
+			row.setAttribute('role', 'button');
+			row.setAttribute('tabindex', '0');
 
-				activeTimer = {
-					selectedTime: selectedTime,
-					selectedDuration: selectedDuration.displayValue,
-					selectedDurationMinutes: selectedDuration.totalMinutes,
-					startAtMs: startAtMs,
-					endAtMs: endAtMs,
-					timezone: getTimeZone(),
-					createdAtMs: Date.now()
-				};
+			var color = iconColor(index);
+			var rgb   = hexToRgb(color);
 
-				saveTimer(activeTimer);
-				setStatus("Timer started and saved locally.", "success");
-				startTicker();
-			}
+			var onClick = function () { navigate('timer-' + timer.id); };
+			row.addEventListener('click', onClick);
+			row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') onClick(); });
 
-			function restoreTimer() {
-				var raw = localStorage.getItem(STORAGE_KEY);
-				if (!raw) {
-					return;
-				}
+			/* Icon */
+			var ico = document.createElement('div');
+			ico.className = 'timer-row-icon';
+			ico.style.cssText = 'background:rgba(' + rgb + ',0.15);border-color:rgba(' + rgb + ',0.3);color:' + color + ';';
+			ico.appendChild(makeSvg(SVG.clock, 20));
 
-				try {
-					var parsed = JSON.parse(raw);
-					if (!parsed || !parsed.endAtMs || !parsed.selectedTime) {
-						clearTimer();
-						return;
-					}
+			/* Info */
+			var info = document.createElement('div');
+			var titleEl = document.createElement('div');
+			titleEl.className = 'timer-row-title';
+			titleEl.textContent = timer.title;
+			var durEl = document.createElement('div');
+			durEl.className = 'timer-row-dur';
+			var durNum = parseFloat(timer.selectedDuration);
+			durEl.textContent = timer.selectedDuration + ' hour' + (durNum !== 1 ? 's' : '');
+			info.appendChild(titleEl);
+			info.appendChild(durEl);
 
-					if (!parse24HourTime(parsed.selectedTime)) {
-						clearTimer();
-						setStatus("Saved timer used an invalid start time and has been reset.", "error");
-						return;
-					}
+			/* Countdown */
+			var cdWrap = document.createElement('div');
+			cdWrap.className = 'timer-row-cd';
+			var cdVal = document.createElement('div');
+			cdVal.className = 'timer-row-cd-val';
+			cdVal.id = 'remaining-' + timer.id;
+			cdVal.textContent = formatHMS(Math.max(0, (timer.endAtMs - Date.now()) / 1000));
+			var cdLbl = document.createElement('div');
+			cdLbl.className = 'timer-row-cd-lbl';
+			cdLbl.textContent = 'remaining';
+			cdWrap.appendChild(cdVal);
+			cdWrap.appendChild(cdLbl);
 
-					var restoredDurationValue = null;
-					if (typeof parsed.selectedDuration === "string") {
-						restoredDurationValue = parsed.selectedDuration;
-					} else if (typeof parsed.selectedHours === "number") {
-						restoredDurationValue = String(parsed.selectedHours);
-					}
+			/* Times */
+			var times = document.createElement('div');
+			times.className = 'timer-row-times';
+			times.innerHTML =
+				'<div>Started\u00a0<strong>' + formatTime12(timer.startAtMs) + '</strong></div>' +
+				'<div>Ends\u00a0<strong>' + formatTime12(timer.endAtMs) + '</strong></div>';
 
-					var restoredDuration = restoredDurationValue ? parseDuration(restoredDurationValue) : null;
-					if (!restoredDuration && typeof parsed.selectedDurationMinutes === "number") {
-						var minutes = parsed.selectedDurationMinutes;
-						if (minutes >= 6 && minutes <= MAX_DURATION_VALUE * 60) {
-							restoredDuration = {
-								displayValue: (minutes / 60).toFixed(2),
-								totalMinutes: minutes
-							};
-						}
-					}
+			/* Chevron */
+			var chev = makeSvg(SVG.chevron, 18);
+			chev.style.cssText = 'color:var(--muted);flex-shrink:0;';
 
-					if (!restoredDuration) {
-						clearTimer();
-						setStatus("Saved timer used an invalid duration and has been reset.", "error");
-						return;
-					}
+			row.appendChild(ico);
+			row.appendChild(info);
+			row.appendChild(cdWrap);
+			row.appendChild(times);
+			row.appendChild(chev);
+			return row;
+		}
 
-					startTimeInput.value = parsed.selectedTime;
-					startTimeInput.dataset.lastValid = parsed.selectedTime;
-					hoursInput.value = restoredDuration.displayValue;
-					hoursInput.dataset.lastValid = restoredDuration.displayValue;
-					activeTimer = {
-						selectedTime: parsed.selectedTime,
-						selectedDuration: restoredDuration.displayValue,
-						selectedDurationMinutes: restoredDuration.totalMinutes,
-						startAtMs: parsed.startAtMs,
-						endAtMs: parsed.endAtMs,
-						timezone: parsed.timezone,
-						createdAtMs: parsed.createdAtMs
-					};
-
-					if (parsed.endAtMs <= Date.now()) {
-						clearTimer();
-						setStatus("Saved timer had already finished.");
-						return;
-					}
-
-					var timezoneChanged = parsed.timezone && parsed.timezone !== getTimeZone();
-					if (timezoneChanged) {
-						setStatus("Timer restored. Timezone changed since creation, countdown uses absolute local time.");
+		function startHomeTicker(activeTimers) {
+			tickerInterval = setInterval(function () {
+				var now = Date.now(), needRerender = false;
+				activeTimers.forEach(function (t) {
+					var el = document.getElementById('remaining-' + t.id);
+					if (!el) return;
+					var rem = Math.floor((t.endAtMs - now) / 1000);
+					if (rem <= 0) {
+						removeTimer(t.id);
+						needRerender = true;
 					} else {
-						setStatus("Timer restored from local storage.", "success");
+						el.textContent = formatHMS(rem);
 					}
+				});
+				if (needRerender) { clearTicker(); renderView(); }
+			}, 1000);
+		}
 
-					startTicker();
-				} catch (error) {
-					clearTimer();
-					setStatus("Saved timer data was invalid and has been reset.", "error");
+		/* ════════════════════════════════════════
+		   Timer Detail view
+		════════════════════════════════════════ */
+		function renderTimerDetail(container, timer) {
+			var wrap = document.createElement('div');
+			wrap.className = 'timer-detail';
+
+			/* Back link */
+			var back = document.createElement('a');
+			back.href = '#';
+			back.className = 'back-link';
+			back.appendChild(makeSvg(SVG.arrow, 16));
+			back.appendChild(document.createTextNode('\u00a0Back to all timers'));
+			wrap.appendChild(back);
+
+			/* Header */
+			var top = document.createElement('div');
+			top.className = 'detail-top';
+
+			var topLeft = document.createElement('div');
+			var eyebrow = document.createElement('div');
+			eyebrow.className = 'eyebrow';
+			eyebrow.textContent = 'FOCUS SESSION';
+			var titleRow = document.createElement('div');
+			titleRow.className = 'detail-title-row';
+			var titleEl = document.createElement('h1');
+			titleEl.textContent = timer.title;
+			var editBtn = document.createElement('button');
+			editBtn.className = 'icon-btn edit-btn';
+			editBtn.setAttribute('aria-label', 'Edit title');
+			editBtn.appendChild(makeSvg(SVG.pencil, 15));
+			editBtn.addEventListener('click', function () {
+				var nv = prompt('Edit timer title:', timer.title);
+				if (nv !== null && nv.trim()) {
+					timer.title = nv.trim();
+					titleEl.textContent = timer.title;
+					saveTimers();
 				}
+			});
+			titleRow.appendChild(titleEl);
+			titleRow.appendChild(editBtn);
+			topLeft.appendChild(eyebrow);
+			topLeft.appendChild(titleRow);
+
+			var statusPill = document.createElement('div');
+			statusPill.className = 'status-pill';
+			var dot = document.createElement('span');
+			dot.className = 'status-dot';
+			statusPill.appendChild(dot);
+			statusPill.appendChild(document.createTextNode(' RUNNING'));
+
+			top.appendChild(topLeft);
+			top.appendChild(statusPill);
+			wrap.appendChild(top);
+
+			/* Meta */
+			var meta = document.createElement('div');
+			meta.className = 'detail-meta';
+			var dur = parseFloat(timer.selectedDuration);
+			meta.innerHTML =
+				'<div class="detail-meta-item"><div class="meta-label">STARTED AT</div><div class="meta-value">' + formatStartedAt(timer.startAtMs) + '</div></div>' +
+				'<div class="detail-meta-item"><div class="meta-label">DURATION</div><div class="meta-value">' + timer.selectedDuration + ' hour' + (dur !== 1 ? 's' : '') + '</div></div>';
+			wrap.appendChild(meta);
+
+			/* Divider */
+			var hr = document.createElement('hr');
+			hr.className = 'section-divider';
+			wrap.appendChild(hr);
+
+			/* Clock */
+			var clockSec = document.createElement('div');
+			clockSec.className = 'clock-section';
+			var clockLbl = document.createElement('div');
+			clockLbl.className = 'clock-label';
+			clockLbl.textContent = 'TIME ELAPSED';
+			var clockEl = document.createElement('div');
+			clockEl.className = 'clock-display';
+			var endsAtEl = document.createElement('div');
+			endsAtEl.className = 'ends-at-pill';
+			endsAtEl.appendChild(makeSvg(SVG.clock, 14));
+			endsAtEl.appendChild(document.createTextNode('\u00a0ENDS AT ' + formatTime12(timer.endAtMs)));
+			clockSec.appendChild(clockLbl);
+			clockSec.appendChild(clockEl);
+			clockSec.appendChild(endsAtEl);
+			wrap.appendChild(clockSec);
+
+			/* Controls */
+			var ctrlRow = document.createElement('div');
+			ctrlRow.className = 'detail-controls';
+
+			var pauseBtn = document.createElement('button');
+			pauseBtn.type = 'button';
+			pauseBtn.className = 'btn-pause';
+			pauseBtn.appendChild(makeSvg(SVG.pause, 16));
+			pauseBtn.appendChild(document.createTextNode('\u00a0PAUSE'));
+
+			var stopBtn = document.createElement('button');
+			stopBtn.type = 'button';
+			stopBtn.className = 'btn-stop';
+			stopBtn.appendChild(makeSvg(SVG.stop, 16));
+			stopBtn.appendChild(document.createTextNode('\u00a0STOP'));
+			stopBtn.addEventListener('click', function () {
+				if (confirm('Stop "' + timer.title + '"?')) {
+					removeTimer(timer.id);
+					navigate('');
+				}
+			});
+
+			ctrlRow.appendChild(pauseBtn);
+			ctrlRow.appendChild(stopBtn);
+			wrap.appendChild(ctrlRow);
+			container.appendChild(wrap);
+
+			/* Floating action button */
+			var fab = document.createElement('button');
+			fab.className = 'fab';
+			fab.setAttribute('aria-label', 'New timer');
+			fab.title = 'Create new timer';
+			fab.appendChild(makeSvg(SVG.plus, 22));
+			fab.addEventListener('click', function () { navigate(''); });
+			container.appendChild(fab);
+
+			/* Ticker – updates elapsed clock every second */
+			function tick() {
+				var now = Date.now();
+				var elapsed = Math.floor((now - timer.startAtMs) / 1000);
+				if (elapsed < 0) elapsed = 0;
+				var total = Math.floor((timer.endAtMs - timer.startAtMs) / 1000);
+				if (elapsed >= total) {
+					clockEl.textContent = formatHMS(total);
+					dot.className = 'status-dot';
+					dot.style.animation = 'none';
+					statusPill.className = 'status-pill completed';
+					statusPill.lastChild.textContent = ' COMPLETED';
+					removeTimer(timer.id);
+					clearTicker();
+					return;
+				}
+				clockEl.textContent = formatHMS(elapsed);
 			}
 
-			startTimeInput.dataset.lastValid = "";
-			hoursInput.value = "1.00";
-			hoursInput.dataset.lastValid = "1.00";
-			startTimeInput.addEventListener("input", handleStartTimeInput);
-			hoursInput.addEventListener("input", handleDurationInput);
-			timeZoneEl.textContent = getTimeZone();
-			startBtn.addEventListener("click", startTimerFromSelection);
-			restoreTimer();
-		})();
+			tick();
+			tickerInterval = setInterval(tick, 1000);
+		}
+
+		/* ════════════════════════════════════════
+		   Bootstrap
+		════════════════════════════════════════ */
+		loadTimers();
+		cleanupExpiredTimers();
+		window.addEventListener('hashchange', renderView);
+		renderView();
+
+	})();
 	</script>
 </body>
 </html>

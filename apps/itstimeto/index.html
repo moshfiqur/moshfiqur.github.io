@@ -504,7 +504,7 @@
 		   Utilities
 		════════════════════════════════════════ */
 		function generateId() {
-			return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+			return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 		}
 
 		function pad2(v) { return String(v).padStart(2, '0'); }
@@ -644,7 +644,12 @@
 
 		function cleanupExpiredTimers() {
 			var now = Date.now(), before = timers.length;
-			timers = timers.filter(function (t) { return t.endAtMs > now && t.status !== 'stopped'; });
+			timers = timers.filter(function (t) {
+				if (t.status === 'stopped') return false;
+				/* Keep paused timers regardless of endAtMs – they can be resumed later */
+				if (typeof t.pausedElapsed === 'number') return true;
+				return t.endAtMs > now;
+			});
 			if (timers.length !== before) saveTimers();
 		}
 
@@ -1148,11 +1153,51 @@
 			var ctrlRow = document.createElement('div');
 			ctrlRow.className = 'detail-controls';
 
+			/* Pause/Resume state — stored as elapsed seconds at pause time */
+			var pausedElapsed = (typeof timer.pausedElapsed === 'number') ? timer.pausedElapsed : null;
+			var isPaused = pausedElapsed !== null;
+
 			var pauseBtn = document.createElement('button');
 			pauseBtn.type = 'button';
 			pauseBtn.className = 'btn-pause';
-			pauseBtn.appendChild(makeSvg(SVG.pause, 16));
-			pauseBtn.appendChild(document.createTextNode('\u00a0PAUSE'));
+
+			function syncPauseBtn() {
+				pauseBtn.innerHTML = '';
+				pauseBtn.appendChild(makeSvg(isPaused ? SVG.clock : SVG.pause, 16));
+				pauseBtn.appendChild(document.createTextNode(isPaused ? '\u00a0RESUME' : '\u00a0PAUSE'));
+			}
+			syncPauseBtn();
+
+			pauseBtn.addEventListener('click', function () {
+				if (isPaused) {
+					/* Resume: shift startAtMs so elapsed stays consistent */
+					var shift = Date.now() - (timer.startAtMs + pausedElapsed * 1000);
+					timer.startAtMs += shift;
+					timer.endAtMs   += shift;
+					delete timer.pausedElapsed;
+					pausedElapsed = null;
+					isPaused = false;
+					syncPauseBtn();
+					dot.style.animation = '';
+					statusPill.className = 'status-pill';
+					statusPill.lastChild.textContent = ' RUNNING';
+					saveTimers();
+					tick();
+					tickerInterval = setInterval(tick, 1000);
+				} else {
+					/* Pause: capture current elapsed and stop ticker */
+					clearTicker();
+					pausedElapsed = Math.floor((Date.now() - timer.startAtMs) / 1000);
+					if (pausedElapsed < 0) pausedElapsed = 0;
+					timer.pausedElapsed = pausedElapsed;
+					isPaused = true;
+					syncPauseBtn();
+					dot.style.animation = 'none';
+					statusPill.className = 'status-pill';
+					statusPill.lastChild.textContent = ' PAUSED';
+					saveTimers();
+				}
+			});
 
 			var stopBtn = document.createElement('button');
 			stopBtn.type = 'button';
@@ -1182,13 +1227,13 @@
 
 			/* Ticker – updates elapsed clock every second */
 			function tick() {
+				if (isPaused) return; /* frozen while paused */
 				var now = Date.now();
 				var elapsed = Math.floor((now - timer.startAtMs) / 1000);
 				if (elapsed < 0) elapsed = 0;
 				var total = Math.floor((timer.endAtMs - timer.startAtMs) / 1000);
 				if (elapsed >= total) {
 					clockEl.textContent = formatHMS(total);
-					dot.className = 'status-dot';
 					dot.style.animation = 'none';
 					statusPill.className = 'status-pill completed';
 					statusPill.lastChild.textContent = ' COMPLETED';
@@ -1199,8 +1244,15 @@
 				clockEl.textContent = formatHMS(elapsed);
 			}
 
-			tick();
-			tickerInterval = setInterval(tick, 1000);
+			/* If restored as paused, show the frozen elapsed value */
+			if (isPaused) {
+				clockEl.textContent = formatHMS(pausedElapsed);
+				dot.style.animation = 'none';
+				statusPill.lastChild.textContent = ' PAUSED';
+			} else {
+				tick();
+				tickerInterval = setInterval(tick, 1000);
+			}
 		}
 
 		/* ════════════════════════════════════════

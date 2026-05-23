@@ -688,8 +688,9 @@
 		   Routing
 		════════════════════════════════════════ */
 		function getRoute() {
+			var TIMER_PREFIX = 'timer-';
 			var hash = window.location.hash.slice(1);
-			if (hash.indexOf('timer-') === 0) return { view: 'timer', id: hash.slice(6) };
+			if (hash.indexOf(TIMER_PREFIX) === 0) return { view: 'timer', id: hash.slice(TIMER_PREFIX.length) };
 			return { view: 'home' };
 		}
 
@@ -1170,7 +1171,11 @@
 
 			pauseBtn.addEventListener('click', function () {
 				if (isPaused) {
-					/* Resume: shift startAtMs so elapsed stays consistent */
+					/*
+					 * Resume: shift both startAtMs and endAtMs forward by the idle duration
+					 * so that the elapsed display stays exactly where it was when paused,
+					 * and the remaining time is effectively extended by the pause gap.
+					 */
 					var shift = Date.now() - (timer.startAtMs + pausedElapsed * 1000);
 					timer.startAtMs += shift;
 					timer.endAtMs   += shift;

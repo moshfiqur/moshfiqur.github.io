@@ -961,9 +961,7 @@ html[data-theme="dark"] #nav .navbar-custom {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-image:
-    linear-gradient(135deg, rgba(102, 126, 234, 0.55) 0%, rgba(118, 75, 162, 0.55) 100%),
-    url('../img/intro-bg2.jpg');
+  background-image: url('../img/intro-bg2.jpg');
   background-color: #667eea;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1026,18 +1024,21 @@ html[data-theme="dark"] #nav .navbar-custom {
   font-size: 1.6rem;
   font-weight: 600;
   border-radius: 50px;
-  background: #ffd700;
-  color: #333;
-  border: 2px solid #ffd700;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background: transparent;
-    color: #ffd700;
+    color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
   }
 }
 
@@ -1053,11 +1054,14 @@ html[data-theme="dark"] #nav .navbar-custom {
   text-decoration: none;
   display: inline-block;
 
-  &:hover {
-    background: #ffffff;
-    color: #667eea;
+  &:hover,
+  &:focus,
+  &:active {
+    background: transparent;
+    color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
   }
 
   i {
@@ -1337,9 +1341,7 @@ html[data-theme="dark"] {
   }
 
   #hero {
-    background-image:
-      linear-gradient(135deg, rgba(31, 41, 55, 0.75) 0%, rgba(17, 24, 39, 0.75) 100%),
-      url('../img/intro-bg2.jpg');
+    background-image: url('../img/intro-bg2.jpg');
   }
 
   #blog-preview {

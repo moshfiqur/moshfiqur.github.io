@@ -275,9 +275,7 @@ hr {
 	display: flex;
 	align-items: center;
 	color: #fff;
-	background-image:
-		linear-gradient(135deg, rgba(102, 126, 234, 0.55) 0%, rgba(118, 75, 162, 0.55) 100%),
-		url("../img/intro-bg2.jpg");
+	background-image: url("../img/intro-bg2.jpg");
 	background-color: #667eea;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -292,6 +290,41 @@ hr {
 }
 #hero .hero-overlay {
 	display: none;
+}
+#hero .hero-cta {
+	margin-top: 40px;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+#hero .btn-hero,
+#hero .btn-hero-outline {
+	padding: 15px 35px;
+	font-size: 1.6rem;
+	font-weight: 600;
+	border-radius: 50px;
+	background: transparent;
+	color: #ffffff;
+	border: 2px solid #ffffff;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+}
+#hero .btn-hero:hover,
+#hero .btn-hero:focus,
+#hero .btn-hero:active,
+#hero .btn-hero-outline:hover,
+#hero .btn-hero-outline:focus,
+#hero .btn-hero-outline:active {
+	background: transparent;
+	color: #ffffff;
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	text-decoration: none;
+}
+#hero .btn-hero-outline i {
+	margin-right: 8px;
 }
 @media (max-width: 1024px) {
 	#hero {

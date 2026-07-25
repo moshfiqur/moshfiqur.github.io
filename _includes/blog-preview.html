@@ -12,8 +12,8 @@
       <div class="col-md-4 col-sm-6">
         <div class="blog-preview-card">
           {% if post.image %}
-          <div class="blog-preview-image" style="background-image: url('{{ post.image }}');">
-            <a href="{{ post.url }}" class="blog-preview-overlay">
+          <div class="blog-preview-image" style="background-image: url('{{ post.image | relative_url }}');">
+            <a href="{{ post.url | relative_url }}" class="blog-preview-overlay">
               <span class="read-post-icon"><i class="fa fa-arrow-right"></i></span>
             </a>
           </div>
@@ -23,10 +23,10 @@
               <i class="fa fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}
             </div>
             <h3 class="blog-preview-title">
-              <a href="{{ post.url }}">{{ post.title }}</a>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </h3>
             <p class="blog-preview-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-            <a href="{{ post.url }}" class="blog-preview-link">
+            <a href="{{ post.url | relative_url }}" class="blog-preview-link">
               Read More <i class="fa fa-arrow-right"></i>
             </a>
           </div>
@@ -36,7 +36,7 @@
     </div>
     
     <div class="text-center" style="margin-top: 40px;">
-      <a href="/blog/" class="btn btn-primary btn-lg">
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary btn-lg">
         More <i class="fa fa-arrow-right"></i>
       </a>
     </div>

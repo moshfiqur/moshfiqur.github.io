@@ -421,12 +421,12 @@ function overflowingAncestor(el) {
  * HELPERS
  ***********************************************/
 
-function addEvent(type, fn, bubble) {
-    window.addEventListener(type, fn, (bubble||false));
+function addEvent(type, fn, options) {
+    window.addEventListener(type, fn, options || false);
 }
 
-function removeEvent(type, fn, bubble) {
-    window.removeEventListener(type, fn, (bubble||false));  
+function removeEvent(type, fn, options) {
+    window.removeEventListener(type, fn, options || false);
 }
 
 function isNodeName(el, tag) {
@@ -516,7 +516,7 @@ var isMouseWheelSupported = 'onmousewheel' in document;
 
 if (isMouseWheelSupported && isChrome) {
 	addEvent("mousedown", mousedown);
-	addEvent("mousewheel", wheel);
+	addEvent("mousewheel", wheel, {passive: false});
 	addEvent("load", init);
 };
 

@@ -965,10 +965,17 @@ html[data-theme="dark"] #nav .navbar-custom {
     linear-gradient(135deg, rgba(102, 126, 234, 0.55) 0%, rgba(118, 75, 162, 0.55) 100%),
     url('../img/intro-bg2.jpg');
   background-color: #667eea;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding-top: 80px;
+}
+
+@media (max-width: 1024px) {
+  #hero {
+    background-attachment: scroll;
+  }
 }
 
 .hero-container {
